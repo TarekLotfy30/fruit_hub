@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../core/theming/colors/app_colors.dart';
 import '../../../../core/theming/typography/text_style.dart';
 import '../../../../core/widgets/app_text_custom.dart';
@@ -50,19 +51,19 @@ class OnboardingWidget extends StatelessWidget {
             text: TextSpan(
               style: DefaultTextStyle.of(context).style,
               children: [
+                const TextSpan(
+                  text: 'مرحبًا بك في ',
+                  style: AppStyles.textStyle23,
+                ),
                 TextSpan(
                   text: 'Fruit',
                   style: AppStyles.textStyle23
                       .copyWith(color: AppColors.primaryColor),
                 ),
                 TextSpan(
-                  text: 'HUB ',
+                  text: 'HUB',
                   style: AppStyles.textStyle23
                       .copyWith(color: AppColors.secondaryColor),
-                ),
-                const TextSpan(
-                  text: 'مرحبًا بك في  ',
-                  style: AppStyles.textStyle23,
                 ),
               ],
             ),

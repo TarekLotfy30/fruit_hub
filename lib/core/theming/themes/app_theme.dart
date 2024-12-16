@@ -7,10 +7,11 @@ class AppTheme {
   AppTheme._(); // Private constructor to prevent instantiation.
 
   /// Defines the light mode theme.
-  static ThemeData lightMode = ThemeData.light().copyWith(
+  static ThemeData lightMode = ThemeData(
     pageTransitionsTheme: _pageTransitionsTheme,
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.backgroundColor,
+    fontFamily: 'Cairo',
     /*    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.primaryColor,
       elevation: 0,

@@ -48,25 +48,22 @@ class OnboardingViewBody extends StatelessWidget {
                       builder: (context, state) {
                         return Visibility(
                           visible: onboardingCubit.cubitIndex == 0,
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 20,
-                              ),
-                              child: TextButton(
-                                onPressed: () async {
-                                  context.removeAllAndNavigateToNamedRoute(
-                                    Routes.loginScreen,
-                                    predicate: (route) => false,
-                                  );
-                                },
-                                child: AppText(
-                                  text: 'تخط',
-                                  style: AppStyles.textStyle13
-                                      .copyWith(color: AppColors.primaryColor),
-                                ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 20,
+                            ),
+                            child: TextButton(
+                              onPressed: () async {
+                                context.removeAllAndNavigateToNamedRoute(
+                                  Routes.loginScreen,
+                                  predicate: (route) => false,
+                                );
+                              },
+                              child: AppText(
+                                text: 'تخط',
+                                style: AppStyles.textStyle13
+                                    .copyWith(color: AppColors.primaryColor),
                               ),
                             ),
                           ),

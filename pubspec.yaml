@@ -42,6 +42,7 @@ flutter:
     - assets/svgs/
     - assets/svgs/splash/
     - assets/svgs/onboarding/
+    - assets/translations/
 
   fonts:
     - family: Cairo
