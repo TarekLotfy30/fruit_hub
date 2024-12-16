@@ -14,11 +14,12 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  flutter_svg: ^2.0.15
+  flutter_svg: ^2.0.16
   google_fonts: ^6.2.1
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
   smooth_page_indicator: ^1.2.0+3
+  device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-part of 'onboarding_view_body.dart';
+part of '../screen/onboarding_view_body.dart';
 
 class _BuildStartButton extends StatelessWidget {
   const _BuildStartButton({

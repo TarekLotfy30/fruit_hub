@@ -20,7 +20,7 @@ extension Navigation on BuildContext {
   Future<dynamic> removeAllAndNavigateToNamedRoute(
     String routeName, {
     Object? arguments,
-    required RoutePredicate predicate,
+    required bool Function(Route<dynamic>) predicate,
   }) {
     return Navigator.of(this).pushNamedAndRemoveUntil(
       routeName,
@@ -35,6 +35,4 @@ extension Navigation on BuildContext {
   }
 }
 
-// lama btegy tenavigate mn screen ly el tanya bet2olo navigator .pop .,,,,
-// in calling  ha3ml el call 3an tareq el context
 // context.pop(),,

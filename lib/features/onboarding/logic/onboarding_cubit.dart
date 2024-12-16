@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/core/helpers/images.dart';
-import 'package:fruit_hub/features/onboarding/data/onboarding_model.dart';
+
+import '../../../core/helpers/images.dart';
+import '../data/onboarding_model.dart';
 
 part 'onboarding_state.dart';
 
@@ -40,6 +41,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   /// Shows the button only on the last page.
   void showButton(int index) {
     cubitIndex = index;
+
     if (cubitIndex == onboardingPages.length - 1) {
       emit(ShowButton());
     } else {

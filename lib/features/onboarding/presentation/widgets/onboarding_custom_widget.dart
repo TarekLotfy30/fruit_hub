@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_hub/core/theming/colors/app_colors.dart';
-import 'package:fruit_hub/core/theming/typography/text_style.dart';
-import 'package:fruit_hub/core/widgets/app_text_custom.dart';
-import 'package:fruit_hub/features/onboarding/data/onboarding_model.dart';
-import 'package:fruit_hub/features/onboarding/logic/onboarding_cubit.dart';
+import '../../../../core/theming/colors/app_colors.dart';
+import '../../../../core/theming/typography/text_style.dart';
+import '../../../../core/widgets/app_text_custom.dart';
+import '../../data/onboarding_model.dart';
+import '../../logic/onboarding_cubit.dart';
 
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget({
@@ -39,36 +38,6 @@ class OnboardingWidget extends StatelessWidget {
                   onboardingModel.image,
                   fit: BoxFit.cover,
                 ),
-              ),
-              BlocBuilder<OnboardingCubit, OnboardingState>(
-                builder: (context, state) {
-                  return Visibility(
-                    visible: onboardingCubit.cubitIndex == 0,
-                    replacement: const SizedBox(),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 20,
-                        ),
-                        child: TextButton(
-                          onPressed: () async {
-                            onboardingCubit.boardController.nextPage(
-                              duration: const Duration(milliseconds: 100),
-                              curve: Curves.fastLinearToSlowEaseIn,
-                            );
-                          },
-                          child: AppText(
-                            text: 'تخط',
-                            style: AppStyles.textStyle13
-                                .copyWith(color: AppColors.primaryColor),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
               ),
             ],
           ),

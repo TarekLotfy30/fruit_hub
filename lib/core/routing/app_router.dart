@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/core/routing/routes.dart';
-import 'package:fruit_hub/features/onboarding/logic/onboarding_cubit.dart';
-import 'package:fruit_hub/features/onboarding/presentation/screen/onboarding_view.dart';
-import 'package:fruit_hub/features/splash/presentation/screens/splash_view.dart';
+
+import '../../features/auth/presentation/screen/login_view.dart';
+import '../../features/onboarding/logic/onboarding_cubit.dart';
+import '../../features/onboarding/presentation/screen/onboarding_view.dart';
+import '../../features/splash/presentation/screens/splash_view.dart';
+import 'routes.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -18,6 +20,10 @@ class AppRouter {
             create: (context) => OnboardingCubit(),
             child: const OnboardingView(),
           ),
+        );
+      case Routes.loginScreen:
+        return _buildRoute(
+          const LoginView(),
         );
       default:
         return MaterialPageRoute(
