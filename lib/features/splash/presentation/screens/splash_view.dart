@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/core/helpers/extensions.dart';
-import 'package:fruit_hub/core/routing/routes.dart';
-import 'package:fruit_hub/features/splash/presentation/widgets/splash_view_body.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../widgets/splash_view_body.dart';
 
 /// Root widget for the Splash screen, sets up a Scaffold with a SplashViewBody
 class SplashView extends StatefulWidget {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/core/theming/colors/app_colors.dart';
-import 'package:fruit_hub/core/theming/typography/text_style.dart';
-import 'package:fruit_hub/core/widgets/app_text_custom.dart';
 
-//CustomElevatedButton
+import '../theming/colors/app_colors.dart';
+import '../theming/typography/text_style.dart';
+import 'app_text_custom.dart';
+
+
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,

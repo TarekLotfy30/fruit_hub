@@ -3,14 +3,14 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     # When you pick a style, you should stick to it in the whole project.
-    #For smaller projects: prefer_relative_imports might be sufficient due
+    # For smaller projects: prefer_relative_imports might be sufficient due
     # to the smaller codebase and ease of understanding the structure.
     # file.dart';
-    #For larger projects: always_use_package_imports can provide better
-    #clarity for developers unfamiliar with the project structure.
+    # For larger projects: always_use_package_imports can provide better
+    # clarity for developers unfamiliar with the project structure.
     # import 'package:my_package/file.dart';
-    #prefer_relative_imports
-    - always_use_package_imports
+    # always_use_package_imports
+    - prefer_relative_imports
     - avoid_relative_lib_imports
     - directives_ordering
     - lines_longer_than_80_chars

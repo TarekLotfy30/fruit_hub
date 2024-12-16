@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruit_hub/core/helpers/images.dart';
+
+import '../../../../core/helpers/images.dart';
 
 /// Main body widget for the Splash View
 /// It displays a column of SVG images representing branding elements

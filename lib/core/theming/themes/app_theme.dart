@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_hub/core/theming/colors/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../colors/app_colors.dart';
 
 /// A utility class for defining app themes using ThemeData.
 class AppTheme {
@@ -8,8 +8,8 @@ class AppTheme {
 
   /// Defines the light mode theme.
   static ThemeData lightMode = ThemeData.light().copyWith(
-    textTheme: _textTheme,
     pageTransitionsTheme: _pageTransitionsTheme,
+    primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.backgroundColor,
     /*    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.primaryColor,
@@ -58,11 +58,6 @@ class AppTheme {
       TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     },
-  );
-
-  /// Defines the text styles using Google Fonts.
-  static final TextTheme _textTheme = GoogleFonts.cairoTextTheme(
-    ThemeData.light().textTheme,
   );
 
   /// Defines the dark mode theme.

@@ -17,8 +17,8 @@ class AppText extends StatelessWidget {
     return Text(
       text,
       style: style,
-      textDirection: TextDirection.rtl,
       textAlign: textAlign,
+      textDirection: TextDirection.rtl,
     );
   }
 }
