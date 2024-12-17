@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../theming/colors/app_colors.dart';
-import '../theming/typography/text_style.dart';
+import '../theming/typography/app_text_style.dart';
 import 'app_text_custom.dart';
-
 
 class AppButton extends StatelessWidget {
   const AppButton({

@@ -20,7 +20,7 @@ dependencies:
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
   # For local storage
-  shared_preferences: ^2.2.3
+  shared_preferences: ^2.3.3
   # For onboarding page
   smooth_page_indicator: ^1.2.0+3
   # For device preview

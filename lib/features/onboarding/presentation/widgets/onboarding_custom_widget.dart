@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theming/colors/app_colors.dart';
-import '../../../../core/theming/typography/text_style.dart';
+import '../../../../core/theming/typography/app_text_style.dart';
 import '../../../../core/widgets/app_text_custom.dart';
 import '../../data/onboarding_model.dart';
 import '../../logic/onboarding_cubit.dart';
