@@ -1,65 +1,27 @@
 import 'package:flutter/material.dart';
 
 import '../colors/app_colors.dart';
+import 'app_styles.dart';
 
 /// A utility class for defining app themes using ThemeData.
 class AppTheme {
-  AppTheme._(); // Private constructor to prevent instantiation.
+  const AppTheme._(); // Private constructor to prevent instantiation.
 
   /// Defines the light mode theme.
-  static ThemeData lightMode = ThemeData(
-    pageTransitionsTheme: _pageTransitionsTheme,
-    primaryColor: AppColors.primaryColor,
-    scaffoldBackgroundColor: AppColors.backgroundColor,
-    fontFamily: 'Cairo',
-    /*    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: AppColors.primaryColor,
-      elevation: 0,
-      shape: CircleBorder(),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 0,
-      ),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      enabledBorder: const OutlineInputBorder(
-        borderSide: BorderSide(
-          width: 0.85,
-        ),
-      ),
-      focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(
-          color: AppColors.primaryColor,
-          width: 1,
-        ),
-      ),
-      labelStyle: const TextStyle(
-        fontSize: 13,
-        fontFamily: 'Lato',
-      ),
-      floatingLabelStyle: const TextStyle(
-        color: AppColors.primaryColor,
-        fontSize: 13,
-        fontFamily: 'Lato',
-      ),
-      prefixIconColor: AppColors.primaryColor,
-      suffixIconColor: AppColors.primaryColor,
-    ),*/
-  );
-
-  /// Defines the page transition animations for different platforms.
-  static const PageTransitionsTheme _pageTransitionsTheme =
-      PageTransitionsTheme(
-    builders: {
-      TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-    },
+  static final ThemeData lightMode = ThemeData(
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.white,
+    pageTransitionsTheme: AppStyles.pageTransitionsTheme,
+    elevatedButtonTheme: AppStyles.elevatedButtonLightTheme,
+    textTheme: AppStyles.textLightTheme,
   );
 
   /// Defines the dark mode theme.
+  static final ThemeData darkMode = ThemeData.dark().copyWith(
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.black,
+    pageTransitionsTheme: AppStyles.pageTransitionsTheme,
+    textTheme: AppStyles.textDarkTheme,
+    elevatedButtonTheme: AppStyles.elevatedButtonDarkTheme,
+  );
 }

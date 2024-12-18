@@ -53,16 +53,16 @@ class OnboardingWidget extends StatelessWidget {
               children: [
                 const TextSpan(
                   text: 'مرحبًا بك في ',
-                  style: AppStyles.textStyle23,
+                  style: AppTextStyles.textStyle23,
                 ),
                 TextSpan(
                   text: 'Fruit',
-                  style: AppStyles.textStyle23
+                  style: AppTextStyles.textStyle23
                       .copyWith(color: AppColors.primaryColor),
                 ),
                 TextSpan(
                   text: 'HUB',
-                  style: AppStyles.textStyle23
+                  style: AppTextStyles.textStyle23
                       .copyWith(color: AppColors.secondaryColor),
                 ),
               ],
@@ -71,7 +71,7 @@ class OnboardingWidget extends StatelessWidget {
         else
           const AppText(
             text: 'ابحث وتسوق',
-            style: AppStyles.textStyle23,
+            style: AppTextStyles.textStyle23,
           ),
         const SizedBox(
           height: 25,
@@ -80,7 +80,7 @@ class OnboardingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 39),
           child: AppText(
             text: onboardingModel.description,
-            style: AppStyles.textStyle13.copyWith(
+            style: AppTextStyles.textStyle13.copyWith(
               fontWeight: FontWeight.w600,
               color: AppColors.darkGray,
             ),

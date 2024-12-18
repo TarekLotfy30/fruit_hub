@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'font_weight_helper.dart';
 
-abstract class AppStyles {
+class AppTextStyles {
   /*static const textStyle33 = TextStyle(
     fontSize: 33,
     fontWeight: FontWeight.w900,
     //fontFamily: kGtSectraFine,
     letterSpacing: 1.2,
   ); */
+  const AppTextStyles._();
 
   static const textStyle48 = TextStyle(
     fontSize: 48,

@@ -1,5 +1,5 @@
 class AppImages {
-  AppImages._();
+  const AppImages._();
 
   // Splash Screen
   static const String circles = 'assets/svgs/splash/circles.svg';

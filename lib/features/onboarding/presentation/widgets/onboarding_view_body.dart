@@ -6,7 +6,6 @@ import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors/app_colors.dart';
 import '../../../../core/theming/typography/app_text_style.dart';
-import '../../../../core/widgets/app_button_custom.dart';
 import '../../../../core/widgets/app_text_custom.dart';
 import '../../logic/onboarding_cubit.dart';
 import 'onboarding_custom_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FontWeightHelper {
-  FontWeightHelper._(); // Private constructor to prevent instantiation
+  const FontWeightHelper._(); // Private constructor to prevent instantiation
 
   static const FontWeight thin = FontWeight.w100;
   static const FontWeight extraLight = FontWeight.w200;

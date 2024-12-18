@@ -19,6 +19,8 @@ class FruitApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: const Locale('ar'),
       theme: AppTheme.lightMode,
+      darkTheme: AppTheme.darkMode,
+      themeMode: ThemeMode.system,
       initialRoute: Routes.splashScreen,
       onGenerateRoute: appRouter.generateRoute,
     );

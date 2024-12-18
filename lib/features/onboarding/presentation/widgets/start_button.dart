@@ -19,9 +19,11 @@ class _StartButton extends StatelessWidget {
         vertical: 16,
         horizontal: 16,
       ),
-      child: AppButton(
+      child: ElevatedButton(
         onPressed: () async => _navigateToLogin(context),
-        buttonText: 'ابدأ الان',
+        child: const AppText(
+          text: 'ابدأ الان',
+        ),
       ),
     );
   }

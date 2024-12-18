@@ -23,7 +23,8 @@ class _SkipButton extends StatelessWidget {
         onPressed: () async => _navigateToLogin(context),
         child: AppText(
           text: 'تخط',
-          style: AppStyles.textStyle13.copyWith(color: AppColors.primaryColor),
+          style:
+              AppTextStyles.textStyle13.copyWith(color: AppColors.primaryColor),
         ),
       ),
     );
