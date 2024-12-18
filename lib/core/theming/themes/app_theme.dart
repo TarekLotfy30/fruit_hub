@@ -14,6 +14,7 @@ class AppTheme {
     pageTransitionsTheme: AppStyles.pageTransitionsTheme,
     elevatedButtonTheme: AppStyles.elevatedButtonLightTheme,
     textTheme: AppStyles.textLightTheme,
+    textButtonTheme: AppStyles.textButtonStyle,
   );
 
   /// Defines the dark mode theme.
@@ -23,5 +24,6 @@ class AppTheme {
     pageTransitionsTheme: AppStyles.pageTransitionsTheme,
     textTheme: AppStyles.textDarkTheme,
     elevatedButtonTheme: AppStyles.elevatedButtonDarkTheme,
+    textButtonTheme: AppStyles.textButtonStyle,
   );
 }

@@ -5,7 +5,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors/app_colors.dart';
-import '../../../../core/theming/typography/app_text_style.dart';
 import '../../../../core/widgets/app_text_custom.dart';
 import '../../logic/onboarding_cubit.dart';
 import 'onboarding_custom_widget.dart';
@@ -36,7 +35,7 @@ class OnboardingViewBody extends StatelessWidget {
                       builder: (context, state) {
                         return Visibility(
                           visible: onboardingCubit.cubitIndex == 0,
-                          child: const _SkipButton(),
+                          child: _SkipButton(onboardingCubit: onboardingCubit),
                         );
                       },
                     ),
@@ -57,7 +56,9 @@ class OnboardingViewBody extends StatelessWidget {
             builder: (context, state) {
               return Visibility(
                 visible: onboardingCubit.cubitIndex == 1,
-                child: const _StartButton(),
+                child: _StartButton(
+                  onboardingCubit: onboardingCubit,
+                ),
               );
             },
           ),

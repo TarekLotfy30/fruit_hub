@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/helpers/images.dart';
+import '../../../core/services/local/shared_keys.dart';
+import '../../../core/services/local/shared_preferences.dart';
 import '../data/onboarding_model.dart';
 
 part 'onboarding_state.dart';
@@ -47,6 +49,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     } else {
       emit(DontShowButton());
     }
+  }
+
+  Future<void> finishOnboarding() async {
+    SharedHelper.set(key: SharedKeys.onboardingIsDone, value: true);
   }
 
   /// Dispose resources like [PageController] to avoid memory leaks.

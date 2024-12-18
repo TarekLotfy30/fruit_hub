@@ -6,12 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/helpers/observer.dart';
 import 'core/routing/app_router.dart';
+import 'core/services/local/shared_preferences.dart';
 import 'core/theming/colors/app_colors.dart';
 import 'fruit_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await SharedHelper.init();
+  //SharedHelper.clearAllData();
   Bloc.observer = MyBlocObserver();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

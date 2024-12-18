@@ -3,7 +3,10 @@ part of 'onboarding_view_body.dart';
 class _SkipButton extends StatelessWidget {
   const _SkipButton({
     super.key,
+    required this.onboardingCubit,
   });
+
+  final OnboardingCubit onboardingCubit;
 
   Future<void> _navigateToLogin(BuildContext context) async {
     context.removeAllAndNavigateToNamedRoute(
@@ -14,19 +17,12 @@ class _SkipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 20,
-      ),
-      child: TextButton(
-        onPressed: () async => _navigateToLogin(context),
-        child: AppText(
-          text: 'تخط',
-          style:
-              AppTextStyles.textStyle13.copyWith(color: AppColors.primaryColor),
-        ),
-      ),
+    return TextButton(
+      onPressed: () async {
+        onboardingCubit.finishOnboarding();
+        _navigateToLogin(context);
+      },
+      child: const AppText(text: 'تخط'),
     );
   }
 }

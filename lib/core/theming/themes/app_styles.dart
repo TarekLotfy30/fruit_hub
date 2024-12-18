@@ -66,6 +66,21 @@ class AppStyles {
     ),
   );
 
+  /// Define Common TextButton Style
+  static final TextButtonThemeData textButtonStyle = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: AppColors.primaryColor,
+      elevation: 0,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 20,
+      ),
+      textStyle: AppTextStyles.textStyle13.copyWith(
+        fontFamily: 'Cairo',
+      ),
+    ),
+  );
+
   //---------------------- Light Theme --------------------------
 
   /// Defines the ElevatedButton Light Theme

@@ -3,7 +3,10 @@ part of 'onboarding_view_body.dart';
 class _StartButton extends StatelessWidget {
   const _StartButton({
     super.key,
+    required this.onboardingCubit,
   });
+
+  final OnboardingCubit onboardingCubit;
 
   Future<void> _navigateToLogin(BuildContext context) async {
     context.removeAllAndNavigateToNamedRoute(
@@ -20,7 +23,10 @@ class _StartButton extends StatelessWidget {
         horizontal: 16,
       ),
       child: ElevatedButton(
-        onPressed: () async => _navigateToLogin(context),
+        onPressed: () async {
+          onboardingCubit.finishOnboarding();
+          _navigateToLogin(context);
+        },
         child: const AppText(
           text: 'ابدأ الان',
         ),
