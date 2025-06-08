@@ -11,27 +11,59 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # iOS-style icons package for Cupertino design
   cupertino_icons: ^1.0.8
+  
+  # Toast notifications for user feedback messages
+  fluttertoast: ^8.2.12
+  
+  # Internationalization and localization support
   easy_localization: ^3.0.7+1
+  
+  # Dependency injection container for managing app dependencies
   get_it: ^8.0.3
+  
+  # Functional programming utilities (Either, Option, etc.)
   dartz: ^0.10.1
+  
+  # Value equality for objects without boilerplate
   equatable: ^2.0.7
+  
+  # Shimmer loading effect for skeleton screens
   shimmer: ^3.0.0
+  
+  # Smooth animations and transitions
   flutter_animate: ^4.5.2
+  
+  # Page indicator dots for onboarding/carousel screens
   smooth_page_indicator: ^1.2.1
+  
+  # Local storage for user preferences and app data
   shared_preferences: ^2.5.3
+  
+  # Network image loading with caching capabilities
   cached_network_image: ^3.4.1
+  
+  # Business Logic Component pattern for state management
   bloc: ^9.0.0
   flutter_bloc: ^9.1.1
+  
+  # Responsive UI utilities for different screen sizes
   flutter_screenutil: ^5.9.3
+  
+  # Native splash screen configuration
   flutter_native_splash: ^2.4.6
+  
+  # SVG image rendering support
   flutter_svg: ^2.1.0
 
 dev_dependencies:
+  # Flutter testing framework for unit and widget tests
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^5.0.0
+  # Dart code analysis rules and linting for code quality
+  flutter_lints: ^6.0.0
 
 flutter:
 
