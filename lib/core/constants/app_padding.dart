@@ -1,10 +1,10 @@
-class AppPaddings {
-  const AppPaddings._();
-  
+abstract final class AppPaddings {
   // Padding & Margin
-  static const double paddingXS = 4;
-  static const double paddingS = 8;
-  static const double paddingM = 16;
-  static const double paddingL = 24;
-  static const double paddingXL = 32;
+  static const double padding4 = 4;
+  static const double padding8 = 8;
+  static const double padding12 = 12;
+  static const double padding14 = 14;
+  static const double padding16 = 16;
+  static const double padding20 = 20;
+   static const double padding24 = 24;
 }

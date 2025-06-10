@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Custom shadows
 
-class AppShadows {
+abstract final class AppShadows {
   const AppShadows._();
 
   static List<BoxShadow> get shadowSM => [

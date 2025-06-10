@@ -10,4 +10,6 @@ class AppScreenUtil {
   
   /// Maximum text scale factor to prevent UI overflow
   static const double maxTextScaleFactor = 1.3;
+
+  
 }

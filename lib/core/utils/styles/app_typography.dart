@@ -14,42 +14,48 @@ import 'app_font_weight.dart';
 class AppTypography {
   const AppTypography._();
 
-  static final displaySmall = TextStyle(
+  static final textStyle23Bold = TextStyle(
     fontSize: 23.sp,
     fontWeight: AppFontWeight.bold,
   );
 
-  static final titleMedium = TextStyle(
-    fontSize: 22.5.sp,
-    fontWeight: AppFontWeight.semiBold,
-  );
-
-  static final titleSmall = TextStyle(
+  static final textStyle19Bold = TextStyle(
     fontSize: 19.sp,
+    fontWeight: AppFontWeight.bold,
+  );
+
+  static final textStyle16Bold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: AppFontWeight.bold,
+  );
+
+  static final textStyle16Semibold = TextStyle(
+    fontSize: 16.sp,
     fontWeight: AppFontWeight.semiBold,
   );
 
-  static final bodyLarge = TextStyle(
+  static final textStyle16Regular = TextStyle(
     fontSize: 16.sp,
     fontWeight: AppFontWeight.regular,
   );
 
-  static final bodyMedium = TextStyle(
-    fontSize: 15.sp,
-    fontWeight: AppFontWeight.regular,
+  static final textStyle13Bold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: AppFontWeight.bold,
   );
-  static final labelLarge = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: AppFontWeight.semiBold,
-  );
-  
-  static final bodySmall = TextStyle(
+
+  static final textStyle13regular = TextStyle(
     fontSize: 13.sp,
     fontWeight: AppFontWeight.regular,
   );
 
-  static final labelMedium = TextStyle(
+  static final textStyle13semiBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: AppFontWeight.semiBold,
+  );
+
+  static final textStyle11SemiBold = TextStyle(
     fontSize: 11.sp,
-    fontWeight: AppFontWeight.regular,
+    fontWeight: AppFontWeight.semiBold,
   );
 }

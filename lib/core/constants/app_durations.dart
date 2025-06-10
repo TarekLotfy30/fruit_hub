@@ -1,18 +1,14 @@
 /// Duration constants for consistent timing throughout the app
 ///
-class AppDurations {
-  /// Private constructor to prevent instantiation
-  const AppDurations._();
+abstract final class AppDurations {
+  /// Standard animation duration for UI transitions
+  static const Duration standardAnimationDuration = Duration(milliseconds: 300);
 
-  /// Standard animation duration (300ms)
-  static const Duration standard = Duration(milliseconds: 300);
-  static const Duration short = Duration(milliseconds: 200);
+  /// Fast animation duration for quick feedback
+  static const Duration fastAnimationDuration = Duration(milliseconds: 150);
 
-  /// Quick animation duration (150ms)
-  static const Duration quick = Duration(milliseconds: 150);
-
-  /// Extended animation duration (500ms)
-  static const Duration extended = Duration(milliseconds: 500);
+  /// Slow animation duration for complex transitions
+  static const Duration slowAnimationDuration = Duration(milliseconds: 500);
 
   /// Short snackbar duration (1 second)
   static const Duration snackbarShort = Duration(seconds: 1);

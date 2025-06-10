@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppIcons {
-
-  const AppIcons._();
-
+abstract final class AppIcons {
   // If using Flutter built-in icons
   static const IconData cart = Icons.shopping_cart;
   static const IconData search = Icons.search;

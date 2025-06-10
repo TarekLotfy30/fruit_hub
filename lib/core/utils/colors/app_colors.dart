@@ -59,8 +59,8 @@ class AppColors {
   static const Color green1_900 = Color(0xFF0B2817);
 
   // ========== SEMANTIC COLORS ==========
-  static const Color primary = green1_500; // Primary brand color
-  static const Color secondary = orange500; // Secondary brand color
+  static const Color primary = green600; // Primary brand color
+  static const Color secondary = orange600; // Secondary brand color
   static const Color accent = green1_600; // Accent color
 
   static const Color success = green600;
@@ -70,26 +70,17 @@ class AppColors {
 
   // ========== NEUTRAL COLORS ==========
   static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF0C0D0D);
-  static const Color background = white;
+  static const Color black = Color(0xFF000000);
+  static const Color background = Color(0xFFFAFAFA);
   static const Color surface = white;
   static const Color border = grayscale300;
   static const Color divider = grayscale200;
 
   // ========== TEXT COLORS ==========
-  static const Color textPrimary = black;
+  static const Color textPrimary = grayscale900;
   static const Color textSecondary = grayscale600;
   static const Color textTertiary = grayscale500;
   static const Color textDisabled = grayscale400;
   static const Color textOnPrimary = white;
   static const Color textOnSecondary = white;
-
-  // ========== ICON COLORS ==========
-  static const Color iconPrimary = black;
-  static const Color iconSecondary = grayscale600;
-  static const Color iconTertiary = grayscale500;
-  static const Color iconDisabled = grayscale400;
-  static const Color iconOnPrimary = white;
-  static const Color iconOnSecondary = white;
-
 }
