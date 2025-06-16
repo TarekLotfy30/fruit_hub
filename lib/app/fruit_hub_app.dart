@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/responsive/app_screen_util.dart';
+import '../core/routing/app_router.dart';
+import '../core/routing/routes_name.dart';
 import '../core/theme/app_theme.dart';
-import '../features/splash_screen/presentation/screens/splash_screen.dart';
 
 class FruitHubApp extends StatelessWidget {
   const FruitHubApp({super.key});
@@ -17,11 +19,19 @@ class FruitHubApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
+        // Configure localization delegates from EasyLocalization
+        localizationsDelegates: context.localizationDelegates,
+        // Set supported locales from EasyLocalization
+        supportedLocales: context.supportedLocales,
+        // Set current locale from EasyLocalization
+        initialRoute: RoutesName.splashScreen,
+
+        onGenerateRoute: AppRouter().generateRoute,
+        locale: context.locale,
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,
         themeMode: ThemeMode.light,
-        title: 'Fruit Hub',
-        home: const SplashScreen(),
+        home: child,
       ),
     );
   }

@@ -1,11 +1,23 @@
 import 'dart:developer';
 
+import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import '../../cubits/bloc_observer.dart';
+
 /// Initialize all required services
 ///
 /// This includes Firebase, SharedPreferences, DioHelper and
 /// location permissions
 Future<void> initServices() async {
   log('Initializing services...', name: 'info');
+
+  //Initialize BLoC observer
+  Bloc.observer = MyBlocObserver();
+  log('BLoC observer initialized');
+
+  // Initialize EasyLocalization before running the app
+  await EasyLocalization.ensureInitialized();
 
   // Initialize Firebase
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

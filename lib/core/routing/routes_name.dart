@@ -8,7 +8,10 @@ class RoutesName {
   RoutesName._();
 
   // Initial route
-  static const String splashScreen = '/splash';
+  static const String splashScreen = '/';
+
+  // onboarding routes
+  static const String onboardingScreen = '/onboarding';
 
   // // Home/root routes
   // static const String homeScreen = '/home';

@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../features/splash_screen/presentation/screens/splash_screen.dart';
+import '../../features/onboarding/presentation/screens/onboarding.dart';
+import '../../features/splash/presentation/screens/splash_screen.dart';
 import 'routes_name.dart';
 
 /// Centralized router for handling all navigation within the application.
@@ -25,6 +26,8 @@ class AppRouter {
       switch (settings.name) {
         case RoutesName.splashScreen:
           return buildRoute(const SplashScreen());
+        case RoutesName.onboardingScreen:
+          return buildRoute(const OnboardingScreen());
         default:
           return buildRoute(_buildErrorRoute(error: 'Route not found'));
       }

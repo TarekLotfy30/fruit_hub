@@ -22,7 +22,10 @@ abstract final class AppInputTheme {
       // Default border (unfocused, enabled)
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
-        borderSide: BorderSide.none,
+        borderSide: BorderSide(
+          color: colorScheme.outline,
+          width: AppBorderWidth.defaultBorderWidth.w,
+        ),
       ),
 
       // Enabled border
@@ -41,6 +44,59 @@ abstract final class AppInputTheme {
           color: colorScheme.primary,
           width: AppBorderWidth.focusedBorderWidth.w,
         ),
+      ),
+
+      // Error border
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
+        borderSide: BorderSide(
+          color: colorScheme.error,
+          width: AppBorderWidth.defaultBorderWidth.w,
+        ),
+      ),
+
+      // Focused error border
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
+        borderSide: BorderSide(
+          color: colorScheme.error,
+          width: AppBorderWidth.errorBorderWidth.w,
+        ),
+      ),
+
+      // Disabled border
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
+        borderSide: BorderSide(
+          color: colorScheme.outlineVariant,
+          width: AppBorderWidth.defaultBorderWidth.w,
+        ),
+      ),
+
+      // Hint styling
+      hintStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+        color: isDark
+            ? colorScheme.onSurfaceVariant
+            : colorScheme.onSurface.withValues(alpha: 0.6),
+      ),
+
+      // Helper styling
+      helperStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+        color: isDark
+            ? colorScheme.onSurfaceVariant
+            : colorScheme.onSurface.withValues(alpha: 0.6),
+      ),
+
+      // Error styling
+      errorStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+        color: colorScheme.error,
+      ),
+
+      // Counter styling
+      counterStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+        color: isDark
+            ? colorScheme.onSurfaceVariant
+            : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Label styling

@@ -56,6 +56,10 @@ dependencies:
   
   # SVG image rendering support
   flutter_svg: ^2.1.0
+  connectivity_plus: ^6.1.4
+  
+  # Animation and transition effects
+  animate_do: ^4.2.0
 
 dev_dependencies:
   # Flutter testing framework for unit and widget tests
@@ -65,15 +69,35 @@ dev_dependencies:
   # Dart code analysis rules and linting for code quality
   flutter_lints: ^6.0.0
 
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/Frame.png
+  #branding: assets/branding.png
+  color_dark: "#121212"
+  image_dark: assets/images/Frame.png
+  #branding_dark: assets/branding_dark.png
+
+  android_12:
+    image: assets/images/android12splash.png
+    icon_background_color: "#ffffff"
+    #image_dark: assets/images/Frame.png
+    #icon_background_color_dark: "#121212"
+    #branding: assets/android12/branding.png
+    #branding_dark: assets/android12/branding_dark.png
+
+  web: false
+
 flutter:
 
   uses-material-design: true
 
   assets:
     - assets/
+    - assets/translations/
     - assets/fonts/
     - assets/images/
     - assets/svgs/
+    - assets/svgs/onboarding/
 
 
   fonts:

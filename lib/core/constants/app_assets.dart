@@ -1,5 +1,5 @@
 abstract final class AppAssets {
-  static const String logo = 'assets/images/logo.png';
-  static const String placeholder = 'assets/images/placeholder.png';
-  static const String onboarding1 = 'assets/images/onboarding1.png';
+  static const String leaves = 'assets/svgs/leaves.svg';
+  static const String fruitHubLogo = 'assets/svgs/fruit_hub_logo.svg';
+  static const String circles = 'assets/svgs/circles.svg';
 }

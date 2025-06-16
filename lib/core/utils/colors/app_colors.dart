@@ -62,11 +62,22 @@ class AppColors {
   static const Color primary = green600; // Primary brand color
   static const Color secondary = orange600; // Secondary brand color
   static const Color accent = green1_600; // Accent color
-
+  // Status Colors with variants
+  static const Color successLight = green200;
   static const Color success = green600;
+  static const Color successDark = green800;
+
+  static const Color warningLight = orange200;
   static const Color warning = orange600;
+  static const Color warningDark = orange800;
+
+  static const Color errorLight = Color(0xFFFED7D7);
   static const Color error = Color(0xFFE53E3E);
+  static const Color errorDark = Color(0xFF9B2C2C);
+
+  static const Color infoLight = Color(0xFFBEE3F8);
   static const Color info = Color(0xFF3182CE);
+  static const Color infoDark = Color(0xFF2C5282);
 
   // ========== NEUTRAL COLORS ==========
   static const Color white = Color(0xFFFFFFFF);
@@ -83,4 +94,22 @@ class AppColors {
   static const Color textDisabled = grayscale400;
   static const Color textOnPrimary = white;
   static const Color textOnSecondary = white;
+
+  // Interactive States
+  static const Color hover = Color(0x0A000000); // 4% black overlay
+  static const Color pressed = Color(0x14000000); // 8% black overlay
+  static const Color focused = Color(0x1F000000); // 12% black overlay
+  static const Color disabled = grayscale300;
+  static const Color disabledContent = grayscale400;
+
+  // Surface Variants for better hierarchy
+  static const Color surfaceElevated1 = Color(0xFFFFFBFF); // Cards
+  static const Color surfaceElevated2 = Color(0xFFF7F2FA); // Dialogs
+  static const Color surfaceElevated3 = Color(0xFFECE6F0); // Menus
+
+  // Dark theme surface variants
+  static const Color darkSurface = Color(0xFF121212);
+  static const Color darkSurfaceElevated1 = Color(0xFF1E1E1E);
+  static const Color darkSurfaceElevated2 = Color(0xFF232323);
+  static const Color darkSurfaceElevated3 = Color(0xFF252525);
 }

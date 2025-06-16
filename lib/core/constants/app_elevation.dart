@@ -14,6 +14,7 @@ abstract final class AppElevation {
   /// Elevation for app bar
   /// Minimal shadow when scrolled
   static const double appBarElevation = 0;
+  static const double appBarscrolledUnderElevation = 1;
 
   /// Elevation for bottom navigation
   /// Clear separation from content

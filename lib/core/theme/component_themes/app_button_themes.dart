@@ -26,6 +26,7 @@ abstract final class AppButtonThemes {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         elevation: AppElevation.buttonElevation,
+        shadowColor: colorScheme.shadow,
         alignment: Alignment.center,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
@@ -36,7 +37,7 @@ abstract final class AppButtonThemes {
           vertical: AppPaddings.padding12.h,
           horizontal: AppPaddings.padding14.w,
         ),
-        minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h),
+        minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h), //48
         textStyle: AppTextTheme.baseTextTheme.titleLarge,
       ),
     );

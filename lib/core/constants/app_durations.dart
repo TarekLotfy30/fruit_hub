@@ -8,7 +8,7 @@ abstract final class AppDurations {
   static const Duration fastAnimationDuration = Duration(milliseconds: 150);
 
   /// Slow animation duration for complex transitions
-  static const Duration slowAnimationDuration = Duration(milliseconds: 500);
+  static const Duration slowAnimationDuration = Duration(milliseconds: 3500);
 
   /// Short snackbar duration (1 second)
   static const Duration snackbarShort = Duration(seconds: 1);
