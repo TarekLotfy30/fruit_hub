@@ -1,6 +1,10 @@
 {
-  "welcome": "Welcome to Fruit HUB",
-  "explore_fruits": "Explore our wide range of premium fresh fruits",
+  "fruit" : "Fruit",
+  "hub" : "HUB",
+  "welcome": "Welcome to",
+  "explore_fruits": "Discover a unique shopping experience with FruitHUB. Explore our wide selection of premium fresh fruits and enjoy the best deals and top quality.",
+  "search_and_shopping": "Search and shop",
+  "provide_service": "We offer you the finest carefully selected fruits. Check details, photos, and reviews to make sure you choose the perfect fruit",
   "start_now": "Start now",
   "email": "Email",
   "password": "Password",

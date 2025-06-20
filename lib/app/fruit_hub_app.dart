@@ -36,3 +36,5 @@ class FruitHubApp extends StatelessWidget {
     );
   }
 }
+
+//flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys

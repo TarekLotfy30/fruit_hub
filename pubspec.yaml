@@ -98,6 +98,7 @@ flutter:
     - assets/images/
     - assets/svgs/
     - assets/svgs/onboarding/
+    - assets/svgs/splash/
 
 
   fonts:

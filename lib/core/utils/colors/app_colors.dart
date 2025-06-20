@@ -52,19 +52,19 @@ class AppColors {
   static const Color green1_200 = Color(0xFFB0E8C7);
   static const Color green1_300 = Color(0xFF88DDAB);
   static const Color green1_400 = Color(0xFF60D290);
-  static const Color green1_500 = Color(0xFF1B5E37); // Primary green1
+  static const Color green1_500 = Color(0xFF1B5E37); // Primary green1 1B5E37
   static const Color green1_600 = Color(0xFF2D9F5D);
   static const Color green1_700 = Color(0xFF227745);
   static const Color green1_800 = Color(0xFF174F2E);
   static const Color green1_900 = Color(0xFF0B2817);
 
   // ========== SEMANTIC COLORS ==========
-  static const Color primary = green600; // Primary brand color
+  static const Color primary = green1_500; // Primary brand color
   static const Color secondary = orange600; // Secondary brand color
   static const Color accent = green1_600; // Accent color
   // Status Colors with variants
   static const Color successLight = green200;
-  static const Color success = green600;
+  static const Color success = green200;
   static const Color successDark = green800;
 
   static const Color warningLight = orange200;
@@ -89,8 +89,8 @@ class AppColors {
 
   // ========== TEXT COLORS ==========
   static const Color textPrimary = grayscale900;
-  static const Color textSecondary = grayscale600;
-  static const Color textTertiary = grayscale500;
+  static const Color textSecondary = grayscale500;
+  static const Color textTertiary = grayscale600;
   static const Color textDisabled = grayscale400;
   static const Color textOnPrimary = white;
   static const Color textOnSecondary = white;
