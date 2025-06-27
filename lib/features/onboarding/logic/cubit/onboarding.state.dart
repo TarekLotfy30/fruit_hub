@@ -1,5 +1,21 @@
-sealed class OnboardingState {}
+import 'package:equatable/equatable.dart';
 
-class OnboardingInitial extends OnboardingState {}
+sealed class OnboardingState extends Equatable {
+  const OnboardingState();
 
-class OnboardingCompleted extends OnboardingState {}
+  @override
+  List<Object?> get props => [];
+}
+
+final class OnboardingInitial extends OnboardingState {
+  const OnboardingInitial();
+}
+
+final class OnboardingChanged extends OnboardingState {
+  const OnboardingChanged({required this.pageIndex, required this.isLastPage});
+  final int pageIndex;
+  final bool isLastPage;
+
+  @override
+  List<Object> get props => [pageIndex, isLastPage];
+}

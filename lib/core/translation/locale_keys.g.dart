@@ -9,6 +9,7 @@ abstract class  LocaleKeys {
   static const explore_fruits = 'explore_fruits';
   static const search_and_shopping = 'search_and_shopping';
   static const provide_service = 'provide_service';
+  static const skip = 'skip';
   static const start_now = 'start_now';
   static const email = 'email';
   static const password = 'password';
@@ -37,5 +38,4 @@ abstract class  LocaleKeys {
   static const confirm_logout = 'confirm_logout';
   static const cancel = 'cancel';
   static const confirm = 'confirm';
-
 }

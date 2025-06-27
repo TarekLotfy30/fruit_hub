@@ -4,8 +4,10 @@ import '../utils/styles/app_fonts_family.dart';
 import 'component_themes/app_bar_theme.dart';
 import 'component_themes/app_button_themes.dart';
 import 'component_themes/app_card_theme.dart';
+import 'component_themes/app_checkbox_theme.dart';
 import 'component_themes/app_divider_theme.dart';
 import 'component_themes/app_input_theme.dart';
+import 'component_themes/app_switch_theme.dart';
 import 'theme_constant/theme_constants.dart';
 
 /// Theme builder class that constructs complete ThemeData objects.
@@ -46,8 +48,11 @@ abstract final class ThemeBuilder {
         colorScheme,
         isDark: isDark,
       ),
+      textButtonTheme: AppButtonThemes.buildTextButtonTheme(colorScheme),
       cardTheme: AppCardTheme.buildCardTheme(colorScheme),
       dividerTheme: AppDividerTheme.buildDividerTheme(colorScheme),
+      switchTheme: AppSwitchTheme.buildSwitchTheme(colorScheme),
+      checkboxTheme: AppCheckBoxTheme.buildRadioTheme(colorScheme),
     );
   }
 }

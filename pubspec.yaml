@@ -15,7 +15,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   
   # Toast notifications for user feedback messages
-  fluttertoast: ^8.2.12
   
   # Internationalization and localization support
   easy_localization: ^3.0.7+1
@@ -71,19 +70,17 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/Frame.png
+  image: assets/images/fruit_hub_logo.png
   #branding: assets/branding.png
   color_dark: "#121212"
-  image_dark: assets/images/Frame.png
+  image_dark: assets/images/fruit_hub_logo.png
   #branding_dark: assets/branding_dark.png
 
   android_12:
     image: assets/images/android12splash.png
-    icon_background_color: "#ffffff"
-    #image_dark: assets/images/Frame.png
-    #icon_background_color_dark: "#121212"
-    #branding: assets/android12/branding.png
-    #branding_dark: assets/android12/branding_dark.png
+    color: "#ffffff"
+    image_dark: assets/images/android12splash.png
+    color_dark: "#0D0D0D"
 
   web: false
 

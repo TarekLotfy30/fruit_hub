@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 /// of color constants used throughout the application. Colors are organized
 /// by their functional categories (primary, secondary, neutral, status).
 
-// green500 => buttons and page indicator , fab el backgroun beta3ha , icons
+// green500 => buttons and page indicator , fab el background beta3ha , icons
 
 class AppColors {
   const AppColors._();
 
   // ========== GRAYSCALE PALETTE ==========
-  static const Color grayscale50 = Color(0xFFF2F3F3);
+  static const Color grayscale50 = Color(0xFFF3F5F7);
   static const Color grayscale100 = Color(0xFFE4E6E7);
   static const Color grayscale200 = Color(0xFFCACECE);
   static const Color grayscale300 = Color(0xFFAFB5B6);
@@ -31,7 +31,7 @@ class AppColors {
   static const Color green500 = Color(0xFF6CDC46); // Primary green
   static const Color green600 = Color(0xFF43AC20);
   static const Color green700 = Color(0xFF328118);
-  static const Color green800 = Color(0xFF225610);
+  static const Color green800 = Color(0xFF217242);
   static const Color green900 = Color(0xFF112B08);
 
   // ========== ORANGE PALETTE ==========
@@ -52,48 +52,79 @@ class AppColors {
   static const Color green1_200 = Color(0xFFB0E8C7);
   static const Color green1_300 = Color(0xFF88DDAB);
   static const Color green1_400 = Color(0xFF60D290);
-  static const Color green1_500 = Color(0xFF1B5E37); // Primary green1 1B5E37
+  static const Color green1_500 = Color(0xFF38C774); // Primary 1B5E37
   static const Color green1_600 = Color(0xFF2D9F5D);
   static const Color green1_700 = Color(0xFF227745);
   static const Color green1_800 = Color(0xFF174F2E);
   static const Color green1_900 = Color(0xFF0B2817);
 
-  // ========== SEMANTIC COLORS ==========
-  static const Color primary = green1_500; // Primary brand color
-  static const Color secondary = orange600; // Secondary brand color
-  static const Color accent = green1_600; // Accent color
-  // Status Colors with variants
-  static const Color successLight = green200;
-  static const Color success = green200;
-  static const Color successDark = green800;
-
-  static const Color warningLight = orange200;
-  static const Color warning = orange600;
-  static const Color warningDark = orange800;
-
-  static const Color errorLight = Color(0xFFFED7D7);
-  static const Color error = Color(0xFFE53E3E);
-  static const Color errorDark = Color(0xFF9B2C2C);
-
-  static const Color infoLight = Color(0xFFBEE3F8);
-  static const Color info = Color(0xFF3182CE);
-  static const Color infoDark = Color(0xFF2C5282);
+  // ========== RED PALETTE ==========
+  static const Color red50 = Color(0xFFFEF2F2);
+  static const Color red100 = Color(0xFFFED7D7);
+  static const Color red200 = Color(0xFFFEB2B2);
+  static const Color red300 = Color(0xFFFC8181);
+  static const Color red400 = Color(0xFFF56565);
+  static const Color red500 = Color(0xFFE53E3E);
+  static const Color red600 = Color(0xFFC53030);
+  static const Color red700 = Color(0xFF9B2C2C);
+  static const Color red800 = Color(0xFF742A2A);
+  static const Color red900 = Color(0xFF4A1818);
 
   // ========== NEUTRAL COLORS ==========
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
-  static const Color background = Color(0xFFFAFAFA);
-  static const Color surface = white;
-  static const Color border = grayscale300;
-  static const Color divider = grayscale200;
+
+  // ========== SEMANTIC COLORS ==========
+
+  // Success colors
+  static const Color success = green600;
+  static const Color successLight = green100;
+  static const Color successDark = green800;
+
+  // Warning colors
+  static const Color warning = orange500;
+  static const Color warningLight = orange100;
+  static const Color warningDark = orange800;
+
+  // Error colors (using orange tones for consistency)
+  static const Color error = red500;
+  static const Color errorLight = red100;
+  static const Color errorDark = red800;
+
+  // Info colors (using green1 palette)
+  static const Color info = green1_500;
+  static const Color infoLight = green1_100;
+  static const Color infoDark = green1_800;
 
   // ========== TEXT COLORS ==========
-  static const Color textPrimary = grayscale900;
-  static const Color textSecondary = grayscale500;
-  static const Color textTertiary = grayscale600;
-  static const Color textDisabled = grayscale400;
-  static const Color textOnPrimary = white;
-  static const Color textOnSecondary = white;
+  // Light theme text colors
+  static const Color textPrimary = grayscale900; // Main text - highest contrast
+  static const Color textSecondary =
+      grayscale700; // Secondary text - medium contrast
+  static const Color textTertiary =
+      grayscale500; // Tertiary text - lower contrast
+  static const Color textDisabled =
+      grayscale400; // Disabled text - lowest contrast
+
+  // Dark theme text colors
+  static const Color textPrimaryDark =
+      grayscale100; // Main text on dark backgrounds
+  static const Color textSecondaryDark =
+      grayscale300; // Secondary text on dark backgrounds
+  static const Color textTertiaryDark =
+      grayscale400; // Tertiary text on dark backgrounds
+  static const Color textDisabledDark =
+      grayscale600; // Disabled text on dark backgrounds
+
+  // Special text colors
+  static const Color textOnPrimary =
+      Colors.white; // Text on primary color backgrounds
+  static const Color textOnSecondary =
+      Colors.white; // Text on secondary color backgrounds
+  static const Color textLink = green600; // Link text in light theme
+  static const Color textLinkDark = green400; // Link text in dark theme
+  static const Color textError = red600; // Error text in light theme
+  static const Color textErrorDark = red400; // Error text in dark theme
 
   // Interactive States
   static const Color hover = Color(0x0A000000); // 4% black overlay

@@ -74,33 +74,33 @@ abstract final class AppInputTheme {
       ),
 
       // Hint styling
-      hintStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+      hintStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Helper styling
-      helperStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+      helperStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Error styling
-      errorStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+      errorStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
         color: colorScheme.error,
       ),
 
       // Counter styling
-      counterStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+      counterStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Label styling
-      labelStyle: AppTextTheme.baseTextTheme.labelMedium?.copyWith(
+      labelStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),

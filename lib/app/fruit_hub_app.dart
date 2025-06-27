@@ -24,10 +24,10 @@ class FruitHubApp extends StatelessWidget {
         // Set supported locales from EasyLocalization
         supportedLocales: context.supportedLocales,
         // Set current locale from EasyLocalization
-        initialRoute: RoutesName.splashScreen,
-
-        onGenerateRoute: AppRouter().generateRoute,
         locale: context.locale,
+
+        initialRoute: RoutesName.onboardingScreen,
+        onGenerateRoute: AppRouter().generateRoute,
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,
         themeMode: ThemeMode.light,

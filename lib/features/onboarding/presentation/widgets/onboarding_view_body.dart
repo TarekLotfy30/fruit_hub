@@ -1,73 +1,41 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_constant.dart';
+import '../../../../core/constants/app_padding.dart';
+import '../../../../core/helpers/functions/app_spacing.dart';
+import '../../../../core/translation/locale_keys.g.dart';
+import '../../../../core/utils/colors/app_colors.dart';
+import '../../../../core/widgets/build_optimized_svg.dart';
+import '../../data/models/onboarding_model.dart';
+import '../../logic/cubit/onboarding.state.dart';
+import '../../logic/cubit/onboarding_cubit.dart';
 
-import 'onboarding_content.dart';
+part '../widgets/build_page_view.dart';
+part '../widgets/build_page_indicator.dart';
+part '../widgets/build_action_button.dart';
+part '../widgets/page_view_item.dart';
 
-class OnboardingViewBody extends StatefulWidget {
+class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({super.key});
 
   @override
-  State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
-}
-
-class _OnboardingViewBodyState extends State<OnboardingViewBody> {
-  late final PageController _controller;
-
-  @override
-  Future<void> initState() async {
-    super.initState();
-    await SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.immersive,
-      overlays: [],
-    );
-    _controller = PageController(initialPage: 0);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return const SafeArea(
+      child: Stack(
+        alignment: Alignment.bottomCenter,
         children: [
-          // const Align(alignment: Alignment.topRight, child: Text('Skip')),
-          Expanded(
-            flex: 1,
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: AppConstant.onboardingItems.length,
-              itemBuilder: (context, index) => OnboardingContent(
-                item: AppConstant.onboardingItems[index],
-                controller: _controller,
-              ),
-              physics: const BouncingScrollPhysics(),
-            ),
-          ),
-          SmoothPageIndicator(
-            controller: _controller,
-            count: AppConstant.onboardingItems.length,
-            axisDirection: Axis.horizontal,
-            effect: WormEffect(
-              dotWidth: 11,
-              dotHeight: 11,
-              dotColor: Theme.of(context).colorScheme.error,
-              // ?
-              // : Theme.of(context).colorScheme.primary,
-              activeDotColor: Theme.of(context).colorScheme.primary,
-            ),
-            onDotClicked: (index) => _controller.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            ),
-          ),
+          // Main PageView - handles scrolling between pages & Skip Button
+          _BuildPageView(),
+
+          // Page indicator - shows current page progress
+          _BuildPageIndicator(),
+
+          // Action button - Start button based on current page
+          _BuildActionButton(),
         ],
       ),
     );

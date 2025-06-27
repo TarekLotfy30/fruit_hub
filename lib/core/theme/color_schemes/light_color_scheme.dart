@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 
 import '../../utils/colors/app_colors.dart';
@@ -6,54 +8,98 @@ abstract final class LightColorScheme {
   const LightColorScheme._();
 
   /// Light theme color scheme using AppColors
+  /// Following Material 3 color system with your app's color palette
   static const ColorScheme colorScheme = ColorScheme(
     brightness: Brightness.light,
 
-    // ========== PRIMARY COLORS ==========
-    // Using green1_500 as primary (as defined in AppColors.primary)
-    primary: AppColors.primary, // #1B5E37 (green1_500)
-    onPrimary: AppColors.textOnPrimary, // White text on primary
-    primaryContainer: AppColors.green1_100, // Light green1 container
-    onPrimaryContainer: AppColors.green1_800, // Dark green1 text on light
-    // ========== SECONDARY COLORS ==========
-    // Using orange palette for secondary
-    secondary: AppColors.secondary, // orange600 (#C2820A)
-    onSecondary: AppColors.textOnSecondary, // White text on secondary
-    secondaryContainer: AppColors.orange100, // Light orange container
-    onSecondaryContainer: AppColors.orange800, // Dark orange text
-    // ========== TERTIARY COLORS ==========
-    // Using the bright green (green500) for tertiary as it's used for buttons/FAB
-    tertiary: AppColors.green500, // #6CDC46(the bright green from your comment)
-    onTertiary: AppColors.white, // White text on bright green
-    tertiaryContainer: AppColors.green100, // Light green container
-    onTertiaryContainer: AppColors.green800, // Dark green text
-    // ========== ERROR COLORS ==========
-    error: AppColors.error, // #E53E3E
-    onError: AppColors.white,
-    errorContainer: AppColors.errorLight, // Using defined error light
-    onErrorContainer: AppColors.errorDark, // Using defined error dark
-    // ========== SURFACE COLORS ==========
-    surface: AppColors.surface, // White background
-    onSurface: AppColors.textPrimary, // Primary text color
-    // Surface variants for better hierarchy
-    surfaceContainerHighest: AppColors.grayscale50, // Highest elevation
-    surfaceContainerHigh: AppColors.surfaceElevated3, // High elevation
-    surfaceContainer: AppColors.surfaceElevated2, // Medium elevation
-    surfaceContainerLow: AppColors.surfaceElevated1, // Low elevation
-    surfaceContainerLowest: AppColors.background, // Lowest elevation
+    // → Sets the overall brightness (affects contrast, shadows, etc.)
 
-    onSurfaceVariant: AppColors.textSecondary, // Secondary text
+    // ========== PRIMARY COLORS ==========
+    // → Main brand color used for ElevatedButtons, FABs, progress bars, switches.
+    primary: AppColors.green1_600,
+    // → Text/icon color that sits **on top** of primary (e.g., button text).
+    onPrimary: AppColors.white,
+
+    // → Background of elevated surfaces like cards or filled buttons (optional).
+    primaryContainer: AppColors.green1_100,
+
+    // → Text/icon color that sits on `primaryContainer`.
+    onPrimaryContainer: AppColors.green1_800,
+
+    // ========== SECONDARY COLORS ==========
+    // → Accent color for chips, secondary buttons, or UI highlights.
+    secondary: AppColors.green600,
+    // → Text/icon color that sits on `secondary`.
+    onSecondary: AppColors.white,
+    // → Used in surfaces like chip backgrounds or side elements.
+    secondaryContainer: AppColors.green100,
+    // → Text/icon color on `secondaryContainer`.
+    onSecondaryContainer: AppColors.green800,
+
+    // ========== TERTIARY COLORS ==========
+    // → Used for less prominent actions (e.g., FABs, sliders, progress bars).
+    tertiary: AppColors.orange500,
+    // → Text/icon color on `tertiary`.
+    onTertiary: AppColors.white,
+    // → Background for tertiary surfaces (cards, alerts, sheets).
+    tertiaryContainer: AppColors.orange200,
+    // → Text/icon color for `tertiaryContainer`.
+    onTertiaryContainer: AppColors.orange800,
+
+    // ========== SURFACE COLORS ==========
+    // → Main background color for Scaffold, Cards, Sheets.
+    surface: AppColors.white,
+    // → Primary text/icon color on surface (e.g., headlines, labels).
+    onSurface: AppColors.grayscale800,
+    // → Highest elevated surfaces (menus, dialogs, app bars).
+    surfaceContainerHighest: AppColors.grayscale50,
+    // → High elevation (modals, sheets, snack bars).
+    surfaceContainerHigh: AppColors.grayscale100,
+
+    // → Default Card background.
+    surfaceContainer: AppColors.grayscale200,
+    // → Low elevation surface (buttons, light cards).
+    surfaceContainerLow: AppColors.grayscale100,
+    // → Lowest elevation background (usually Scaffold background).
+    surfaceContainerLowest: Colors.white,
+    // → Secondary text on surface (subtitles, hints, disabled text).
+    onSurfaceVariant: AppColors.textSecondary,
+
     // ========== OUTLINE COLORS ==========
-    outline: AppColors.border, // Primary border color
-    outlineVariant: AppColors.divider, // Subtle divider color
+    // → Used for borders (TextFields, Cards, dividers, OutlinedButtons).
+    outline: AppColors.grayscale300,
+    // → Fainter version of outline (used for subtle borders or separators)
+    outlineVariant: AppColors.grayscale200,
+
     // ========== UTILITY COLORS ==========
-    shadow: AppColors.grayscale900, // Shadow color
-    scrim: AppColors.black, // Modal scrim
-    // Inverse colors for contrast
+    // → Used for shadows of elevated components (cards, FABs, dialogs).
+    shadow: AppColors.grayscale900,
+    // → Used for modal backgrounds (e.g., behind BottomSheets, Dialogs).
+    scrim: AppColors.grayscale900,
+
+    // ========== INVERSE COLORS ==========
+    // → Used for contrasting UI (e.g., dark Toasts or SnackBars on light theme).
     inverseSurface: AppColors.grayscale800,
+    // → Text/icon color on `inverseSurface`.
     onInverseSurface: AppColors.grayscale100,
-    inversePrimary: AppColors.green1_200, // Light version of primary
-    // Surface tint (used for elevation tinting)
-    surfaceTint: AppColors.primary,
+    // → Alternate primary for contrasting surface (e.g., loading overlays).
+    inversePrimary: AppColors.green300,
+
+    // ========== SURFACE TINT ==========\
+    // → Used to tint elevated surfaces in Material 3 (adds color depth with elevation).
+    surfaceTint: AppColors.green600,
+
+    // ========== ERROR COLORS ==========
+    // → Used for error states (TextField error borders, icons, snackbars).
+    error: AppColors.error,
+
+    // → Text/icon color on top of `error`.
+    onError: AppColors.white,
+
+    // → Background for error banners, error cards, alerts.
+    errorContainer: AppColors.errorLight,
+
+    // → Text/icon color for `errorContainer`.
+    onErrorContainer: AppColors.errorDark,
   );
 }

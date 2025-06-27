@@ -7,9 +7,6 @@ class RoutesName {
   // Private constructor to prevent instantiation
   RoutesName._();
 
-  // Initial route
-  static const String splashScreen = '/';
-
   // onboarding routes
   static const String onboardingScreen = '/onboarding';
 

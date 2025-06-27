@@ -10,37 +10,31 @@ abstract final class DarkColorScheme {
     brightness: Brightness.dark,
 
     // ========== PRIMARY COLORS ==========
-    primary: AppColors.green1_300, // Lighter green1 for dark theme
-    onPrimary: AppColors.green1_900, // Dark text on light primary
-    primaryContainer: AppColors.green1_700, // Dark green1 container
-    onPrimaryContainer: AppColors.green1_100, // Light text on dark container
+    primary: AppColors.green400, // Lighter green1 for dark theme
+    onPrimary: AppColors.green900, // Dark text on light primary
+    primaryContainer: AppColors.green700, // Dark green1 container
+    onPrimaryContainer: AppColors.green100, // Light text on dark container
     // ========== SECONDARY COLORS ==========
-    secondary: AppColors.orange300, // Lighter orange for dark theme
-    onSecondary: AppColors.orange900, // Dark text on light secondary
-    secondaryContainer: AppColors.orange700, // Dark orange container
-    onSecondaryContainer: AppColors.orange100, // Light text on dark container
+    secondary: AppColors.green1_400, // Lighter orange for dark theme
+    onSecondary: AppColors.green1_900, // Dark text on light secondary
+    secondaryContainer: AppColors.green1_700,
+    onSecondaryContainer: AppColors.green1_100,
     // ========== TERTIARY COLORS ==========
-    tertiary: AppColors.green300, // Lighter bright green for dark theme
-    onTertiary: AppColors.green900, // Dark text on light tertiary
-    tertiaryContainer: AppColors.green700, // Dark green container
-    onTertiaryContainer: AppColors.green100, // Light text on dark container
-    // ========== ERROR COLORS ==========
-    error: AppColors.errorLight, // Lighter error for dark theme
-    onError: AppColors.errorDark,
-    errorContainer: Color(0xFF7F1D1D), // Dark red container
-    onErrorContainer: AppColors.errorLight,
-
+    tertiary: AppColors.orange400, // Lighter bright green for dark theme
+    onTertiary: AppColors.orange900, // Dark text on light tertiary
+    tertiaryContainer: AppColors.orange700, // Dark green container
+    onTertiaryContainer: AppColors.orange100, // Light text on dark container
     // ========== SURFACE COLORS ==========
-    surface: AppColors.darkSurface, // Dark background
+    surface: AppColors.grayscale800, // Dark background
     onSurface: AppColors.grayscale100, // Light text on dark surface
     // Dark surface variants
-    surfaceContainerHighest: AppColors.darkSurfaceElevated3,
-    surfaceContainerHigh: AppColors.darkSurfaceElevated2,
-    surfaceContainer: AppColors.darkSurfaceElevated1,
-    surfaceContainerLow: AppColors.darkSurface,
+    surfaceContainerHighest: AppColors.grayscale700,
+    surfaceContainerHigh: AppColors.grayscale700,
+    surfaceContainer: AppColors.grayscale800,
+    surfaceContainerLow: AppColors.grayscale800,
     surfaceContainerLowest: AppColors.grayscale900,
 
-    onSurfaceVariant: AppColors.grayscale300,
+    onSurfaceVariant: AppColors.textDisabled,
 
     // ========== OUTLINE COLORS ==========
     outline: AppColors.grayscale600,
@@ -53,8 +47,13 @@ abstract final class DarkColorScheme {
     // Inverse colors
     inverseSurface: AppColors.grayscale100,
     onInverseSurface: AppColors.grayscale800,
-    inversePrimary: AppColors.primary,
+    inversePrimary: AppColors.green600,
+    surfaceTint: AppColors.green400,
 
-    surfaceTint: AppColors.green1_300,
+    // ========== ERROR COLORS ==========
+    error: AppColors.error, // Lighter error for dark theme
+    onError: AppColors.white,
+    errorContainer: AppColors.errorDark,
+    onErrorContainer: AppColors.errorLight,
   );
 }

@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'app/fruit_hub_app.dart';
+import 'core/constants/app_assets.dart';
 import 'core/helpers/functions/configure_system_ui.dart';
 import 'core/helpers/functions/init_services.dart';
 
@@ -25,7 +26,7 @@ Future<void> main() async {
         Locale('en', 'US'), // English (United States)
         Locale('ar', 'SA'), // Arabic (Saudi Arabia)
       ],
-      path: 'assets/translations',
+      path: AppAssets.translationsPath,
       fallbackLocale: const Locale('ar', 'SA'),
       startLocale: const Locale('ar', 'SA'),
       child: const FruitHubApp(),

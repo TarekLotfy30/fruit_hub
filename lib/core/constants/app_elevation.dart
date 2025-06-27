@@ -14,7 +14,7 @@ abstract final class AppElevation {
   /// Elevation for app bar
   /// Minimal shadow when scrolled
   static const double appBarElevation = 0;
-  static const double appBarscrolledUnderElevation = 1;
+  static const double appBarScrolledUnderElevation = 1;
 
   /// Elevation for bottom navigation
   /// Clear separation from content
@@ -24,7 +24,7 @@ abstract final class AppElevation {
   /// High elevation for modal content
   static const double dialogElevation = 24;
 
-  /// Elevation for snackbars
+  /// Elevation for snack bars
   /// Above most content but below dialogs
   static const double snackBarElevation = 6;
 }

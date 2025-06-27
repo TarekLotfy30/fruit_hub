@@ -1,30 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../../core/constants/app_constant.dart';
-import '../../../../core/helpers/functions/app_spacing.dart';
-import '../../../../core/widgets/build_optimized_svg.dart';
-import '../../data/models/onboarding_model.dart';
+part of '../widgets/onboarding_view_body.dart';
 
-class OnboardingContent extends StatelessWidget {
-  const OnboardingContent({
-    super.key,
-    required this.item,
-    required this.controller,
-  });
+class _PageViewItem extends StatelessWidget {
+  const _PageViewItem({required this.item});
 
   final OnboardingModel item;
-  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          width: double.infinity,
-          height: 325.h,
+          height: 313.h,
           child: Stack(
             children: [
+              BlocBuilder<OnboardingCubit, OnboardingState>(
+                builder: (context, state) {
+                  return Visibility(
+                    visible: state is OnboardingChanged,
+                    replacement: Align(
+                      alignment: Alignment.topRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(LocaleKeys.skip.tr()),
+                      ),
+                    ),
+                    child: const SizedBox(),
+                  );
+                },
+              ),
               Positioned.fill(
                 child: BuildOptimizedSvg(
                   assetPath: item.backgroundImage,
@@ -42,7 +45,7 @@ class OnboardingContent extends StatelessWidget {
             ],
           ),
         ),
-        verticalSpacing(64),
+        verticalSpacing(40),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -65,7 +68,7 @@ class OnboardingContent extends StatelessWidget {
                     TextSpan(
                       text: item.titleTextSpan3,
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
                     ),
                   ],
@@ -79,18 +82,17 @@ class OnboardingContent extends StatelessWidget {
             verticalSpacing(24),
             // subtitle
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 37.w),
+              padding: EdgeInsets.symmetric(horizontal: 46.w),
               child: Text(
                 item.subTitle,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  color: AppColors.textTertiary,
                 ),
               ),
             ),
           ],
         ),
-        const Spacer(),
       ],
     );
   }

@@ -15,7 +15,7 @@ class AppTheme {
   static ThemeData get lightMode {
     return ThemeBuilder.buildTheme(
       colorScheme: LightColorScheme.colorScheme,
-      textTheme: AppTextTheme.baseTextTheme,
+      textTheme: AppTextThemes.baseTextTheme,
       isDark: false,
     );
   }
@@ -23,7 +23,7 @@ class AppTheme {
   static ThemeData get darkMode {
     return ThemeBuilder.buildTheme(
       colorScheme: DarkColorScheme.colorScheme,
-      textTheme: AppTextTheme.baseTextTheme,
+      textTheme: AppTextThemes.baseTextTheme,
       isDark: true,
     );
   }
