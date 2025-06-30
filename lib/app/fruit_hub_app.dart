@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/services/local/shared_keys.dart';
+import '../core/services/local/shared_preferences.dart';
+import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
 import '../core/routing/routes_name.dart';
@@ -9,6 +12,16 @@ import '../core/theme/app_theme.dart';
 
 class FruitHubApp extends StatelessWidget {
   const FruitHubApp({super.key});
+
+  String getInitialRoute() {
+    final localHelper = getIt<LocalHelper>();
+    final skipOnBoarding = localHelper.exists(key: AppSharedKey.skipOnBoarding);
+    if (skipOnBoarding) {
+      return RoutesName.loginScreen;
+    } else {
+      return RoutesName.onboardingScreen;
+    }
+  }
 
   // This widget is the root of your application.
   @override
@@ -26,7 +39,7 @@ class FruitHubApp extends StatelessWidget {
         // Set current locale from EasyLocalization
         locale: context.locale,
 
-        initialRoute: RoutesName.onboardingScreen,
+        initialRoute: getInitialRoute(),
         onGenerateRoute: AppRouter().generateRoute,
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,

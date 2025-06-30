@@ -4,20 +4,28 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../cubits/bloc_observer.dart';
+import '../../di/service_locator.dart';
 
 /// Initialize all required services
 ///
 /// This includes Firebase, SharedPreferences, DioHelper and
 /// location permissions
 Future<void> initServices() async {
-  log('Initializing services...', name: 'info');
+  log('Initializing services...', name: 'initServices');
 
   //Initialize BLoC observer
   Bloc.observer = MyBlocObserver();
-  log('BLoC observer initialized');
+  log('BLoC observer initialized', name: 'initServices');
 
-  // Initialize EasyLocalization before running the app
-  await EasyLocalization.ensureInitialized();
+  await Future.wait([
+    // Initialize EasyLocalization before running the app
+    EasyLocalization.ensureInitialized(),
+    setupServiceLocator(),
+  ]);
+  log('EasyLocalization initialized', name: 'initServices');
+  log('setupServiceLocator initialized', name: 'initServices');
+
+  // await getIt<LocalHelper>().clearAll();
 
   // Initialize Firebase
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -26,10 +34,6 @@ Future<void> initServices() async {
   // Initialize Firebase Messaging
   // await initFirebaseMessaging();
   // log('FirebaseMessaging initialized');
-
-  // Initialize SharedPreferences
-  // await SharedHelper.init();
-  // log('SharedPreferences initialized', name: 'info');
 
   // Initialize DioHelper
   // await DioHelper.initialize();

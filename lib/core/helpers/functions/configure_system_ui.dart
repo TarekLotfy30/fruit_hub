@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 /// Configure system UI appearance
 
 Future<void> configureSystemUI() async {
-  log('Configuring system UI...');
+  log('Configuring system UI...', name: 'configureSystemUI');
 
   // Configure status bar appearance
   // Set system UI overlay style
@@ -24,8 +24,15 @@ Future<void> configureSystemUI() async {
   );
 
   // Optional: lock to portrait mode
-  await SystemChrome.setPreferredOrientations([
+  SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top],
+  );
+
+  log('System UI configured', name: 'configureSystemUI');
 }

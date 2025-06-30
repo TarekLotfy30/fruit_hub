@@ -56,6 +56,7 @@ class AppColors {
   static const Color green1_600 = Color(0xFF2D9F5D);
   static const Color green1_700 = Color(0xFF227745);
   static const Color green1_800 = Color(0xFF174F2E);
+  static const Color green1_850 = Color(0xFF1B5E37);
   static const Color green1_900 = Color(0xFF0B2817);
 
   // ========== RED PALETTE ==========
@@ -116,20 +117,12 @@ class AppColors {
   static const Color textDisabledDark =
       grayscale600; // Disabled text on dark backgrounds
 
-  // Special text colors
-  static const Color textOnPrimary =
-      Colors.white; // Text on primary color backgrounds
-  static const Color textOnSecondary =
-      Colors.white; // Text on secondary color backgrounds
   static const Color textLink = green600; // Link text in light theme
   static const Color textLinkDark = green400; // Link text in dark theme
   static const Color textError = red600; // Error text in light theme
   static const Color textErrorDark = red400; // Error text in dark theme
 
   // Interactive States
-  static const Color hover = Color(0x0A000000); // 4% black overlay
-  static const Color pressed = Color(0x14000000); // 8% black overlay
-  static const Color focused = Color(0x1F000000); // 12% black overlay
   static const Color disabled = grayscale300;
   static const Color disabledContent = grayscale400;
 
@@ -139,8 +132,5 @@ class AppColors {
   static const Color surfaceElevated3 = Color(0xFFECE6F0); // Menus
 
   // Dark theme surface variants
-  static const Color darkSurface = Color(0xFF121212);
-  static const Color darkSurfaceElevated1 = Color(0xFF1E1E1E);
-  static const Color darkSurfaceElevated2 = Color(0xFF232323);
-  static const Color darkSurfaceElevated3 = Color(0xFF252525);
+  static const Color darkSurface = Color(0xFF0d0d0d);
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/presentation/screens/login_view.dart';
 import '../../features/onboarding/logic/cubit/onboarding_cubit.dart';
 
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
@@ -33,6 +34,8 @@ class AppRouter {
               child: const OnboardingView(),
             ),
           );
+        case RoutesName.loginScreen:
+          return buildRoute(const LoginView());
         default:
           return buildRoute(_buildErrorRoute(error: 'Route not found'));
       }

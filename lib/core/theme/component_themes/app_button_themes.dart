@@ -20,9 +20,7 @@ import '../text_themes/base_text_theme.dart';
 abstract final class AppButtonThemes {
   const AppButtonThemes._();
 
-  static ElevatedButtonThemeData buildElevatedButtonTheme(
-    ColorScheme colorScheme,
-  ) {
+  static ElevatedButtonThemeData elevatedButtonTheme(ColorScheme colorScheme) {
     return ElevatedButtonThemeData(
       style:
           ElevatedButton.styleFrom(
@@ -30,38 +28,74 @@ abstract final class AppButtonThemes {
             foregroundColor: colorScheme.onPrimary,
             elevation: AppElevation.buttonElevation,
             shadowColor: colorScheme.shadow,
+            surfaceTintColor: colorScheme.primary,
+            overlayColor: colorScheme.primary.withValues(alpha: 0.12),
             alignment: Alignment.center,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                 AppCorners.buttonBorderRadius.r, //16
               ),
             ),
-            padding: EdgeInsets.symmetric(
-              vertical: AppPaddings.padding12.h,
-              //horizontal: AppPaddings.padding14.w,
-            ),
+            padding: EdgeInsets.symmetric(vertical: AppPaddings.padding12.h),
             minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h), //48
             textStyle: AppTextThemes.baseTextTheme.titleLarge?.copyWith(
               fontFamily: AppFontFamily.cairo,
             ),
           ).copyWith(
-            // Add interaction states
-            // backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
-            //   if (states.contains(WidgetState.pressed)) {
-            //     return colorScheme.primary.withValues(alpha: 0.12);
-            //   }
-            //   if (states.contains(WidgetState.hovered)) {
-            //     return colorScheme.primary.withValues(alpha: 0.08);
-            //   }
-            //   return colorScheme.primary;
-            // }),
+            backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outline.withValues(alpha: 0.12);
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return colorScheme.primary.withValues(
+                  alpha: 0.88,
+                ); // Less dramatic change
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return Color.alphaBlend(
+                  colorScheme.onPrimary.withValues(alpha: 0.08),
+                  colorScheme.primary,
+                ); // Subtle highlight overlay
+              }
+              return colorScheme.primary;
+            }),
+            foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return colorScheme.outline.withValues(alpha: 0.38);
+              }
+              return colorScheme.onPrimary;
+            }),
+            overlayColor: WidgetStateProperty.resolveWith<Color>((states) {
+              if (states.contains(WidgetState.pressed)) {
+                return colorScheme.onPrimary.withValues(alpha: 0.12);
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return colorScheme.onPrimary.withValues(alpha: 0.08);
+              }
+              if (states.contains(WidgetState.focused)) {
+                return colorScheme.onPrimary.withValues(alpha: 0.12);
+              }
+              return Colors.transparent;
+            }),
+            elevation: WidgetStateProperty.resolveWith<double>((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return 0;
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return AppElevation.buttonElevation -
+                    1; // Slightly less elevation when pressed
+              }
+              if (states.contains(WidgetState.hovered)) {
+                return AppElevation.buttonElevation +
+                    1; // Slightly more elevation on hover
+              }
+              return AppElevation.buttonElevation;
+            }),
           ),
     );
   }
 
-  static OutlinedButtonThemeData buildOutlinedButtonTheme(
-    ColorScheme colorScheme,
-  ) {
+  static OutlinedButtonThemeData outlinedButtonTheme(ColorScheme colorScheme) {
     return OutlinedButtonThemeData(
       style:
           OutlinedButton.styleFrom(
@@ -127,7 +161,7 @@ abstract final class AppButtonThemes {
     );
   }
 
-  static FloatingActionButtonThemeData buildFABTheme(ColorScheme colorScheme) {
+  static FloatingActionButtonThemeData fabTheme(ColorScheme colorScheme) {
     return FloatingActionButtonThemeData(
       backgroundColor: colorScheme.primary,
       foregroundColor: colorScheme.onPrimary,
@@ -139,18 +173,13 @@ abstract final class AppButtonThemes {
     );
   }
 
-  static TextButtonThemeData buildTextButtonTheme(ColorScheme colorScheme) {
+  static TextButtonThemeData textButtonTheme(ColorScheme colorScheme) {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
+        backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.primary,
         elevation: AppElevation.buttonElevation,
-        padding: EdgeInsets.symmetric(
-          vertical: AppPaddings.padding12.h,
-          horizontal: AppPaddings.padding14.w,
-        ),
         alignment: Alignment.center,
-        visualDensity: VisualDensity.standard,
-        enableFeedback: true,
         textStyle: AppTextThemes.baseTextTheme.labelSmall?.copyWith(
           fontFamily: AppFontFamily.cairo,
         ),

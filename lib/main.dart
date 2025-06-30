@@ -12,13 +12,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Configure system UI
-  configureSystemUI();
-
   //Initialize services
-  await initServices();
-
-  // Register service locator dependencies
-  // registerDependencies();
+  await Future.wait([configureSystemUI(), initServices()]);
 
   runApp(
     EasyLocalization(
@@ -33,5 +28,5 @@ Future<void> main() async {
     ),
   );
 
-  log('Application started successfully');
+  log('Application started successfully', name: 'main');
 }

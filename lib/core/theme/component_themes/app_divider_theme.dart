@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract final class AppDividerTheme {
   AppDividerTheme._();
-  static DividerThemeData buildDividerTheme(ColorScheme colorScheme) {
+  static DividerThemeData dividerTheme(ColorScheme colorScheme) {
     return DividerThemeData(
       color: colorScheme.outlineVariant,
       thickness: 1,

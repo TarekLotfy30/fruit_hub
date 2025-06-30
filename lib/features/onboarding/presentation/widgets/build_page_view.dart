@@ -5,15 +5,14 @@ class _BuildPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize cubit
+    final cubit = context.read<OnboardingCubit>();
     return PageView.builder(
-      controller: context.read<OnboardingCubit>().pageController,
+      controller: cubit.pageController,
       itemCount: AppConstant.onboardingItems.length,
       itemBuilder: (context, index) =>
-          _PageViewItem(item: AppConstant.onboardingItems[index]),
-      onPageChanged: (index) {
-        // Update cubit state
-        context.read<OnboardingCubit>().changePage(index);
-      },
+          _PageViewItem(AppConstant.onboardingItems[index]),
+      onPageChanged: cubit.changePage,
       physics: const BouncingScrollPhysics(),
     );
   }

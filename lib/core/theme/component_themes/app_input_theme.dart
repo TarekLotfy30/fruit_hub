@@ -9,7 +9,7 @@ import '../text_themes/base_text_theme.dart';
 abstract final class AppInputTheme {
   AppInputTheme._();
 
-  static InputDecorationTheme buildInputDecorationTheme(
+  static InputDecorationTheme inputDecorationTheme(
     ColorScheme colorScheme, {
     required bool isDark,
   }) {

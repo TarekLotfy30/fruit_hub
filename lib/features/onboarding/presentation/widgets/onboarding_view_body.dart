@@ -6,7 +6,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_constant.dart';
 import '../../../../core/constants/app_padding.dart';
+import '../../../../core/helpers/functions/app_navigation.dart';
 import '../../../../core/helpers/functions/app_spacing.dart';
+import '../../../../core/routing/routes_name.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/utils/colors/app_colors.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
@@ -24,18 +26,25 @@ class OnboardingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Stack(
-        alignment: Alignment.bottomCenter,
+    return SafeArea(
+      top: false,
+      child: Column(
         children: [
           // Main PageView - handles scrolling between pages & Skip Button
-          _BuildPageView(),
+          const Expanded(child: _BuildPageView()),
 
           // Page indicator - shows current page progress
-          _BuildPageIndicator(),
+          const _BuildPageIndicator(),
+
+          verticalSpacing(32),
 
           // Action button - Start button based on current page
-          _BuildActionButton(),
+          Padding(
+            padding: EdgeInsets.all(AppPaddings.padding20.w),
+            child: const _BuildActionButton(),
+          ),
+
+          verticalSpacing(8),
         ],
       ),
     );

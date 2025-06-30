@@ -5,6 +5,8 @@ import 'component_themes/app_bar_theme.dart';
 import 'component_themes/app_button_themes.dart';
 import 'component_themes/app_card_theme.dart';
 import 'component_themes/app_checkbox_theme.dart';
+import 'component_themes/app_chip_theme.dart';
+import 'component_themes/app_dialog_theme.dart';
 import 'component_themes/app_divider_theme.dart';
 import 'component_themes/app_input_theme.dart';
 import 'component_themes/app_switch_theme.dart';
@@ -35,24 +37,26 @@ abstract final class ThemeBuilder {
       textTheme: textTheme,
       pageTransitionsTheme: ThemeConstants.pageTransitionsTheme,
 
+      // Add splash color configuration
+      splashColor: colorScheme.primary.withValues(alpha: 0.12),
+      highlightColor: colorScheme.primary.withValues(alpha: 0.08),
+
       // Component themes
-      appBarTheme: AppBarThemes.buildAppBarTheme(colorScheme),
-      floatingActionButtonTheme: AppButtonThemes.buildFABTheme(colorScheme),
-      elevatedButtonTheme: AppButtonThemes.buildElevatedButtonTheme(
-        colorScheme,
-      ),
-      outlinedButtonTheme: AppButtonThemes.buildOutlinedButtonTheme(
-        colorScheme,
-      ),
-      inputDecorationTheme: AppInputTheme.buildInputDecorationTheme(
+      appBarTheme: AppBarThemes.appBarTheme(colorScheme),
+      floatingActionButtonTheme: AppButtonThemes.fabTheme(colorScheme),
+      elevatedButtonTheme: AppButtonThemes.elevatedButtonTheme(colorScheme),
+      outlinedButtonTheme: AppButtonThemes.outlinedButtonTheme(colorScheme),
+      textButtonTheme: AppButtonThemes.textButtonTheme(colorScheme),
+      cardTheme: AppCardTheme.cardTheme(colorScheme),
+      checkboxTheme: AppCheckBoxTheme.checkboxTheme(colorScheme),
+      chipTheme: AppChipTheme.chipTheme(colorScheme),
+      dialogTheme: AppDialogTheme.dialogTheme(colorScheme),
+      dividerTheme: AppDividerTheme.dividerTheme(colorScheme),
+      inputDecorationTheme: AppInputTheme.inputDecorationTheme(
         colorScheme,
         isDark: isDark,
       ),
-      textButtonTheme: AppButtonThemes.buildTextButtonTheme(colorScheme),
-      cardTheme: AppCardTheme.buildCardTheme(colorScheme),
-      dividerTheme: AppDividerTheme.buildDividerTheme(colorScheme),
-      switchTheme: AppSwitchTheme.buildSwitchTheme(colorScheme),
-      checkboxTheme: AppCheckBoxTheme.buildRadioTheme(colorScheme),
+      switchTheme: AppSwitchTheme.switchTheme(colorScheme),
     );
   }
 }

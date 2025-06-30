@@ -41,7 +41,7 @@ class Navigation {
     }
   }
 
-  /// Pushes a new screen identified by [routeName] and removes 
+  /// Pushes a new screen identified by [routeName] and removes
   /// all previous routes.
   ///
   /// Useful for login or onboarding screens where back navigation should
@@ -56,7 +56,7 @@ class Navigation {
     String routeName, {
     Object? arguments,
   }) async {
-    log('Pushing and removing previous routes: $routeName', name: _logTag);
+    log('Pushing $routeName and removing previous routes', name: _logTag);
 
     try {
       await Navigator.of(context).pushNamedAndRemoveUntil(
@@ -90,10 +90,9 @@ class Navigation {
     log('Replacing current route with: $routeName', name: _logTag);
 
     try {
-      await Navigator.of(context).pushReplacementNamed(
-        routeName,
-        arguments: arguments,
-      );
+      await Navigator.of(
+        context,
+      ).pushReplacementNamed(routeName, arguments: arguments);
       log('Route replaced successfully: $routeName', name: _logTag);
     } catch (e, stackTrace) {
       log(

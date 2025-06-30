@@ -14,8 +14,6 @@ dependencies:
   # iOS-style icons package for Cupertino design
   cupertino_icons: ^1.0.8
   
-  # Toast notifications for user feedback messages
-  
   # Internationalization and localization support
   easy_localization: ^3.0.7+1
   
@@ -81,7 +79,8 @@ flutter_native_splash:
     color: "#ffffff"
     image_dark: assets/images/android12splash.png
     color_dark: "#0D0D0D"
-
+  
+  
   web: false
 
 flutter:
@@ -96,6 +95,7 @@ flutter:
     - assets/svgs/
     - assets/svgs/onboarding/
     - assets/svgs/splash/
+    - assets/svgs/icons/
 
 
   fonts:

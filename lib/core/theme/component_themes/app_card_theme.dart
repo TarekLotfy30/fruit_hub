@@ -7,8 +7,7 @@ import '../../constants/app_elevation.dart';
 abstract final class AppCardTheme {
   AppCardTheme._();
 
-  /// Creates Card theme configuration for the given color scheme
-  static CardThemeData buildCardTheme(ColorScheme colorScheme) {
+  static CardThemeData cardTheme(ColorScheme colorScheme) {
     return CardThemeData(
       elevation: AppElevation.xSmallElevation, //2
       shape: RoundedRectangleBorder(

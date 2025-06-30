@@ -16,7 +16,7 @@ abstract final class LightColorScheme {
 
     // ========== PRIMARY COLORS ==========
     // → Main brand color used for ElevatedButtons, FABs, progress bars, switches.
-    primary: AppColors.green1_600,
+    primary: AppColors.green1_850,
     // → Text/icon color that sits **on top** of primary (e.g., button text).
     onPrimary: AppColors.white,
 
@@ -50,7 +50,7 @@ abstract final class LightColorScheme {
     // → Main background color for Scaffold, Cards, Sheets.
     surface: AppColors.white,
     // → Primary text/icon color on surface (e.g., headlines, labels).
-    onSurface: AppColors.grayscale800,
+    onSurface: AppColors.grayscale900,
     // → Highest elevated surfaces (menus, dialogs, app bars).
     surfaceContainerHighest: AppColors.grayscale50,
     // → High elevation (modals, sheets, snack bars).

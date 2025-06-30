@@ -25,8 +25,8 @@ abstract final class DarkColorScheme {
     tertiaryContainer: AppColors.orange700, // Dark green container
     onTertiaryContainer: AppColors.orange100, // Light text on dark container
     // ========== SURFACE COLORS ==========
-    surface: AppColors.grayscale800, // Dark background
-    onSurface: AppColors.grayscale100, // Light text on dark surface
+    surface: AppColors.darkSurface, // Dark background
+    onSurface: AppColors.white, // Light text on dark surface
     // Dark surface variants
     surfaceContainerHighest: AppColors.grayscale700,
     surfaceContainerHigh: AppColors.grayscale700,
