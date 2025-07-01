@@ -7,7 +7,6 @@ class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -16,7 +15,9 @@ class LoginViewBody extends StatelessWidget {
       ),
       child: const Column(
         mainAxisSize: MainAxisSize.min,
-        children: [Text('Login View'), Text('Login View')],
+        children: [
+          
+        ],
       ),
     );
   }

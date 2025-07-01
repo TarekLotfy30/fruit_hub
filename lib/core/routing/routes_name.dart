@@ -8,10 +8,10 @@ class RoutesName {
   RoutesName._();
 
   // onboarding routes
-  static const String onboardingScreen = '/';
+  static const String onboardingScreen = '/onboarding';
 
   // Authentication routes
-  static const String loginScreen = '/auth/login';
+  static const String loginScreen = '/login';
 
   // // Home/root routes
   // static const String homeScreen = '/home';

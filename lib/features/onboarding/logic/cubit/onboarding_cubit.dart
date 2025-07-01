@@ -16,8 +16,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     viewportFraction: 1,
   );
 
-  final LocalHelper _localHelper = getIt<LocalHelper>();
-
   PageController get pageController => _pageController;
 
   void changePage(int index) {
@@ -27,7 +25,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   Future<void> skipandSave() async {
-    await _localHelper.setValue(key: AppSharedKey.skipOnBoarding, value: true);
+    await getIt<LocalHelper>().setValue(
+      key: AppSharedKey.skipOnBoarding,
+      value: true,
+    );
   }
 
   /// Disposes of resources when cubit is closed

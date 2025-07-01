@@ -10,7 +10,7 @@ import '../../di/service_locator.dart';
 ///
 /// This includes Firebase, SharedPreferences, DioHelper and
 /// location permissions
-Future<void> initServices() async {
+Future<void> initializeServices() async {
   log('Initializing services...', name: 'initServices');
 
   //Initialize BLoC observer
@@ -22,10 +22,7 @@ Future<void> initServices() async {
     EasyLocalization.ensureInitialized(),
     setupServiceLocator(),
   ]);
-  log('EasyLocalization initialized', name: 'initServices');
   log('setupServiceLocator initialized', name: 'initServices');
-
-  // await getIt<LocalHelper>().clearAll();
 
   // Initialize Firebase
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -42,22 +39,3 @@ Future<void> initServices() async {
   // Initialize location services
   // await initLocationServices();
 }
-
-// /// Register dependencies with GetIt service locator
-// void registerDependencies() {
-//   logger.info('Registering dependencies...');
-
-//   // Register DioHelper as a singleton
-//   if (!getIt.isRegistered<DioHelper>()) {
-//     getIt.registerSingleton<DioHelper>(DioHelper());
-//     logger.fine('DioHelper registered as singleton');
-//   }
-
-//   // Register LocalHelper as a singleton
-//   if (!getIt.isRegistered<LocalHelper>()) {
-//     getIt.registerSingleton<LocalHelper>(LocalHelper());
-//     logger.fine('LocalHelper registered as singleton');
-//   }
-
-//   // Register other services here
-// }

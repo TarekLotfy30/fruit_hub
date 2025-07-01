@@ -17,9 +17,8 @@ class LocalHelper {
   ///   - key: The [AppSharedKey] enum value.
   /// Returns:
   ///   - A [String] representing the key name.
-  String getKeyString(AppSharedKey key) {
+  String _getKeyString(AppSharedKey key) {
     final keyString = key.toString().split('.').last;
-    log('Retrieved key string: $keyString for $key', name: 'LocalHelper');
     return keyString;
   }
 
@@ -42,7 +41,7 @@ class LocalHelper {
   }) async {
     log('Setting value for key: $key, value: $value', name: 'LocalHelper');
     try {
-      final keyString = getKeyString(key);
+      final keyString = _getKeyString(key);
       bool result;
       if (value is String) {
         result = await _pref.setString(keyString, value);
@@ -77,22 +76,28 @@ class LocalHelper {
   /// Parameters:
   ///   - key: The [AppSharedKey] to retrieve.
   ///   - defaultValue: The value to return if the key is not found.
-  dynamic getValue({required AppSharedKey key}) async {
-    final keyString = getKeyString(key);
+  T getValue<T>({required AppSharedKey key, required T defaultValue}) {
+    final keyString = _getKeyString(key);
     dynamic value;
-    if (key.runtimeType == String) {
+
+    // Check the generic type T to determine which method to use
+    if (T == String) {
       value = _pref.getString(keyString);
-    } else if (key.runtimeType == bool) {
+    } else if (T == bool) {
       value = _pref.getBool(keyString);
-    } else if (key.runtimeType == int) {
+    } else if (T == int) {
       value = _pref.getInt(keyString);
-    } else if (key.runtimeType == double) {
+    } else if (T == double) {
       value = _pref.getDouble(keyString);
-    } else if (key.runtimeType == List<String>) {
+    } else if (T == List<String>) {
       value = _pref.getStringList(keyString);
+    } else {
+      log('Unsupported type: $T', name: 'LocalHelper');
+      return defaultValue;
     }
+
     log('Retrieved value for $keyString: $value', name: 'LocalHelper');
-    return value;
+    return value as T ?? defaultValue;
   }
 
   /// Removes a value from shared preferences.
@@ -103,9 +108,8 @@ class LocalHelper {
   ///   - A [Future<bool>] indicating success (true) or failure (false).
   Future<bool> removeValue({required AppSharedKey key}) async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final keyString = getKeyString(key);
-      final result = await prefs.remove(keyString);
+      final keyString = _getKeyString(key);
+      final result = await _pref.remove(keyString);
       log(
         'Removed value for $keyString, success: $result',
         name: 'LocalHelper',
@@ -138,7 +142,7 @@ class LocalHelper {
   bool exists({required AppSharedKey key}) {
     log('Checking if key exists: $key', name: 'LocalHelper');
 
-    final keyString = getKeyString(key);
+    final keyString = _getKeyString(key);
 
     log('Key exists: ${_pref.containsKey(keyString)}', name: 'LocalHelper');
     return _pref.containsKey(keyString);
