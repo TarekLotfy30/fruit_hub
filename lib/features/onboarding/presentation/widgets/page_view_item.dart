@@ -57,7 +57,7 @@ class _PageViewItem extends StatelessWidget {
             ],
           ),
         ),
-        verticalSpacing(40),
+        verticalSpacing(Spacing.spacing40),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -91,10 +91,12 @@ class _PageViewItem extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ),
-            verticalSpacing(24),
+            verticalSpacing(Spacing.spacing24),
             // subtitle
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 46.w),
+              padding: EdgeInsets.symmetric(
+                horizontal: AppPaddings.padding32.w,
+              ),
               child: Text(
                 _item.subTitle,
                 textAlign: TextAlign.center,

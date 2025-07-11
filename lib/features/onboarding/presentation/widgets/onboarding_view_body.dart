@@ -6,6 +6,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/constants/app_constant.dart';
 import '../../../../core/constants/app_padding.dart';
+import '../../../../core/constants/spacing.dart';
 import '../../../../core/helpers/functions/app_navigation.dart';
 import '../../../../core/helpers/functions/app_spacing.dart';
 import '../../../../core/routing/routes_name.dart';
@@ -36,7 +37,7 @@ class OnboardingViewBody extends StatelessWidget {
           // Page indicator - shows current page progress
           const _BuildPageIndicator(),
 
-          verticalSpacing(32),
+          verticalSpacing(Spacing.spacing32),
 
           // Action button - Start button based on current page
           Padding(
@@ -44,7 +45,7 @@ class OnboardingViewBody extends StatelessWidget {
             child: const _BuildActionButton(),
           ),
 
-          verticalSpacing(8),
+          verticalSpacing(Spacing.spacing8),
         ],
       ),
     );

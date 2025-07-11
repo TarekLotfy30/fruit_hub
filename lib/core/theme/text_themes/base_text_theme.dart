@@ -16,7 +16,7 @@ abstract final class AppTextThemes {
     // Display styles (23pt) - Large headings
     //displayMedium: AppTypography.displayMedium,
     //displayLarge: AppTypography.displayLarge,
-    displaySmall: AppTypography.textStyle23Bold,
+    displaySmall: AppTypography.textStyle23Bold, // TODO
 
     // Headline styles (19pt) - Section headers
     //headlineLarge: AppTypography.headlineLarge,

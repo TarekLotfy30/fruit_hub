@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'shared_keys.dart';
+import 'app_shared_keys.dart';
 
 class LocalHelper {
   LocalHelper(this._pref) {
@@ -76,7 +76,7 @@ class LocalHelper {
   /// Parameters:
   ///   - key: The [AppSharedKey] to retrieve.
   ///   - defaultValue: The value to return if the key is not found.
-  T getValue<T>({required AppSharedKey key, required T defaultValue}) {
+  T getValue<T>({required AppSharedKey key}) {
     final keyString = _getKeyString(key);
     dynamic value;
 
@@ -91,13 +91,10 @@ class LocalHelper {
       value = _pref.getDouble(keyString);
     } else if (T == List<String>) {
       value = _pref.getStringList(keyString);
-    } else {
-      log('Unsupported type: $T', name: 'LocalHelper');
-      return defaultValue;
     }
 
     log('Retrieved value for $keyString: $value', name: 'LocalHelper');
-    return value as T ?? defaultValue;
+    return value as T;
   }
 
   /// Removes a value from shared preferences.

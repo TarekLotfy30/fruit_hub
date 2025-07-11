@@ -12,6 +12,7 @@ class LoginView extends StatelessWidget {
       appBar: AppBar(
         title: Text(LocaleKeys.login.tr()),
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: const LoginViewBody(),
     );

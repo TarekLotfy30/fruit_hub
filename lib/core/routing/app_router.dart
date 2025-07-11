@@ -24,29 +24,19 @@ class AppRouter {
       name: _logTag,
       error: settings.arguments?.toString(),
     );
+    switch (settings.name) {
+      case RoutesName.onboardingScreen:
+        return buildRoute(
+          BlocProvider(
+            create: (context) => OnboardingCubit(),
+            child: const OnboardingView(),
+          ),
+        );
+      case RoutesName.loginScreen:
+        return buildRoute(const LoginView());
 
-    try {
-      switch (settings.name) {
-        case RoutesName.onboardingScreen:
-          return buildRoute(
-            BlocProvider(
-              create: (context) => OnboardingCubit(),
-              child: const OnboardingView(),
-            ),
-          );
-        case RoutesName.loginScreen:
-          return buildRoute(const LoginView());
-        default:
-          return buildRoute(_buildErrorRoute(error: 'Route not found'));
-      }
-    } on Exception catch (e, stackTrace) {
-      log(
-        '🚨 Route generation error: $e',
-        name: _logTag,
-        error: e,
-        stackTrace: stackTrace,
-      );
-      return buildRoute(_buildErrorRoute(error: e));
+      default:
+        return buildRoute(_buildErrorRoute(error: settings.name));
     }
   }
 

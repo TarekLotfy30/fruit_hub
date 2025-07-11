@@ -13,6 +13,4 @@ abstract final class AppAssets {
   static const String fruitBasket = 'assets/svgs/onboarding/fruit_basket.svg';
   static const String pineapple = 'assets/svgs/onboarding/pineapple.svg';
 
-  // ------------------------- icons -------------------------------------------
-  static const String home = 'assets/svgs/icons/left_arrow.svg';
 }

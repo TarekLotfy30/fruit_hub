@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_border_width.dart';
 import '../../constants/app_corners.dart';
 import '../../constants/app_padding.dart';
+import '../../utils/colors/app_colors.dart';
 import '../text_themes/base_text_theme.dart';
 
 abstract final class AppInputTheme {
@@ -14,16 +15,17 @@ abstract final class AppInputTheme {
     required bool isDark,
   }) {
     return InputDecorationTheme(
+      isDense: true,
       filled: true,
       fillColor: isDark
           ? colorScheme.surfaceContainerHighest
-          : colorScheme.surface,
+          : AppColors.grayscale50.withValues(alpha: 0.5),
 
       // Default border (unfocused, enabled)
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
         borderSide: BorderSide(
-          color: colorScheme.outline,
+          color: colorScheme.outline.withValues(alpha: 0.5),
           width: AppBorderWidth.defaultBorderWidth.w,
         ),
       ),
@@ -32,7 +34,7 @@ abstract final class AppInputTheme {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppCorners.smallBorderRadius.r),
         borderSide: BorderSide(
-          color: colorScheme.outline,
+          color: colorScheme.outline.withValues(alpha: 0.5),
           width: AppBorderWidth.defaultBorderWidth.w,
         ),
       ),
@@ -88,7 +90,7 @@ abstract final class AppInputTheme {
       ),
 
       // Error styling
-      errorStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
+      errorStyle: AppTextThemes.baseTextTheme.bodyMedium?.copyWith(
         color: colorScheme.error,
       ),
 
@@ -100,21 +102,24 @@ abstract final class AppInputTheme {
       ),
 
       // Label styling
-      labelStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
+      labelStyle: AppTextThemes.baseTextTheme.labelLarge?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
-      // Content padding
+      //Content padding
       contentPadding: EdgeInsets.symmetric(
-        vertical: AppPaddings.padding24.h,
-        horizontal: AppPaddings.padding16.w,
+        vertical: AppPaddings.padding16.h,
+        horizontal: AppPaddings.padding24.w,
       ),
 
       // Icon colors
       prefixIconColor: colorScheme.primary,
-      suffixIconColor: colorScheme.primary,
+      suffixIconColor: colorScheme.outlineVariant,
+      iconColor: isDark
+          ? colorScheme.onSurfaceVariant
+          : colorScheme.onSurface.withValues(alpha: 0.6),
     );
   }
 }

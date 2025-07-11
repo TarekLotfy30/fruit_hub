@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_constant.dart';
-import '../../../../core/services/local/shared_keys.dart';
-import '../../../../core/services/local/shared_preferences.dart';
+import '../../../../core/services/local/app_shared_keys.dart';
+import '../../../../core/services/local/local_helper.dart';
 import '../../../../core/di/service_locator.dart';
 import 'onboarding.state.dart';
 

@@ -51,12 +51,7 @@ abstract final class AppButtonThemes {
                   alpha: 0.88,
                 ); // Less dramatic change
               }
-              if (states.contains(WidgetState.hovered)) {
-                return Color.alphaBlend(
-                  colorScheme.onPrimary.withValues(alpha: 0.08),
-                  colorScheme.primary,
-                ); // Subtle highlight overlay
-              }
+
               return colorScheme.primary;
             }),
             foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
@@ -100,7 +95,7 @@ abstract final class AppButtonThemes {
       style:
           OutlinedButton.styleFrom(
             backgroundColor: colorScheme.surface,
-            foregroundColor: colorScheme.primary,
+            foregroundColor: colorScheme.onSurface,
             elevation: AppElevation.buttonElevation, //0
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
@@ -116,7 +111,7 @@ abstract final class AppButtonThemes {
               horizontal: AppPaddings.padding14.w,
             ),
             minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h),
-            textStyle: AppTextThemes.baseTextTheme.titleLarge?.copyWith(
+            textStyle: AppTextThemes.baseTextTheme.titleMedium?.copyWith(
               fontFamily: AppFontFamily.cairo,
             ),
           ).copyWith(
@@ -125,35 +120,23 @@ abstract final class AppButtonThemes {
               if (states.contains(WidgetState.pressed)) {
                 return colorScheme.primary.withValues(alpha: 0.12);
               }
-              if (states.contains(WidgetState.hovered)) {
-                return colorScheme.primary.withValues(alpha: 0.08);
-              }
               return colorScheme.surface;
             }),
             foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
               if (states.contains(WidgetState.pressed)) {
-                return colorScheme.primary.withValues(alpha: 0.12);
+                return colorScheme.onSurface.withValues(alpha: 0.12);
               }
-              if (states.contains(WidgetState.hovered)) {
-                return colorScheme.primary.withValues(alpha: 0.08);
-              }
-              return colorScheme.primary;
+              return colorScheme.onSurface;
             }),
             side: WidgetStateProperty.resolveWith<BorderSide>((states) {
               if (states.contains(WidgetState.pressed)) {
                 return BorderSide(
-                  color: colorScheme.primary.withValues(alpha: 0.12),
-                  width: AppBorderWidth.defaultBorderWidth.w,
-                );
-              }
-              if (states.contains(WidgetState.hovered)) {
-                return BorderSide(
-                  color: colorScheme.primary.withValues(alpha: 0.08),
+                  color: colorScheme.outlineVariant.withValues(alpha: 0.12),
                   width: AppBorderWidth.defaultBorderWidth.w,
                 );
               }
               return BorderSide(
-                color: colorScheme.primary,
+                color: colorScheme.outlineVariant.withValues(alpha: 0.38),
                 width: AppBorderWidth.defaultBorderWidth.w,
               );
             }),
@@ -172,6 +155,7 @@ abstract final class AppButtonThemes {
       shape: const CircleBorder(),
     );
   }
+
 
   static TextButtonThemeData textButtonTheme(ColorScheme colorScheme) {
     return TextButtonThemeData(

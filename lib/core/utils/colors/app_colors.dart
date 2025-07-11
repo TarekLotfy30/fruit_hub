@@ -22,6 +22,7 @@ class AppColors {
   static const Color grayscale800 = Color(0xFF313535);
   static const Color grayscale900 = Color(0xFF181A1B);
 
+
   // ========== GREEN PALETTE ==========
   static const Color green50 = Color(0xFFEEFBEA); // Light green tint
   static const Color green100 = Color(0xFFDDF7D4);

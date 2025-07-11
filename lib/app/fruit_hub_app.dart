@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,8 +6,8 @@ import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
 import '../core/routing/routes_name.dart';
-import '../core/services/local/shared_keys.dart';
-import '../core/services/local/shared_preferences.dart';
+import '../core/services/local/app_shared_keys.dart';
+import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
 
 class FruitHubApp extends StatelessWidget {
@@ -17,14 +15,9 @@ class FruitHubApp extends StatelessWidget {
 
   String getInitialRoute() {
     final LocalHelper localHelper = getIt<LocalHelper>();
-    final bool skipOnBoarding = localHelper.getValue<bool>(
-      key: AppSharedKey.skipOnBoarding,
-      defaultValue: false,
-    );
+    final isExist = localHelper.exists(key: AppSharedKey.skipOnBoarding);
 
-    log('skipOnBoarding: $skipOnBoarding', name: 'FruitHubApp');
-
-    if (skipOnBoarding) {
+    if (isExist) {
       return RoutesName.loginScreen;
     } else {
       return RoutesName.onboardingScreen;
@@ -38,7 +31,7 @@ class FruitHubApp extends StatelessWidget {
       designSize: AppScreenUtil.designSize,
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, child) => MaterialApp(
+      builder: (_, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
         // Configure localization delegates from EasyLocalization
         localizationsDelegates: context.localizationDelegates,
@@ -52,7 +45,6 @@ class FruitHubApp extends StatelessWidget {
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,
         themeMode: ThemeMode.light,
-        home: child,
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../services/local/shared_preferences.dart';
+import '../services/local/local_helper.dart';
 
 // registerSingleton: This method registers a type as a singleton, meaning that
 // the instance is created immediately when the application starts. Every time

@@ -13,10 +13,16 @@ abstract class  LocaleKeys {
   static const start_now = 'start_now';
   static const email = 'email';
   static const password = 'password';
-  static const full_name = 'full_name';
-  static const phone_number = 'phone_number';
   static const forgot_password = 'forgot_password';
   static const login = 'login';
+  static const no_account = 'no_account';
+  static const create_account = 'create_account';
+  static const or = 'or';
+  static const sign_in_with_google = 'sign_in_with_google';
+  static const sign_in_with_apple = 'sign_in_with_apple';
+  static const sign_in_with_facebook = 'sign_in_with_facebook';
+  static const full_name = 'full_name';
+  static const phone_number = 'phone_number';
   static const signup = 'signup';
   static const have_account = 'have_account';
   static const search = 'search';
@@ -38,4 +44,5 @@ abstract class  LocaleKeys {
   static const confirm_logout = 'confirm_logout';
   static const cancel = 'cancel';
   static const confirm = 'confirm';
+
 }
