@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/presentation/screens/login_view.dart';
-import '../../features/onboarding/controller/cubit/onboarding_cubit.dart';
+import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
 import 'routes_name.dart';
 

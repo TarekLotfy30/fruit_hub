@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'onboarding_cubit.dart';
 
 sealed class OnboardingState extends Equatable {
   const OnboardingState();

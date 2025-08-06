@@ -13,8 +13,7 @@ import '../../../../core/routing/routes_name.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/utils/colors/app_colors.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
-import '../../controller/cubit/onboarding.state.dart';
-import '../../controller/cubit/onboarding_cubit.dart';
+import '../../controller/onboarding_cubit.dart';
 import '../../data/models/onboarding_model.dart';
 
 part '../widgets/build_action_button.dart';

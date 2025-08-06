@@ -25,7 +25,8 @@ Future<void> initializeServices() async {
   log('setupServiceLocator initialized', name: 'initServices');
 
   // Initialize Firebase
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions
+  // .currentPlatform);
   // log('Firebase initialized');
 
   // Initialize Firebase Messaging
