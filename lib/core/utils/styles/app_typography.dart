@@ -11,7 +11,7 @@ import 'app_font_weight.dart';
 /// with responsive font sizes, weights, and colors. It is designed as a
 /// singleton with a private constructor to prevent instantiation.
 
-class AppTypography {
+abstract final class AppTypography {
   const AppTypography._();
 
   static final textStyle23Bold = TextStyle(

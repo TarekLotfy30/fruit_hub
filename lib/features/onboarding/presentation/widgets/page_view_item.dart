@@ -1,13 +1,19 @@
 part of '../widgets/onboarding_view_body.dart';
 
 class _PageViewItem extends StatelessWidget {
-  const _PageViewItem(this._item);
+  const _PageViewItem({
+    required this.item,
+    required this.cubit,
+    required this.theme,
+  });
 
-  final OnboardingModel _item;
+  final OnboardingModel item;
+  final OnboardingCubit cubit;
+  final ThemeData theme;
 
   Future<void> _onSkipTap(BuildContext context) async {
-    context.read<OnboardingCubit>().skipandSave();
-    Navigation.pushAndRemove(context, RoutesName.loginScreen);
+    cubit.skipAndSave();
+    Navigation.navigateToAndReplace(context, RoutesName.loginScreen);
   }
 
   @override
@@ -21,7 +27,7 @@ class _PageViewItem extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: BuildOptimizedSvg(
-                  assetPath: _item.backgroundImage,
+                  assetPath: item.backgroundImage,
                   semanticLabel: 'Background Color',
                   fit: BoxFit.fill,
                 ),
@@ -29,7 +35,7 @@ class _PageViewItem extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BuildOptimizedSvg(
-                  assetPath: _item.image,
+                  assetPath: item.image,
                   semanticLabel: 'image',
                 ),
               ),
@@ -63,32 +69,32 @@ class _PageViewItem extends StatelessWidget {
           children: [
             // title
             Visibility(
-              visible: _item.isLast,
+              visible: item.isLast,
               replacement: Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: _item.titleTextSpan1,
-                      style: Theme.of(context).textTheme.displaySmall,
+                      text: item.titleTextSpan1,
+                      style: theme.textTheme.displayLarge,
                     ),
                     TextSpan(
-                      text: _item.titleTextSpan2,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                      text: item.titleTextSpan2,
+                      style: theme.textTheme.displayLarge?.copyWith(
+                        color: theme.colorScheme.primary,
                       ),
                     ),
                     TextSpan(
-                      text: _item.titleTextSpan3,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: Theme.of(context).colorScheme.tertiary,
+                      text: item.titleTextSpan3,
+                      style: theme.textTheme.displayLarge?.copyWith(
+                        color: theme.colorScheme.tertiary,
                       ),
                     ),
                   ],
                 ),
               ),
               child: Text(
-                _item.title ?? '',
-                style: Theme.of(context).textTheme.displaySmall,
+                item.title ?? '',
+                style: theme.textTheme.displayLarge,
               ),
             ),
             verticalSpacing(Spacing.spacing24),
@@ -98,9 +104,9 @@ class _PageViewItem extends StatelessWidget {
                 horizontal: AppPaddings.padding32.w,
               ),
               child: Text(
-                _item.subTitle,
+                item.subTitle,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                style: theme.textTheme.labelMedium?.copyWith(
                   color: AppColors.textTertiary,
                 ),
               ),

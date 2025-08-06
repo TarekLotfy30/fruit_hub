@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 
 // green500 => buttons and page indicator , fab el background beta3ha , icons
 
-class AppColors {
-  const AppColors._();
-
+abstract final class AppColors {
   // ========== GRAYSCALE PALETTE ==========
   static const Color grayscale50 = Color(0xFFF3F5F7);
   static const Color grayscale100 = Color(0xFFE4E6E7);
@@ -21,7 +19,6 @@ class AppColors {
   static const Color grayscale700 = Color(0xFF494F50);
   static const Color grayscale800 = Color(0xFF313535);
   static const Color grayscale900 = Color(0xFF181A1B);
-
 
   // ========== GREEN PALETTE ==========
   static const Color green50 = Color(0xFFEEFBEA); // Light green tint
@@ -101,22 +98,15 @@ class AppColors {
   // ========== TEXT COLORS ==========
   // Light theme text colors
   static const Color textPrimary = grayscale900; // Main text - highest contrast
-  static const Color textSecondary =
-      grayscale700; // Secondary text - medium contrast
-  static const Color textTertiary =
-      grayscale500; // Tertiary text - lower contrast
-  static const Color textDisabled =
-      grayscale400; // Disabled text - lowest contrast
+  static const Color textSecondary = grayscale700; // Secondary text - medium
+  static const Color textTertiary = grayscale500; // Tertiary text - lower
+  static const Color textDisabled = grayscale400; // Disabled text - lowest
 
   // Dark theme text colors
-  static const Color textPrimaryDark =
-      grayscale100; // Main text on dark backgrounds
-  static const Color textSecondaryDark =
-      grayscale300; // Secondary text on dark backgrounds
-  static const Color textTertiaryDark =
-      grayscale400; // Tertiary text on dark backgrounds
-  static const Color textDisabledDark =
-      grayscale600; // Disabled text on dark backgrounds
+  static const Color textPrimaryDark = grayscale100; // Main text on dark BG
+  static const Color textSecondaryDark = grayscale300; // Sec text on dark BG
+  static const Color textTertiaryDark = grayscale400; // Tertiary text on dark
+  static const Color textDisabledDark = grayscale600; // Disabled text on dark
 
   static const Color textLink = green600; // Link text in light theme
   static const Color textLinkDark = green400; // Link text in dark theme
@@ -133,5 +123,5 @@ class AppColors {
   static const Color surfaceElevated3 = Color(0xFFECE6F0); // Menus
 
   // Dark theme surface variants
-  static const Color darkSurface = Color(0xFF0d0d0d);
+  static const Color darkSurface = Color(0xFF0D0D0D);
 }

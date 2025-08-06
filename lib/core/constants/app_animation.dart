@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppAnimations {
-  const AppAnimations._();
-
+abstract final class AppAnimations {
   /// Animation curve for most UI transitions
   static const Curve standardAnimationCurve = Curves.easeInOut;
 

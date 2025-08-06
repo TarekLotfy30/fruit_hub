@@ -1,5 +1,4 @@
-
-class AppBorderWidth {
+abstract final class AppBorderWidth {
   /// Default border width for most components
   static const double defaultBorderWidth = 1;
 

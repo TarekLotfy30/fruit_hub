@@ -1,6 +1,4 @@
-class AppBreakPoints {
-  AppBreakPoints._();
-
+abstract final class AppBreakPoints {
   /// Mobile breakpoint (0-600px)
   static const double mobileBreakpoint = 600;
 

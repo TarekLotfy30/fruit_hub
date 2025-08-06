@@ -76,25 +76,11 @@ class LocalHelper {
   /// Parameters:
   ///   - key: The [AppSharedKey] to retrieve.
   ///   - defaultValue: The value to return if the key is not found.
-  T getValue<T>({required AppSharedKey key}) {
+  dynamic getValue({required AppSharedKey key}) {
     final keyString = _getKeyString(key);
-    dynamic value;
-
-    // Check the generic type T to determine which method to use
-    if (T == String) {
-      value = _pref.getString(keyString);
-    } else if (T == bool) {
-      value = _pref.getBool(keyString);
-    } else if (T == int) {
-      value = _pref.getInt(keyString);
-    } else if (T == double) {
-      value = _pref.getDouble(keyString);
-    } else if (T == List<String>) {
-      value = _pref.getStringList(keyString);
-    }
-
+    final value = _pref.get(keyString);
     log('Retrieved value for $keyString: $value', name: 'LocalHelper');
-    return value as T;
+    return value;
   }
 
   /// Removes a value from shared preferences.
@@ -154,3 +140,15 @@ class LocalHelper {
     }
 
 */
+
+// /// The global instance of GetIt for dependency injection.
+// final getIt = GetIt.instance;
+//
+// Future<void> setupServiceLocator() async {
+//   try {
+//     // SharedPreferences
+//     final sharedPrefs = await SharedPreferences.getInstance();
+//     getIt.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
+//     getIt.registerLazySingleton<LocalHelper>(
+//           () => LocalHelper(getIt<SharedPreferences>()),
+//     );

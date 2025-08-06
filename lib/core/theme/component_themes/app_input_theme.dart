@@ -5,7 +5,7 @@ import '../../constants/app_border_width.dart';
 import '../../constants/app_corners.dart';
 import '../../constants/app_padding.dart';
 import '../../utils/colors/app_colors.dart';
-import '../text_themes/base_text_theme.dart';
+import '../text_themes/app_text_themes.dart';
 
 abstract final class AppInputTheme {
   AppInputTheme._();
@@ -76,33 +76,33 @@ abstract final class AppInputTheme {
       ),
 
       // Hint styling
-      hintStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
+      hintStyle: AppTextThemes.textTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Helper styling
-      helperStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
+      helperStyle: AppTextThemes.textTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Error styling
-      errorStyle: AppTextThemes.baseTextTheme.bodyMedium?.copyWith(
+      errorStyle: AppTextThemes.textTheme.bodyMedium?.copyWith(
         color: colorScheme.error,
       ),
 
       // Counter styling
-      counterStyle: AppTextThemes.baseTextTheme.labelMedium?.copyWith(
+      counterStyle: AppTextThemes.textTheme.labelMedium?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),
       ),
 
       // Label styling
-      labelStyle: AppTextThemes.baseTextTheme.labelLarge?.copyWith(
+      labelStyle: AppTextThemes.textTheme.labelLarge?.copyWith(
         color: isDark
             ? colorScheme.onSurfaceVariant
             : colorScheme.onSurface.withValues(alpha: 0.6),

@@ -1,11 +1,13 @@
 part of '../widgets/onboarding_view_body.dart';
 
 class _BuildActionButton extends StatelessWidget {
-  const _BuildActionButton();
+  const _BuildActionButton({required this.cubit});
+
+  final OnboardingCubit cubit;
 
   Future<void> _onStartButton(BuildContext context) async {
-    context.read<OnboardingCubit>().skipandSave();
-    await Navigation.pushAndRemove(context, RoutesName.loginScreen);
+    cubit.skipAndSave();
+    await Navigation.navigateToAndReplace(context, RoutesName.loginScreen);
   }
 
   @override

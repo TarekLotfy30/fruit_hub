@@ -13,13 +13,13 @@ import '../../../../core/routing/routes_name.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/utils/colors/app_colors.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
+import '../../controller/cubit/onboarding.state.dart';
+import '../../controller/cubit/onboarding_cubit.dart';
 import '../../data/models/onboarding_model.dart';
-import '../../logic/cubit/onboarding.state.dart';
-import '../../logic/cubit/onboarding_cubit.dart';
 
-part '../widgets/build_page_view.dart';
-part '../widgets/build_page_indicator.dart';
 part '../widgets/build_action_button.dart';
+part '../widgets/build_page_indicator.dart';
+part '../widgets/build_page_view.dart';
 part '../widgets/page_view_item.dart';
 
 class OnboardingViewBody extends StatelessWidget {
@@ -27,27 +27,37 @@ class OnboardingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: Column(
-        children: [
-          // Main PageView - handles scrolling between pages & Skip Button
-          const Expanded(child: _BuildPageView()),
-
-          // Page indicator - shows current page progress
-          const _BuildPageIndicator(),
-
-          verticalSpacing(Spacing.spacing32),
-
-          // Action button - Start button based on current page
-          Padding(
-            padding: EdgeInsets.all(AppPaddings.padding20.w),
-            child: const _BuildActionButton(),
+    final cubit = context.read<OnboardingCubit>();
+    final onboardingItems = AppConstant.onboardingItems;
+    final theme = Theme.of(context);
+    return Column(
+      children: [
+        // Main PageView - handles scrolling between pages & Skip Button
+        Expanded(
+          child: _BuildPageView(
+            cubit: cubit,
+            onboardingItems: onboardingItems,
+            theme: theme,
           ),
+        ),
 
-          verticalSpacing(Spacing.spacing8),
-        ],
-      ),
+        // Page indicator - shows current page progress
+        _BuildPageIndicator(
+          cubit: cubit,
+          onboardingItems: onboardingItems,
+          theme: theme,
+        ),
+
+        verticalSpacing(Spacing.spacing32),
+
+        // Action button - Start button based on current page
+        Padding(
+          padding: EdgeInsets.all(AppPaddings.padding20.w),
+          child: _BuildActionButton(cubit: cubit),
+        ),
+
+        verticalSpacing(Spacing.spacing8),
+      ],
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// A utility class that provides static methods for handling navigation
 ///  tasks using named routes.
-class Navigation {
+abstract final class Navigation {
   // Private constructor to prevent instantiation
   Navigation._();
 
@@ -20,7 +20,7 @@ class Navigation {
   ///
   /// Returns:
   ///   A Future that completes when the pushed route is popped
-  static Future<void> push(
+  static Future<void> navigateTo(
     BuildContext context,
     String routeName, {
     Object? arguments,
@@ -51,7 +51,7 @@ class Navigation {
   ///   - [context]: The BuildContext used to access the Navigator
   ///   - [routeName]: The name of the route to navigate to
   ///   - [arguments]: Optional arguments passed to the route
-  static Future<void> pushAndRemove(
+  static Future<void> navigateToAndClearStack(
     BuildContext context,
     String routeName, {
     Object? arguments,
@@ -82,7 +82,7 @@ class Navigation {
   ///   - [context]: The BuildContext used to access the Navigator
   ///   - [routeName]: The name of the route to replace with
   ///   - [arguments]: Optional arguments passed to the route
-  static Future<void> pushReplacement(
+  static Future<void> navigateToAndReplace(
     BuildContext context,
     String routeName, {
     Object? arguments,
@@ -112,7 +112,7 @@ class Navigation {
   /// Parameters:
   ///   - [context]: The BuildContext used to access the Navigator
   ///   - [result]: Optional result to return to the previous route
-  static void pop(BuildContext context, [dynamic result]) {
+  static void goBack(BuildContext context, [dynamic result]) {
     if (Navigator.of(context).canPop()) {
       log('Popping current route', name: _logTag);
       Navigator.of(context).pop(result);

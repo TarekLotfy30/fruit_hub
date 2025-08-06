@@ -4,21 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/presentation/screens/login_view.dart';
-import '../../features/onboarding/logic/cubit/onboarding_cubit.dart';
-
+import '../../features/onboarding/controller/cubit/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
 import 'routes_name.dart';
 
 /// Centralized router for handling all navigation within the application.
 /// Uses named routes with arguments and provides custom transition animations.
-class AppRouter {
+abstract final class AppRouter {
+  AppRouter._();
+
   static const String _logTag = 'APP_ROUTER';
 
   /// Generates a route based on the provided [settings].
   /// Handles all possible routes in the application with proper type checking,
   /// dependency injection, and error handling.
-
-  Route<dynamic> generateRoute(RouteSettings settings) {
+  /// Main route generator method
+  static Route<dynamic> generateRoute(RouteSettings settings) {
     log(
       '🌐 Navigating to: ${settings.name}',
       name: _logTag,
@@ -26,40 +27,87 @@ class AppRouter {
     );
     switch (settings.name) {
       case RoutesName.onboardingScreen:
-        return buildRoute(
+        return _buildRoute(
           BlocProvider(
             create: (context) => OnboardingCubit(),
             child: const OnboardingView(),
           ),
         );
       case RoutesName.loginScreen:
-        return buildRoute(const LoginView());
+        return _buildRoute(const LoginView());
 
       default:
-        return buildRoute(_buildErrorRoute(error: settings.name));
+        return _buildRoute(_buildErrorRoute(error: settings.name));
     }
   }
 
-  MaterialPageRoute<dynamic> buildRoute(Widget child) =>
-      MaterialPageRoute(builder: (_) => child);
+  /// Build route with custom page transition
+  static PageRoute<T> _buildRoute<T extends Object?>(
+    Widget child, {
+    RouteSettings? settings,
+    bool maintainState = true,
+    bool fullscreenDialog = false,
+  }) {
+    return PageRouteBuilder<T>(
+      settings: settings,
+      pageBuilder: (context, animation, secondaryAnimation) => child,
+      maintainState: maintainState,
+      fullscreenDialog: fullscreenDialog,
 
-  /// Builds an error route when route generation fails
-  Widget _buildErrorRoute({dynamic error}) {
+      // TODO(TAREK): add the duration form the duration class utils
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: animation.drive(
+            Tween(
+              begin: const Offset(1, 0),
+              end: Offset.zero,
+            ).chain(CurveTween(curve: Curves.easeInOut)),
+          ),
+          child: child,
+        );
+      },
+    );
+  }
+
+  /// Build fade transition route
+  static PageRoute<T> _buildFadeRoute<T extends Object?>(
+    Widget child, {
+    RouteSettings? settings,
+  }) {
+    return PageRouteBuilder<T>(
+      settings: settings,
+      pageBuilder: (context, animation, secondaryAnimation) => child,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+    );
+  }
+
+  /// Build error route
+  static Widget _buildErrorRoute({String? error}) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Navigation Error')),
+      appBar: AppBar(
+        title: const Text('Error'),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Failed to generate route:',
-              style: TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              error.toString(),
-              style: const TextStyle(color: Colors.red),
-              textAlign: TextAlign.center,
+            const Icon(Icons.error_outline, size: 64, color: Colors.red),
+            const SizedBox(height: 16),
+            const Text('Route not found'),
+            const SizedBox(height: 8),
+            Text(error ?? 'Unknown route'),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {},
+              // onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+              //   RoutesName.homeScreen,
+              //       (route) => false,
+              // ),
+              child: const Text('Go to Home'),
             ),
           ],
         ),
@@ -67,65 +115,3 @@ class AppRouter {
     );
   }
 }
-
-/*
-Example Usage in Main App:
-
-void main() {
-  // Initialize dependencies
-  DioHelper.init();
-  setupServiceLocator();
-
-  runApp(
-    RickAndMortyApp(
-      appRouter: AppRouter(),
-    ),
-  );
-}
-
-class RickAndMortyApp extends StatelessWidget {
-  const RickAndMortyApp({super.key, required this.appRouter});
-
-  final AppRouter appRouter;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: MyRouteInformationParser(),
-      routerDelegate: MyRouterDelegate(appRouter: appRouter),
-       Or use the traditional way:
-      onGenerateRoute: appRouter.generateRoute,
-    );
-  }
-}
-*/
-
-
-
-  /// Handles the book details route with proper argument validation
-  // Route<dynamic> _handleBookDetailsRoute(dynamic arguments) {
-  //   if (arguments is! BookModel) {
-  //     developer.log(
-  //       '⚠️ Invalid arguments for book details route',
-  //       name: _logTag,
-  //       level: developer.Level.warning,
-  //     );
-  //     return _buildAnimatedRoute(const HomeScreen());
-  //   }
-
-  //   final bookModel = arguments as BookModel;
-  //   final category = bookModel.volumeInfo?.categories?.isNotEmpty ?? false
-  //       ? bookModel.volumeInfo!.categories!.first
-  //       : 'Unknown';
-
-  //   return _buildAnimatedRoute(
-  //     BlocProvider(
-  //       create: (context) => SimilarBooksCubit(
-  //         getIt.get<HomeRepoImpl>(),
-  //       )..getSimilarBooks(category: category),
-  //       child: BookDetailsScreen(book: bookModel),
-  //     ),
-  //     animationType: NavigationAnimationType.slideFade,
-  //   );
-  // }

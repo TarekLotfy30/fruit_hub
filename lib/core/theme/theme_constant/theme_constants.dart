@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ThemeConstants {
+abstract final class ThemeConstants {
   const ThemeConstants._();
 
   // ========================================

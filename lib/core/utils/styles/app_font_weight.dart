@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 /// with a private constructor to prevent instantiation, ensuring static access.
 /// Font weight constants, defined as immutable [FontWeight] values for type
 ///  safety.
-class AppFontWeight {
-  const AppFontWeight._();
-
+abstract final class AppFontWeight {
   static const FontWeight thin = FontWeight.w100;
 
   static const FontWeight extraLight = FontWeight.w200;

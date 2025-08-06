@@ -52,11 +52,16 @@ dependencies:
   flutter_native_splash: ^2.4.6
   
   # SVG image rendering support
-  flutter_svg: ^2.1.0
+  flutter_svg: ^2.2.0
+
+  # Check internet connection status
   connectivity_plus: ^6.1.4
   
   # Animation and transition effects
   animate_do: ^4.2.0
+  animate_to: ^0.1.0
+  animations: ^2.0.11
+  loading_animation_widget: ^1.3.0
 
 dev_dependencies:
   # Flutter testing framework for unit and widget tests

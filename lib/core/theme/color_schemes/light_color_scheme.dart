@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import '../../utils/colors/app_colors.dart';
 
 abstract final class LightColorScheme {
-  const LightColorScheme._();
-
   /// Light theme color scheme using AppColors
   /// Following Material 3 color system with your app's color palette
   static const ColorScheme colorScheme = ColorScheme(

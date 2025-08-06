@@ -1,6 +1,4 @@
-class AppCorners {
-  AppCorners._();
-
+abstract final class AppCorners {
   /// Border radius for small components
   /// Used for: Chips, badges, small containers
   static const double smallBorderRadius = 8;

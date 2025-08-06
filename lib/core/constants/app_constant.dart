@@ -7,7 +7,7 @@ import 'app_assets.dart';
 class AppConstant {
   AppConstant._();
 
-  static List<OnboardingModel> onboardingItems = [
+  static final List<OnboardingModel> onboardingItems = [
     OnboardingModel(
       titleTextSpan1: '${LocaleKeys.welcome.tr()} ',
       titleTextSpan2: LocaleKeys.fruit.tr(),

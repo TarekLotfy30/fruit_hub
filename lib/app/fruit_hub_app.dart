@@ -10,14 +10,25 @@ import '../core/services/local/app_shared_keys.dart';
 import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
 
+/// The main application widget that configures the app environment.
+///
+/// This widget sets up:
+/// - Screen size adaptation with ScreenUtilInit
+/// - State management with BlocProvider
+/// - Localization with EasyLocalization
+/// - Theme configuration
+/// - Navigation to the initial screen (SplashScreen)
+
 class FruitHubApp extends StatelessWidget {
   const FruitHubApp({super.key});
 
-  String getInitialRoute() {
-    final LocalHelper localHelper = getIt<LocalHelper>();
-    final isExist = localHelper.exists(key: AppSharedKey.skipOnBoarding);
+  String _getInitialRoute() {
+    final localHelper = getIt<LocalHelper>();
 
-    if (isExist) {
+    final skipOnboarding =
+        localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
+
+    if (skipOnboarding) {
       return RoutesName.loginScreen;
     } else {
       return RoutesName.onboardingScreen;
@@ -40,8 +51,10 @@ class FruitHubApp extends StatelessWidget {
         // Set current locale from EasyLocalization
         locale: context.locale,
 
-        initialRoute: getInitialRoute(),
-        onGenerateRoute: AppRouter().generateRoute,
+        initialRoute: _getInitialRoute(),
+        onGenerateRoute: AppRouter.generateRoute,
+
+        // Theme configuration
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,
         themeMode: ThemeMode.light,

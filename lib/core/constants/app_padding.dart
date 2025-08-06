@@ -10,4 +10,3 @@ abstract final class AppPaddings {
   static const double padding28 = 28;
   static const double padding32 = 32;
 }
-

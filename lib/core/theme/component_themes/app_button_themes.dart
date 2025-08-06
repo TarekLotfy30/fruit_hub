@@ -7,7 +7,7 @@ import '../../constants/app_elevation.dart';
 import '../../constants/app_padding.dart';
 import '../../constants/app_sizes.dart';
 import '../../utils/styles/app_fonts_family.dart';
-import '../text_themes/base_text_theme.dart';
+import '../text_themes/app_text_themes.dart';
 
 /// Button theme configurations for consistent button styling.
 ///
@@ -38,7 +38,7 @@ abstract final class AppButtonThemes {
             ),
             padding: EdgeInsets.symmetric(vertical: AppPaddings.padding12.h),
             minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h), //48
-            textStyle: AppTextThemes.baseTextTheme.titleLarge?.copyWith(
+            textStyle: AppTextThemes.textTheme.titleLarge?.copyWith(
               fontFamily: AppFontFamily.cairo,
             ),
           ).copyWith(
@@ -111,7 +111,7 @@ abstract final class AppButtonThemes {
               horizontal: AppPaddings.padding14.w,
             ),
             minimumSize: Size(double.maxFinite, AppSizes.buttonHeight.h),
-            textStyle: AppTextThemes.baseTextTheme.titleMedium?.copyWith(
+            textStyle: AppTextThemes.textTheme.titleMedium?.copyWith(
               fontFamily: AppFontFamily.cairo,
             ),
           ).copyWith(
@@ -156,7 +156,6 @@ abstract final class AppButtonThemes {
     );
   }
 
-
   static TextButtonThemeData textButtonTheme(ColorScheme colorScheme) {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
@@ -164,7 +163,7 @@ abstract final class AppButtonThemes {
         foregroundColor: colorScheme.primary,
         elevation: AppElevation.buttonElevation,
         alignment: Alignment.center,
-        textStyle: AppTextThemes.baseTextTheme.labelSmall?.copyWith(
+        textStyle: AppTextThemes.textTheme.labelSmall?.copyWith(
           fontFamily: AppFontFamily.cairo,
         ),
       ),

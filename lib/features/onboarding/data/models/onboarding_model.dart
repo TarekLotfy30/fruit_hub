@@ -1,5 +1,5 @@
-class OnboardingModel {
-  OnboardingModel({
+final class OnboardingModel {
+  const OnboardingModel({
     this.titleTextSpan2,
     this.titleTextSpan1,
     this.titleTextSpan3,

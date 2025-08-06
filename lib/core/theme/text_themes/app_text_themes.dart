@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../utils/styles/app_typography.dart';
 
 abstract final class AppTextThemes {
@@ -12,15 +13,15 @@ abstract final class AppTextThemes {
   /// - Title styles (16pt): For card titles and buttons
   /// - Label styles (13pt): For labels and small text
   /// - Body styles (11pt): For body text
-  static final TextTheme baseTextTheme = TextTheme(
+  static final TextTheme textTheme = TextTheme(
     // Display styles (23pt) - Large headings
-    //displayMedium: AppTypography.displayMedium,
-    //displayLarge: AppTypography.displayLarge,
-    displaySmall: AppTypography.textStyle23Bold, // TODO
+    displayLarge: AppTypography.textStyle23Bold,
+    // displayMedium: AppTypography.textStyle23Bold,
+    // displaySmall: AppTypography.displaySmall,
 
     // Headline styles (19pt) - Section headers
-    //headlineLarge: AppTypography.headlineLarge,
-    headlineMedium: AppTypography.textStyle19Bold,
+    headlineLarge: AppTypography.textStyle19Bold,
+    //headlineMedium: AppTypography.textStyle19Bold,
     //headlineSmall: AppTypography.headlineSmall,
 
     // Title styles (16pt) - Card titles, button text
@@ -39,8 +40,6 @@ abstract final class AppTextThemes {
     //bodySmall: AppTypography.bodySmall
   );
 }
-
-
 
 // TEXT USAGE EXAMPLES:
 /*

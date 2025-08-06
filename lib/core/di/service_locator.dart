@@ -20,7 +20,7 @@ import '../services/local/local_helper.dart';
 ///
 /// This function initializes and registers dependencies such as Dio, DioHelper,
 /// SharedPreferences, LocalHelper, and repositories. It uses a combination of
-/// singleton and async singleton registrations to 
+/// singleton and async singleton registrations to
 /// ensure efficient resource usage.
 /// The setup is wrapped in error handling to catch and log any issues during
 /// initialization.
@@ -32,14 +32,12 @@ Future<void> setupServiceLocator() async {
   try {
     // SharedPreferences
     final sharedPrefs = await SharedPreferences.getInstance();
-    getIt.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
-    getIt.registerLazySingleton<LocalHelper>(
-      () => LocalHelper(getIt<SharedPreferences>()),
-    );
+    getIt.registerSingleton<SharedPreferences>(sharedPrefs);
+    getIt.registerSingleton<LocalHelper>(LocalHelper(sharedPrefs));
 
     // Register helpers
     //  di.registerLazySingleton<DioHelper>(() => DioHelper(getIt()));
-    //Dio and DioHelper
+    // Dio and DioHelper
     //   log('Setting up Dio instance', name: 'ServiceLocator');
     //   final dio = Dio();
     //   getIt.registerSingleton<Dio>(dio);
@@ -119,7 +117,6 @@ Future<void> setupServiceLocator() async {
 //     return prefs;
 //   }, instanceName: 'SharedPreferences');
 
-
 //   // Register LocalHelper with SharedPreferences dependency
 //   getIt.registerSingleton<LocalHelper>(
 //     LocalHelper(getIt<SharedPreferences>(instanceName: 'SharedPreferences')),
@@ -164,28 +161,27 @@ Future<void> setupServiceLocator() async {
 //   _getIt.registerFactory<UserCubit>(() => UserCubit(_getIt<UserRepository>()));
 // }
 
-  // get => betrag3ly haga ana ansha2tha
-  // <T> => fe el makan da ba7ded el haga ely ana asnh2tha w 3ayzha terg3ly
+// get => betrag3ly haga ana ansha2tha
+// <T> => fe el makan da ba7ded el haga ely ana asnh2tha w 3ayzha terg3ly
 
 /*
 
 
 /// Usage in main.dart:
-/// 
+///
 /// void main() async {
 ///   WidgetsFlutterBinding.ensureInitialized();
 ///   await ServiceLocator.initialize();
 ///   runApp(MyApp());
 /// }
-/// 
+///
 /// Usage in other files:
-/// 
+///
 /// final dioHelper = ServiceLocator.get<DioHelper>();
 /// final userCubit = ServiceLocator.get<UserCubit>();
 
 
 }*/
-
 
 /*
 in main () {

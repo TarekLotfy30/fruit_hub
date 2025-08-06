@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_constant.dart';
+import '../../../../core/di/service_locator.dart';
 import '../../../../core/services/local/app_shared_keys.dart';
 import '../../../../core/services/local/local_helper.dart';
-import '../../../../core/di/service_locator.dart';
 import 'onboarding.state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
-  OnboardingCubit() : super(const OnboardingInitial());
+  OnboardingCubit() : super(OnboardingInitial());
 
   final PageController _pageController = PageController(
     initialPage: 0,
@@ -20,11 +20,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   void changePage(int index) {
     if (index == AppConstant.onboardingItems.length - 1) {
-      emit(OnboardingChanged(isLastPage: true, pageIndex: index));
+      emit(OnboardingChanged());
     }
   }
 
-  Future<void> skipandSave() async {
+  Future<void> skipAndSave() async {
     await getIt<LocalHelper>().setValue(
       key: AppSharedKey.skipOnBoarding,
       value: true,

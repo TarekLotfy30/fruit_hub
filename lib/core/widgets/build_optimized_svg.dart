@@ -23,7 +23,6 @@ class BuildOptimizedSvg extends StatelessWidget {
       fit: fit ?? BoxFit.contain,
       semanticsLabel: semanticLabel,
       colorFilter: colorFilter,
-
       placeholderBuilder: (context) => ColoredBox(
         color: Colors.transparent,
         child: Center(
