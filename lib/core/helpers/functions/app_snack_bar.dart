@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/app_corners.dart';
 import '../../constants/app_durations.dart';
 import '../../constants/app_elevation.dart';
+import '../../constants/app_icon_sizes.dart';
 import '../../constants/app_icons.dart';
 import '../../constants/app_padding.dart';
 import '../../utils/colors/app_colors.dart';
 
-class AppSnackBar {
+abstract class AppSnackBar {
   const AppSnackBar._();
 
   static Future<void> _showSnackBar(
@@ -21,6 +22,7 @@ class AppSnackBar {
   }) async {
     if (context.mounted) {
       final messenger = ScaffoldMessenger.of(context);
+      final theme = Theme.of(context);
 
       // Hide any existing snackbars first
       messenger.hideCurrentSnackBar();
@@ -33,16 +35,15 @@ class AppSnackBar {
                 message,
                 style:
                     style ??
-                    Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.onInverseSurface,
+                    theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.onInverseSurface,
                     ),
               ),
               const Spacer(),
-              // Optional ICON
               Icon(
                 icon,
-                color: Theme.of(context).colorScheme.onInverseSurface,
-                size: 24.r,
+                color: theme.colorScheme.onInverseSurface,
+                size: AppIconSize.regular.r,
               ),
             ],
           ),
@@ -52,7 +53,9 @@ class AppSnackBar {
           ),
           behavior: SnackBarBehavior.floating,
           elevation: AppElevation.snackBarElevation,
-          duration: AppDurations.snackbarStandard, //3
+          duration: AppDurations.snackbarStandard,
+
+          //3
           margin: EdgeInsets.symmetric(
             horizontal: AppPaddings.padding16.w,
             vertical: AppPaddings.padding16.h,
@@ -79,7 +82,7 @@ class AppSnackBar {
   /// @param message The text message to display in the snackbar
   /// @param [action] Optional action text for the snackbar
   /// @return A Future that completes when the snackbar is shown
-  static Future<void> showSuccessSnackBar(
+  static Future<void> showSuccess(
     BuildContext context,
     String message, {
     String? action,
@@ -99,7 +102,7 @@ class AppSnackBar {
   /// @param message The text message to display in the snackbar
   /// @param [action] Optional action text for the snackbar
   /// @return A Future that completes when the snackbar is shown
-  static Future<void> showErrorSnackBar(
+  static Future<void> showError(
     BuildContext context,
     String message, {
     String? action,
@@ -120,19 +123,19 @@ class AppSnackBar {
   /// @param action Optional action configuration
   /// @param duration Custom duration (default: 4 seconds)
   /// @return A Future that completes when the snackbar is shown
-  // static Future<void> showWarning(
-  //   BuildContext context,
-  //   String message, {
-  //   String? action,
-  // }) async {
-  //   return show(
-  //     context,
-  //     message,
-  //     type: SnackBarType.warning,
-  //     action: action,
-  //     duration: duration,
-  //   );
-  // }
+  static Future<void> showWarning(
+    BuildContext context,
+    String message, {
+    String? action,
+  }) async {
+    return _showSnackBar(
+      context,
+      message,
+      AppColors.warning,
+      action: action,
+      icon: AppIcons.warning,
+    );
+  }
 
   /// Shows an info snackbar with pre-defined styling
   ///
@@ -141,18 +144,17 @@ class AppSnackBar {
   /// @param action Optional action configuration
   /// @param duration Custom duration (default: 3 seconds)
   /// @return A Future that completes when the snackbar is shown
-  // static Future<void> showInfo(
-  //   BuildContext context,
-  //   String message, {
-  //   SnackBarActionConfig? action,
-  //   Duration? duration,
-  // }) async {
-  //   return show(
-  //     context,
-  //     message,
-  //     type: SnackBarType.info,
-  //     action: action,
-  //     duration: duration,
-  //   );
-  // }
+  static Future<void> showInfo(
+    BuildContext context,
+    String message, {
+    String? action,
+  }) async {
+    return _showSnackBar(
+      context,
+      message,
+      AppColors.info,
+      action: action,
+      icon: AppIcons.info,
+    );
+  }
 }

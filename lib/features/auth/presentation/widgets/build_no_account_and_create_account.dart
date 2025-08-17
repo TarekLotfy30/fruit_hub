@@ -1,10 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+part of '../screens/login_view.dart';
 
-import '../../../../core/translation/locale_keys.g.dart';
-
-class BuildNoAccountAndCreateAccount extends StatelessWidget {
-  const BuildNoAccountAndCreateAccount({super.key});
+class _BuildNoAccountAndCreateAccount extends StatelessWidget {
+  const _BuildNoAccountAndCreateAccount();
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+part of '../screens/login_view.dart';
 
-import '../../../../core/constants/app_padding.dart';
-import 'build_divider_with_text.dart';
-import 'build_login_form.dart';
-import 'build_no_account_and_create_account.dart';
-import 'build_social_media_section.dart';
-
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class _LoginViewBody extends StatelessWidget {
+  const _LoginViewBody();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +15,10 @@ class LoginViewBody extends StatelessWidget {
         child: Column(
           spacing: AppPaddings.padding16.h,
           children: const [
-            BuildLoginForm(),
-            BuildNoAccountAndCreateAccount(),
-            BuildDividerWithText(),
-            BuildSocialMediaSection(),
+            _BuildLoginForm(),
+            _BuildNoAccountAndCreateAccount(),
+            _BuildDividerWithText(),
+            _BuildSocialMediaSection(),
           ],
         ),
       ),

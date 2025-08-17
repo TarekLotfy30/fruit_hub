@@ -1,10 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+part of '../screens/login_view.dart';
 
-import '../../../../core/translation/locale_keys.g.dart';
-
-class BuildDividerWithText extends StatelessWidget {
-  const BuildDividerWithText({super.key});
+class _BuildDividerWithText extends StatelessWidget {
+  const _BuildDividerWithText();
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +10,15 @@ class BuildDividerWithText extends StatelessWidget {
         const Expanded(child: Divider(endIndent: 18)),
         Text(
           LocaleKeys.or.tr(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface,
+          style: Theme
+              .of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(
+            color: Theme
+                .of(context)
+                .colorScheme
+                .onSurface,
           ),
         ),
         const Expanded(child: Divider(indent: 18)),

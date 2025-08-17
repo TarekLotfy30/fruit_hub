@@ -6,8 +6,10 @@ abstract final class AppIcons {
   static const IconData password = Icons.lock_outline;
   static const IconData visibility = Icons.visibility_outlined;
   static const IconData visibilityOff = Icons.visibility_off_outlined;
-  static const IconData error = Icons.error_outline;
+  static const IconData error = Icons.error_outline_outlined;
   static const IconData success = Icons.check_circle_outline;
+  static const IconData warning = Icons.warning_amber_outlined;
+  static const IconData info = Icons.info_outline;
 
   // If using custom SVG or PNG icons
   static const String leftArrow = 'assets/svgs/icons/left_arrow.svg';

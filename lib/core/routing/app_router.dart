@@ -53,7 +53,6 @@ abstract final class AppRouter {
       pageBuilder: (context, animation, secondaryAnimation) => child,
       maintainState: maintainState,
       fullscreenDialog: fullscreenDialog,
-
       // TODO(TAREK): add the duration form the duration class utils
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(

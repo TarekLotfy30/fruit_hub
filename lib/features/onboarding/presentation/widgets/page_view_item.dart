@@ -1,4 +1,4 @@
-part of '../widgets/onboarding_view_body.dart';
+part of '../screens/onboarding_view.dart';
 
 class _PageViewItem extends StatelessWidget {
   const _PageViewItem({

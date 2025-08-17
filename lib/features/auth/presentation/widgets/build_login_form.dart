@@ -1,21 +1,13 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+part of '../screens/login_view.dart';
 
-import '../../../../core/constants/app_icons.dart';
-import '../../../../core/constants/spacing.dart';
-import '../../../../core/helpers/functions/app_spacing.dart';
-import '../../../../core/translation/locale_keys.g.dart';
-
-class BuildLoginForm extends StatefulWidget {
-  const BuildLoginForm({super.key});
+class _BuildLoginForm extends StatefulWidget {
+  const _BuildLoginForm();
 
   @override
-  State<BuildLoginForm> createState() => _BuildLoginFormState();
+  State<_BuildLoginForm> createState() => _BuildLoginFormState();
 }
 
-class _BuildLoginFormState extends State<BuildLoginForm> {
+class _BuildLoginFormState extends State<_BuildLoginForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;

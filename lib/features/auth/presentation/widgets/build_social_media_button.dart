@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
+part of '../screens/login_view.dart';
 
-import '../../../../core/widgets/build_optimized_svg.dart';
-
-class BuildSocialMediaButton extends StatelessWidget {
-  const BuildSocialMediaButton({
-    super.key,
+class _BuildSocialMediaButton extends StatelessWidget {
+  const _BuildSocialMediaButton({
     required this.assetPath,
     required this.label,
     required this.onPressed,

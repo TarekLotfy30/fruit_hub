@@ -57,7 +57,7 @@ class FruitHubApp extends StatelessWidget {
         // Theme configuration
         theme: AppTheme.lightMode,
         darkTheme: AppTheme.darkMode,
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
       ),
     );
   }
