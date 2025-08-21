@@ -1,4 +1,4 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
 class _BuildSocialMediaButton extends StatelessWidget {
   const _BuildSocialMediaButton({

@@ -13,7 +13,7 @@ class _PageViewItem extends StatelessWidget {
 
   Future<void> _onSkipTap(BuildContext context) async {
     cubit.skipAndSave();
-    Navigation.navigateToAndReplace(context, RoutesName.loginScreen);
+    Navigation.navigateToAndReplace(context, AppRoutesName.signInScreen);
   }
 
   @override

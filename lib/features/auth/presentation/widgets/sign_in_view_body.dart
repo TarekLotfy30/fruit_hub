@@ -1,7 +1,7 @@
-part of '../screens/login_view.dart';
+part of '../screens/sign_in_view.dart';
 
-class _LoginViewBody extends StatelessWidget {
-  const _LoginViewBody();
+class _SignInViewBody extends StatelessWidget {
+  const _SignInViewBody();
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,10 @@ class _LoginViewBody extends StatelessWidget {
         child: Column(
           spacing: AppPaddings.padding16.h,
           children: const [
-            _BuildLoginForm(),
-            _BuildNoAccountAndCreateAccount(),
-            _BuildOrDivider(),
-            _BuildSocialMediaSection(),
+            _SignInForm(),
+            _NoAccountAndCreateAccount(),
+            _OrDivider(),
+            _SocialMediaSection(),
           ],
         ),
       ),

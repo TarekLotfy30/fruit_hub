@@ -1,7 +1,7 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
-class _BuildOrDivider extends StatelessWidget {
-  const _BuildOrDivider();
+class _OrDivider extends StatelessWidget {
+  const _OrDivider();
 
   @override
   Widget build(BuildContext context) {

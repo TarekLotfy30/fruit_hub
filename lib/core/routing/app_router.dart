@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/auth/presentation/screens/login_view.dart';
+import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
-import 'routes_name.dart';
+import 'app_routes_name.dart';
 
 /// Centralized router for handling all navigation within the application.
 /// Uses named routes with arguments and provides custom transition animations.
@@ -26,15 +26,15 @@ abstract final class AppRouter {
       error: settings.arguments?.toString(),
     );
     switch (settings.name) {
-      case RoutesName.onboardingScreen:
+      case AppRoutesName.onboardingScreen:
         return _buildRoute(
           BlocProvider(
             create: (context) => OnboardingCubit(),
             child: const OnboardingView(),
           ),
         );
-      case RoutesName.loginScreen:
-        return _buildRoute(const LoginView());
+      case AppRoutesName.signInScreen:
+        return _buildRoute(const SignInView());
       default:
         return null;
     }

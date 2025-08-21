@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
-import '../core/routing/routes_name.dart';
+import '../core/routing/app_routes_name.dart';
 import '../core/services/local/app_shared_keys.dart';
 import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
@@ -29,9 +29,9 @@ class FruitHubApp extends StatelessWidget {
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
 
     if (skipOnboarding) {
-      return RoutesName.loginScreen;
+      return AppRoutesName.signInScreen;
     } else {
-      return RoutesName.onboardingScreen;
+      return AppRoutesName.onboardingScreen;
     }
   }
 

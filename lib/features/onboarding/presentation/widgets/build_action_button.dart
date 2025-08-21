@@ -7,7 +7,7 @@ class _BuildActionButton extends StatelessWidget {
 
   Future<void> _onStartButton(BuildContext context) async {
     cubit.skipAndSave();
-    await Navigation.navigateToAndReplace(context, RoutesName.loginScreen);
+    await Navigation.navigateToAndReplace(context, AppRoutesName.signInScreen);
   }
 
   @override

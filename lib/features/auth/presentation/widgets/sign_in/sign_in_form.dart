@@ -1,13 +1,13 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
-class _BuildLoginForm extends StatefulWidget {
-  const _BuildLoginForm();
+class _SignInForm extends StatefulWidget {
+  const _SignInForm();
 
   @override
-  State<_BuildLoginForm> createState() => _BuildLoginFormState();
+  State<_SignInForm> createState() => _SignInFormState();
 }
 
-class _BuildLoginFormState extends State<_BuildLoginForm> {
+class _SignInFormState extends State<_SignInForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
@@ -101,7 +101,7 @@ class _BuildLoginFormState extends State<_BuildLoginForm> {
           verticalSpacing(Spacing.spacing16),
           ElevatedButton(
             onPressed: () async {},
-            child: Text(LocaleKeys.login.tr()),
+            child: Text(LocaleKeys.sign_in.tr()),
           ),
         ],
       ),

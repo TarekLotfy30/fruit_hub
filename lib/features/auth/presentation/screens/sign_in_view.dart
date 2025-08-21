@@ -10,25 +10,25 @@ import '../../../../core/helpers/app_spacing.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
 
-part '../widgets/build_or_divider.dart';
-part '../widgets/build_login_form.dart';
-part '../widgets/build_no_account_and_create_account.dart';
-part '../widgets/build_social_media_button.dart';
-part '../widgets/build_social_media_section.dart';
-part '../widgets/login_view_body.dart';
+part '../widgets/sign_in/or_divider.dart';
+part '../widgets/sign_in/sign_in_form.dart';
+part '../widgets/sign_in/no_account_and_create_account.dart';
+part '../widgets/sign_in/social_media_button.dart';
+part '../widgets/sign_in/social_media_section.dart';
+part '../widgets/sign_in_view_body.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignInView extends StatelessWidget {
+  const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleKeys.login.tr()),
+        title: Text(LocaleKeys.sign_in.tr()),
         automaticallyImplyLeading: false,
         centerTitle: true,
-      ), 
-      body: const _LoginViewBody(),
+      ),
+      body: const _SignInViewBody(),
     );
   }
 }

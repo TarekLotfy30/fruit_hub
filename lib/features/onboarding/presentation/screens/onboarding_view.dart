@@ -9,7 +9,7 @@ import '../../../../core/constants/app_padding.dart';
 import '../../../../core/constants/spacing.dart';
 import '../../../../core/helpers/app_navigation.dart';
 import '../../../../core/helpers/app_spacing.dart';
-import '../../../../core/routing/routes_name.dart';
+import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/utils/colors/app_colors.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';

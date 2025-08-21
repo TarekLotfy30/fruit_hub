@@ -3,12 +3,12 @@
 /// This class provides a single source of truth for all route paths in the app,
 /// preventing typos and making route management easier.
 /// All routes should be defined as static constants here.
-abstract final class RoutesName {
+abstract final class AppRoutesName {
   // onboarding route
   static const String onboardingScreen = '/onboarding';
 
   // Authentication routes
-  static const String loginScreen = '/login';
+  static const String signInScreen = '/sign_in';
 
   // // Home/root routes
   // static const String homeScreen = '/home';

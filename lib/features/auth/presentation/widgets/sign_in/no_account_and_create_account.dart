@@ -1,7 +1,7 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
-class _BuildNoAccountAndCreateAccount extends StatelessWidget {
-  const _BuildNoAccountAndCreateAccount();
+class _NoAccountAndCreateAccount extends StatelessWidget {
+  const _NoAccountAndCreateAccount();
 
   @override
   Widget build(BuildContext context) {

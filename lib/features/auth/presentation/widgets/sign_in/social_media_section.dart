@@ -1,7 +1,7 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
-class _BuildSocialMediaSection extends StatelessWidget {
-  const _BuildSocialMediaSection();
+class _SocialMediaSection extends StatelessWidget {
+  const _SocialMediaSection();
 
   @override
   Widget build(BuildContext context) {
