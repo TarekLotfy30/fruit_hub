@@ -19,7 +19,7 @@ abstract final class AppRouter {
   /// Handles all possible routes in the application with proper type checking,
   /// dependency injection, and error handling.
   /// Main route generator method
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic>? generateRoute(RouteSettings settings) {
     log(
       '🌐 Navigating to: ${settings.name}',
       name: _logTag,
@@ -35,9 +35,8 @@ abstract final class AppRouter {
         );
       case RoutesName.loginScreen:
         return _buildRoute(const LoginView());
-
       default:
-        return _buildRoute(_buildErrorRoute(error: settings.name));
+        return null;
     }
   }
 
@@ -53,7 +52,6 @@ abstract final class AppRouter {
       pageBuilder: (context, animation, secondaryAnimation) => child,
       maintainState: maintainState,
       fullscreenDialog: fullscreenDialog,
-      // TODO(TAREK): add the duration form the duration class utils
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
           position: animation.drive(
@@ -69,6 +67,7 @@ abstract final class AppRouter {
   }
 
   /// Build fade transition route
+  /*
   static PageRoute<T> _buildFadeRoute<T extends Object?>(
     Widget child, {
     RouteSettings? settings,
@@ -81,36 +80,5 @@ abstract final class AppRouter {
       },
     );
   }
-
-  /// Build error route
-  static Widget _buildErrorRoute({String? error}) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Error'),
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, size: 64, color: Colors.red),
-            const SizedBox(height: 16),
-            const Text('Route not found'),
-            const SizedBox(height: 8),
-            Text(error ?? 'Unknown route'),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () {},
-              // onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-              //   RoutesName.homeScreen,
-              //       (route) => false,
-              // ),
-              child: const Text('Go to Home'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  */
 }

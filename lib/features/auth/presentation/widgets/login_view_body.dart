@@ -17,7 +17,7 @@ class _LoginViewBody extends StatelessWidget {
           children: const [
             _BuildLoginForm(),
             _BuildNoAccountAndCreateAccount(),
-            _BuildDividerWithText(),
+            _BuildOrDivider(),
             _BuildSocialMediaSection(),
           ],
         ),

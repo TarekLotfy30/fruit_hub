@@ -36,7 +36,7 @@ class _BuildLoginFormState extends State<_BuildLoginForm> {
             controller: _emailController,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter some text';
+                return '';
               }
               return null;
             },

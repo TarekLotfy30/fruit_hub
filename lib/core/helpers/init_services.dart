@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import '../../di/service_locator.dart';
+import '../di/service_locator.dart';
 import 'bloc_observer.dart';
 
 /// Initialize all required services

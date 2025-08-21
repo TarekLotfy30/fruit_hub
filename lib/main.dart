@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'app/fruit_hub_app.dart';
 import 'core/constants/app_assets.dart';
-import 'core/helpers/functions/configure_system_ui.dart';
-import 'core/helpers/functions/init_services.dart';
+import 'core/helpers/configure_system_ui.dart';
+import 'core/helpers/init_services.dart';
 
 Future<void> main() async {
   // Initialize Flutter binding before calling native code

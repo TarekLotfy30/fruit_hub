@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_padding.dart';
 import '../../../../core/constants/spacing.dart';
-import '../../../../core/helpers/functions/app_spacing.dart';
+import '../../../../core/helpers/app_spacing.dart';
 import '../../../../core/translation/locale_keys.g.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
 
-part '../widgets/build_divider_with_text.dart';
+part '../widgets/build_or_divider.dart';
 part '../widgets/build_login_form.dart';
 part '../widgets/build_no_account_and_create_account.dart';
 part '../widgets/build_social_media_button.dart';
@@ -27,7 +27,7 @@ class LoginView extends StatelessWidget {
         title: Text(LocaleKeys.login.tr()),
         automaticallyImplyLeading: false,
         centerTitle: true,
-      ),
+      ), 
       body: const _LoginViewBody(),
     );
   }

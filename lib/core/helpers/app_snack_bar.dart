@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../constants/app_corners.dart';
-import '../../constants/app_durations.dart';
-import '../../constants/app_elevation.dart';
-import '../../constants/app_icon_sizes.dart';
-import '../../constants/app_icons.dart';
-import '../../constants/app_padding.dart';
-import '../../utils/colors/app_colors.dart';
+import '../constants/app_corners.dart';
+import '../constants/app_durations.dart';
+import '../constants/app_elevation.dart';
+import '../constants/app_icon_sizes.dart';
+import '../constants/app_icons.dart';
+import '../constants/app_padding.dart';
+import '../utils/colors/app_colors.dart';
 
 abstract class AppSnackBar {
   const AppSnackBar._();
