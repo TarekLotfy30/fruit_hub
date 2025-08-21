@@ -11,7 +11,7 @@
 
 ## :memo: Overview
 
-- [Project in linkedin](https://www.linkedin.com/postspatrick-nashaat-0474ba24a_flutterdeveloper-github-ios-activity-7090314784008470528-nqUi?utm_source=share&utm_medium=member_desktop)
+- [Project in LinkedIn](https://www.linkedin.com/postspatrick-nashaat-0474ba24a_flutterdeveloper-github-ios-activity-7090314784008470528-nqUi?utm_source=share&utm_medium=member_desktop)
 
 <a href="https://www.linkedin.com/postspatrick-nashaat-0474ba24a_flutterdeveloper-github-ios-activity-7090314784008470528-nqUi?utm_source=share&utm_medium=member_desktop" target="_blank">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
