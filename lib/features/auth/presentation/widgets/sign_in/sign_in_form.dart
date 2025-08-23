@@ -1,7 +1,9 @@
 part of '../../screens/sign_in_view.dart';
 
 class _SignInForm extends StatefulWidget {
-  const _SignInForm();
+  const _SignInForm({required this.theme});
+  final ThemeData theme;
+  //final SignInCubit cubit;
 
   @override
   State<_SignInForm> createState() => _SignInFormState();
@@ -31,6 +33,7 @@ class _SignInFormState extends State<_SignInForm> {
       autovalidateMode: AutovalidateMode.onUnfocus,
       key: _formKey,
       child: Column(
+        // TODO(t): extract the email field and password field to separate wid
         children: [
           TextFormField(
             controller: _emailController,
@@ -50,14 +53,14 @@ class _SignInFormState extends State<_SignInForm> {
                 FocusManager.instance.primaryFocus?.unfocus(),
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
-            cursorColor: Theme.of(context).colorScheme.primary,
+            cursorColor: widget.theme.colorScheme.primary, 
             cursorHeight: 24.h,
             decoration: InputDecoration(
               labelText: LocaleKeys.email.tr(),
-              prefixIcon: const Icon(AppIcons.email, size: 24),
+              prefixIcon: const Icon(AppIcons.email, size: AppIconSize.regular),
             ),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+            style: widget.theme.textTheme.titleMedium?.copyWith(
+              color: widget.theme.colorScheme.onSurface,
             ),
           ),
           verticalSpacing(Spacing.spacing16),
@@ -74,15 +77,18 @@ class _SignInFormState extends State<_SignInForm> {
                 FocusManager.instance.primaryFocus?.unfocus(),
 
             textInputAction: TextInputAction.done,
-            cursorColor: Theme.of(context).colorScheme.primary,
+            cursorColor: widget.theme.colorScheme.primary,
             cursorHeight: 24.h,
             decoration: InputDecoration(
               labelText: LocaleKeys.password.tr(),
               suffixIcon: const Icon(Icons.remove_red_eye),
-              prefixIcon: const Icon(AppIcons.password, size: 24),
+              prefixIcon: const Icon(
+                AppIcons.password,
+                size: AppIconSize.regular,
+              ),
             ),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+            style: widget.theme.textTheme.titleMedium?.copyWith(
+              color: widget.theme.colorScheme.onSurface,
             ),
           ),
           verticalSpacing(Spacing.spacing8),
@@ -92,8 +98,8 @@ class _SignInFormState extends State<_SignInForm> {
               onPressed: () {},
               child: Text(
                 LocaleKeys.forgot_password.tr(),
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
+                style: widget.theme.textTheme.labelMedium?.copyWith(
+                  color: widget.theme.colorScheme.secondary,
                 ),
               ),
             ),

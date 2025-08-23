@@ -1,7 +1,10 @@
 part of '../../screens/sign_in_view.dart';
 
 class _NoAccountAndCreateAccount extends StatelessWidget {
-  const _NoAccountAndCreateAccount();
+  const _NoAccountAndCreateAccount({required this.theme});
+
+  final ThemeData theme;
+  //final SignInCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -10,18 +13,18 @@ class _NoAccountAndCreateAccount extends StatelessWidget {
       children: [
         Text(
           LocaleKeys.no_account.tr(),
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () async {
+            await AppNavigation.navigateTo(context, AppRoutesName.signUpScreen);
+          },
           child: Text(
             LocaleKeys.create_account.tr(),
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
+            style: theme.textTheme.titleSmall?.copyWith(
+              color: theme.colorScheme.primary,
             ),
           ),
         ),

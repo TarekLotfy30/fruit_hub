@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 /// A utility class that provides static methods for handling navigation
 ///  tasks using named routes.
-abstract final class Navigation {
+abstract final class AppNavigation {
   // Private constructor to prevent instantiation
-  Navigation._();
+  AppNavigation._();
 
   /// Logging tag for navigation events
   static const String _logTag = 'NAVIGATION';

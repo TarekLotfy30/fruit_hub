@@ -1,10 +1,12 @@
-part of '../screens/sign_in_view.dart';
+part of '../../screens/sign_in_view.dart';
 
 class _SignInViewBody extends StatelessWidget {
   const _SignInViewBody();
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    //final cubit = context.read<SignInCubit>();
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Padding(
@@ -14,11 +16,11 @@ class _SignInViewBody extends StatelessWidget {
         ),
         child: Column(
           spacing: AppPaddings.padding16.h,
-          children: const [
-            _SignInForm(),
-            _NoAccountAndCreateAccount(),
-            _OrDivider(),
-            _SocialMediaSection(),
+          children:  [
+            _SignInForm(theme: theme),
+            _NoAccountAndCreateAccount(theme: theme),
+            _OrDivider(theme: theme),
+            _SocialMediaSection(theme: theme),
           ],
         ),
       ),

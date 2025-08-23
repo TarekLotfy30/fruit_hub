@@ -9,6 +9,7 @@ abstract final class AppRoutesName {
 
   // Authentication routes
   static const String signInScreen = '/sign_in';
+  static const String signUpScreen = '/sign_up';
 
   // // Home/root routes
   // static const String homeScreen = '/home';

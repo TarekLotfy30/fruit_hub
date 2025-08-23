@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/presentation/screens/sign_in_view.dart';
+import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
 import 'app_routes_name.dart';
@@ -35,6 +36,8 @@ abstract final class AppRouter {
         );
       case AppRoutesName.signInScreen:
         return _buildRoute(const SignInView());
+      case AppRoutesName.signUpScreen:
+        return _buildRoute(const SignUpView());
       default:
         return null;
     }

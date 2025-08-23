@@ -1,7 +1,8 @@
 part of '../../screens/sign_in_view.dart';
 
 class _OrDivider extends StatelessWidget {
-  const _OrDivider();
+  const _OrDivider({required this.theme});
+  final ThemeData theme;
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +13,8 @@ class _OrDivider extends StatelessWidget {
         const Expanded(child: Divider(endIndent: Spacing.spacing16)),
         Text(
           LocaleKeys.or.tr(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface,
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
           ),
         ),
         const Expanded(child: Divider(indent: Spacing.spacing16)),

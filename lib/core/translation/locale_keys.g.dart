@@ -21,10 +21,13 @@ abstract class  LocaleKeys {
   static const sign_in_with_google = 'sign_in_with_google';
   static const sign_in_with_apple = 'sign_in_with_apple';
   static const sign_in_with_facebook = 'sign_in_with_facebook';
+  static const sign_up = 'sign_up';
   static const full_name = 'full_name';
   static const phone_number = 'phone_number';
-  static const signup = 'signup';
-  static const have_account = 'have_account';
+  static const sign_up_button = 'sign_up_button';
+  static const agree_terms = 'agree_terms';
+  static const terms_and_conditions = 'terms_and_conditions';
+  static const already_have_account = 'already_have_account';
   static const search = 'search';
   static const best_selling = 'best_selling';
   static const add_to_cart = 'add_to_cart';
