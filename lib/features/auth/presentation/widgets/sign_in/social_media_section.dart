@@ -1,8 +1,7 @@
 part of '../../screens/sign_in_view.dart';
 
 class _SocialMediaSection extends StatelessWidget {
-  const _SocialMediaSection({required this.theme});
-  final ThemeData theme;
+  const _SocialMediaSection();
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +16,9 @@ class _SocialMediaSection extends StatelessWidget {
             //await AppSnackBar.showWarning(context, 'لا تمتلك حساب');
           },
         ),
-
         _BuildSocialMediaButton(
           assetPath: AppIcons.apple,
-          colorFilter:theme.brightness == Brightness.dark
+          colorFilter: context.isDarkMode
               ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
               : null,
           label: LocaleKeys.sign_in_with_apple.tr(),

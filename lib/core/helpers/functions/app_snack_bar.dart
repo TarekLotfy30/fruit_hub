@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../constants/app_corners.dart';
-import '../constants/app_durations.dart';
-import '../constants/app_elevation.dart';
-import '../constants/app_icon_sizes.dart';
-import '../constants/app_icons.dart';
-import '../constants/app_padding.dart';
-import '../utils/colors/app_colors.dart';
+import '../../constants/app_corners.dart';
+import '../../constants/app_durations.dart';
+import '../../constants/app_elevation.dart';
+import '../../constants/app_icon_sizes.dart';
+import '../../constants/app_icons.dart';
+import '../../constants/app_padding.dart';
+import '../../utils/colors/app_colors.dart';
+import '../extensions/scaffold_extension.dart';
+import '../extensions/theme_extension.dart';
 
 abstract class AppSnackBar {
   const AppSnackBar._();
@@ -21,10 +23,10 @@ abstract class AppSnackBar {
     IconData? icon,
   }) async {
     if (context.mounted) {
-      final messenger = ScaffoldMessenger.of(context);
-      final theme = Theme.of(context);
+      final messenger = context.scaffoldMessenger;
+      final theme = context.appTheme;
 
-      // Hide any existing snackbars first
+      // Hide any existing snack Bars first
       messenger.hideCurrentSnackBar();
 
       messenger.showSnackBar(
@@ -43,7 +45,7 @@ abstract class AppSnackBar {
               Icon(
                 icon,
                 color: theme.colorScheme.onInverseSurface,
-                size: AppIconSize.regular.r,
+                size: AppIconSizes.regular.r,
               ),
             ],
           ),

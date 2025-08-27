@@ -10,6 +10,7 @@ abstract class  LocaleKeys {
   static const search_and_shopping = 'search_and_shopping';
   static const provide_service = 'provide_service';
   static const skip = 'skip';
+  static const change_lang = 'change_lang';
   static const start_now = 'start_now';
   static const email = 'email';
   static const password = 'password';
@@ -27,6 +28,8 @@ abstract class  LocaleKeys {
   static const sign_up_button = 'sign_up_button';
   static const agree_terms = 'agree_terms';
   static const terms_and_conditions = 'terms_and_conditions';
+  static const terms_content = 'terms_content';
+  static const close = 'close';
   static const already_have_account = 'already_have_account';
   static const search = 'search';
   static const best_selling = 'best_selling';

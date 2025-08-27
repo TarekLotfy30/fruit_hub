@@ -1,9 +1,7 @@
 part of '../../screens/sign_in_view.dart';
 
 class _SignInForm extends StatefulWidget {
-  const _SignInForm({required this.theme});
-  final ThemeData theme;
-  //final SignInCubit cubit;
+  const _SignInForm();
 
   @override
   State<_SignInForm> createState() => _SignInFormState();
@@ -13,6 +11,22 @@ class _SignInFormState extends State<_SignInForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
+
+  String? _emailValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return '';
+    }
+    return null;
+  }
+
+  String? _passwordValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return '';
+    }
+    return null;
+  }
+
+  void _signInButton() {}
 
   @override
   void initState() {
@@ -33,80 +47,46 @@ class _SignInFormState extends State<_SignInForm> {
       autovalidateMode: AutovalidateMode.onUnfocus,
       key: _formKey,
       child: Column(
-        // TODO(t): extract the email field and password field to separate wid
         children: [
-          TextFormField(
+          BuildTextField(
+            validator: _emailValidation,
+            labelText: LocaleKeys.email.tr(),
+            prefixIcon: const Icon(AppIcons.email, size: AppIconSizes.regular),
             controller: _emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '';
-              }
-              return null;
-            },
             inputFormatters: [
               // RFC 5321 email length limit
               LengthLimitingTextInputFormatter(254),
               // No whitespace
               FilteringTextInputFormatter.deny(RegExp(r'\s')),
             ],
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
-            cursorColor: widget.theme.colorScheme.primary, 
-            cursorHeight: 24.h,
-            decoration: InputDecoration(
-              labelText: LocaleKeys.email.tr(),
-              prefixIcon: const Icon(AppIcons.email, size: AppIconSize.regular),
-            ),
-            style: widget.theme.textTheme.titleMedium?.copyWith(
-              color: widget.theme.colorScheme.onSurface,
-            ),
           ),
           verticalSpacing(Spacing.spacing16),
-          TextFormField(
+          BuildTextField(
+            validator: _passwordValidation,
+            labelText: LocaleKeys.password.tr(),
+            prefixIcon: const Icon(
+              AppIcons.password,
+              size: AppIconSizes.regular,
+            ),
+            suffixIcon: const Icon(
+              AppIcons.visibility,
+              size: AppIconSizes.regular,
+            ),
             controller: _passwordController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '';
-              }
-              return null;
-            },
-            inputFormatters: const [],
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
-
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(128),
+              FilteringTextInputFormatter.deny(RegExp(r'\s')),
+            ],
+            keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.done,
-            cursorColor: widget.theme.colorScheme.primary,
-            cursorHeight: 24.h,
-            decoration: InputDecoration(
-              labelText: LocaleKeys.password.tr(),
-              suffixIcon: const Icon(Icons.remove_red_eye),
-              prefixIcon: const Icon(
-                AppIcons.password,
-                size: AppIconSize.regular,
-              ),
-            ),
-            style: widget.theme.textTheme.titleMedium?.copyWith(
-              color: widget.theme.colorScheme.onSurface,
-            ),
           ),
           verticalSpacing(Spacing.spacing8),
-          Align(
-            alignment: AlignmentDirectional.centerEnd,
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                LocaleKeys.forgot_password.tr(),
-                style: widget.theme.textTheme.labelMedium?.copyWith(
-                  color: widget.theme.colorScheme.secondary,
-                ),
-              ),
-            ),
-          ),
+          const _ForgetPasswordButton(),
           verticalSpacing(Spacing.spacing16),
           ElevatedButton(
-            onPressed: () async {},
+            onPressed: _signInButton,
             child: Text(LocaleKeys.sign_in.tr()),
           ),
         ],

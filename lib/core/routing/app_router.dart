@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/presentation/screens/forget_password_view.dart';
 import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
@@ -35,9 +36,11 @@ abstract final class AppRouter {
           ),
         );
       case AppRoutesName.signInScreen:
-        return _buildRoute(const SignInView());
+        return _buildFadeRoute(const SignInView());
       case AppRoutesName.signUpScreen:
-        return _buildRoute(const SignUpView());
+        return _buildFadeRoute(const SignUpView());
+      case AppRoutesName.forgetPasswordScreen:
+        return _buildFadeRoute(const ForgetPasswordView());
       default:
         return null;
     }
@@ -70,18 +73,25 @@ abstract final class AppRouter {
   }
 
   /// Build fade transition route
-  /*
+
   static PageRoute<T> _buildFadeRoute<T extends Object?>(
     Widget child, {
     RouteSettings? settings,
   }) {
     return PageRouteBuilder<T>(
       settings: settings,
+      opaque: false,
+      barrierDismissible: false,
+      barrierColor: Colors.transparent,
+      barrierLabel: '',
+      maintainState: false,
+      fullscreenDialog: false,
+      transitionDuration: const Duration(milliseconds: 300),
+      reverseTransitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) => child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
     );
   }
-  */
 }

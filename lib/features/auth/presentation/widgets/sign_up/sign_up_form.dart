@@ -1,5 +1,10 @@
 part of '../../screens/sign_up_view.dart';
 
+// translate-me-ignore-all-file
+/// [_SignUpForm] manages the actual registration inputs and state.
+/// Includes full name, email, password, terms agreement, and submission.
+///
+/// Each input has validators, formatters
 class _SignUpForm extends StatefulWidget {
   const _SignUpForm();
 
@@ -12,24 +17,20 @@ class _SignUpFormState extends State<_SignUpForm> {
   late final TextEditingController _fullNameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+
   bool _isTermsAccepted = false;
 
   @override
   void initState() {
     super.initState();
+    _initializeControllers();
+  }
+
+  void _initializeControllers() {
     _formKey = GlobalKey<FormState>();
     _fullNameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _formKey.currentState?.dispose();
-    _fullNameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
   }
 
   @override
@@ -39,119 +40,117 @@ class _SignUpFormState extends State<_SignUpForm> {
       autovalidateMode: AutovalidateMode.onUnfocus,
       child: Column(
         spacing: Spacing.spacing16.h,
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFormField(
+          //FullName
+          BuildTextField(
             controller: _fullNameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '';
-              }
-              return null;
-            },
-            inputFormatters: const [],
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
+            labelText: LocaleKeys.full_name.tr(),
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
-            cursorColor: Theme.of(context).colorScheme.primary,
-            cursorHeight: 24.h,
-            decoration: InputDecoration(labelText: LocaleKeys.full_name.tr()),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
+            textCapitalization: TextCapitalization.words,
+            prefixIcon: const Icon(AppIcons.user, size: AppIconSizes.regular),
+            inputFormatters: [
+              // Limit to reasonable name length
+              LengthLimitingTextInputFormatter(50),
+              // Prevent multiple consecutive spaces
+              FilteringTextInputFormatter.deny(RegExp(r'\s{2,}')),
+            ],
+            validator: _fullNameValidation,
           ),
-          TextFormField(
+
+          //Email
+          BuildTextField(
             controller: _emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '';
-              }
-              return null;
-            },
+            labelText: LocaleKeys.email.tr(),
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            prefixIcon: const Icon(AppIcons.email, size: AppIconSizes.regular),
             inputFormatters: [
               // RFC 5321 email length limit
               LengthLimitingTextInputFormatter(254),
               // No whitespace
               FilteringTextInputFormatter.deny(RegExp(r'\s')),
             ],
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            cursorColor: Theme.of(context).colorScheme.primary,
-            cursorHeight: 24.h,
-            decoration: InputDecoration(labelText: LocaleKeys.email.tr()),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
+            validator: _emailValidation,
           ),
-          TextFormField(
-            controller: _passwordController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '';
-              }
-              return null;
-            },
-            inputFormatters: const [],
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
 
+          //Password
+          BuildTextField(
+            controller: _passwordController,
+            labelText: LocaleKeys.password.tr(),
             textInputAction: TextInputAction.done,
-            cursorColor: Theme.of(context).colorScheme.primary,
-            cursorHeight: 24.h,
-            decoration: InputDecoration(
-              labelText: LocaleKeys.password.tr(),
-              suffixIcon: const Icon(Icons.remove_red_eye),
+            keyboardType: TextInputType.visiblePassword,
+            prefixIcon: const Icon(
+              AppIcons.password,
+              size: AppIconSizes.regular,
             ),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+            suffixIcon: const Icon(
+              AppIcons.visibility,
+              size: AppIconSizes.regular,
             ),
+            inputFormatters: [
+              // Reasonable password length limit
+              LengthLimitingTextInputFormatter(128),
+            ],
+            validator: _passwordValidation,
           ),
+          // Terms and conditions
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Checkbox(
-                value: _isTermsAccepted,
-                onChanged: (value) {
-                  setState(() {
-                    _isTermsAccepted = value ?? false;
-                  });
-                },
-              ),
+              Checkbox(value: _isTermsAccepted, onChanged: _checkBox),
               horizontalSpacing(8),
-              Expanded(
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: LocaleKeys.agree_terms.tr(),
-                        style: Theme.of(context).textTheme.labelMedium
-                            ?.copyWith(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurfaceVariant
-                                  .withValues(alpha: 0.6),
-                            ),
-                      ),
-                      TextSpan(
-                        text: LocaleKeys.terms_and_conditions.tr(),
-                        style: Theme.of(context).textTheme.labelMedium
-                            ?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              const Expanded(child: _AgreeTermsAndConditionsText()),
             ],
+          ),
+          verticalSpacing(5),
+          // Submit button
+          ElevatedButton(
+            onPressed: _handleSignUpButton,
+            child: Text(LocaleKeys.sign_up_button.tr()),
           ),
         ],
       ),
     );
+  }
+
+  void _handleSignUpButton() {
+    FocusScope.of(context).unfocus(); // UX: Close keyboard
+  }
+
+  void _checkBox(bool? value) {
+    setState(() {
+      _isTermsAccepted = value ?? false;
+    });
+  }
+
+  String? _passwordValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return '';
+    }
+    return null;
+  }
+
+  String? _emailValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return '';
+    }
+    return null;
+  }
+
+  String? _fullNameValidation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'sdsda';
+    }
+    return null;
+  }
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

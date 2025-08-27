@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/cubits/localization_cubit/localization_cubit.dart';
 import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
@@ -42,25 +44,26 @@ class FruitHubApp extends StatelessWidget {
       designSize: AppScreenUtil.designSize,
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, _) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // Configure localization delegates from EasyLocalization
-        localizationsDelegates: context.localizationDelegates,
-        // Set supported locales from EasyLocalization
-        supportedLocales: context.supportedLocales,
-        // Set current locale from EasyLocalization
-        locale: context.locale,
-
-        initialRoute: _getInitialRoute(),
-        onGenerateRoute: AppRouter.generateRoute,
-
-        // Theme configuration
-        theme: AppTheme.lightMode,
-        darkTheme: AppTheme.darkMode,
-        themeMode: ThemeMode.light,
+      builder: (_, _) => MultiBlocProvider(
+        providers: [BlocProvider(create: (_) => LocalizationCubit())],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          // Configure localization delegates from EasyLocalization
+          localizationsDelegates: context.localizationDelegates,
+          // Set supported locales from EasyLocalization
+          supportedLocales: context.supportedLocales,
+          // Set current locale from EasyLocalization
+          locale: context.locale,
+          initialRoute: _getInitialRoute(),
+          onGenerateRoute: AppRouter.generateRoute,
+          // Theme configuration
+          theme: AppTheme.lightMode,
+          darkTheme: AppTheme.darkMode,
+          themeMode: ThemeMode.light,
+        ),
       ),
     );
   }
 }
 
-//flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys
+// flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys

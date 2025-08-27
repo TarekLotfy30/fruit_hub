@@ -1,12 +1,10 @@
 part of '../screens/onboarding_view.dart';
 
 class _BuildActionButton extends StatelessWidget {
-  const _BuildActionButton({required this.cubit});
-
-  final OnboardingCubit cubit;
+  const _BuildActionButton();
 
   Future<void> _onStartButton(BuildContext context) async {
-    cubit.skipAndSave();
+    context.onboardingCubit.skipAndSave();
     await AppNavigation.navigateToAndReplace(
       context,
       AppRoutesName.signInScreen,

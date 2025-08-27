@@ -1,23 +1,35 @@
 part of '../screens/onboarding_view.dart';
 
 class _PageViewItem extends StatelessWidget {
-  const _PageViewItem({
-    required this.item,
-    required this.cubit,
-    required this.theme,
-  });
+  const _PageViewItem({required this.item});
 
   final OnboardingModel item;
-  final OnboardingCubit cubit;
-  final ThemeData theme;
 
   Future<void> _onSkipTap(BuildContext context) async {
-    cubit.skipAndSave();
+    context.onboardingCubit.skipAndSave();
     AppNavigation.navigateToAndReplace(context, AppRoutesName.signInScreen);
+  }
+
+  Future<void> _onChangeLanguageTap(BuildContext context) async {
+    if (context.locale.toString() == 'ar_SA') {
+      context.localizationCubit.changeLanguage(
+        context,
+        const Locale('en', 'US'),
+      );
+      return;
+    } else {
+      context.localizationCubit.changeLanguage(
+        context,
+        const Locale('ar', 'SA'),
+      );
+      return;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final colorSchema = context.colorScheme;
+    final textTheme = context.textTheme;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -60,10 +72,24 @@ class _PageViewItem extends StatelessWidget {
                   );
                 },
               ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppPaddings.padding16.w,
+                    vertical: AppPaddings.padding32.h,
+                  ),
+                  child: TextButton(
+                    onPressed: () => _onChangeLanguageTap(context),
+                    child: Text(LocaleKeys.change_lang.tr()),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
         verticalSpacing(Spacing.spacing40),
+
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -75,27 +101,24 @@ class _PageViewItem extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: item.titleTextSpan1,
-                      style: theme.textTheme.displayLarge,
+                      style: textTheme.displayLarge,
                     ),
                     TextSpan(
                       text: item.titleTextSpan2,
-                      style: theme.textTheme.displayLarge?.copyWith(
-                        color: theme.colorScheme.primary,
+                      style: textTheme.displayLarge?.copyWith(
+                        color: colorSchema.primary,
                       ),
                     ),
                     TextSpan(
                       text: item.titleTextSpan3,
-                      style: theme.textTheme.displayLarge?.copyWith(
-                        color: theme.colorScheme.tertiary,
+                      style: textTheme.displayLarge?.copyWith(
+                        color: colorSchema.tertiary,
                       ),
                     ),
                   ],
                 ),
               ),
-              child: Text(
-                item.title ?? '',
-                style: theme.textTheme.displayLarge,
-              ),
+              child: Text(item.title ?? '', style: textTheme.displayLarge),
             ),
             verticalSpacing(Spacing.spacing24),
             // subtitle
@@ -106,7 +129,7 @@ class _PageViewItem extends StatelessWidget {
               child: Text(
                 item.subTitle,
                 textAlign: TextAlign.center,
-                style: theme.textTheme.labelMedium?.copyWith(
+                style: textTheme.labelMedium?.copyWith(
                   color: AppColors.textTertiary,
                 ),
               ),

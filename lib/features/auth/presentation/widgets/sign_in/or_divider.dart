@@ -1,11 +1,11 @@
 part of '../../screens/sign_in_view.dart';
 
 class _OrDivider extends StatelessWidget {
-  const _OrDivider({required this.theme});
-  final ThemeData theme;
+  const _OrDivider();
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Row(
       children: [
         // Using Expanded to allow the divider to take up available space

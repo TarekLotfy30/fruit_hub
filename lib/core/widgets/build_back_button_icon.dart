@@ -1,23 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/app_border_width.dart';
 import '../constants/app_icons.dart';
 import '../constants/app_padding.dart';
-import '../helpers/app_navigation.dart';
+import '../helpers/functions/app_navigation.dart';
+import '../helpers/extensions/localization_extension.dart';
+import '../helpers/extensions/theme_extension.dart';
 import '../utils/colors/app_colors.dart';
 import 'build_optimized_svg.dart';
 
 class BuildBackButtonIcon extends StatelessWidget {
-  const BuildBackButtonIcon({
-    super.key,
-    required this.isLTR,
-    required this.theme,
-  });
-
-  final bool isLTR;
-  final ThemeData theme;
+  const BuildBackButtonIcon({super.key});
 
   void handleNavigation(BuildContext context) {
     // Use AppNavigation to handle back navigation
@@ -29,6 +23,9 @@ class BuildBackButtonIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLTR = context.isLTR;
+    final colorScheme = context.colorScheme;
+
     return Padding(
       padding: isLTR
           ? EdgeInsets.only(left: AppPaddings.padding14.w)
@@ -37,7 +34,7 @@ class BuildBackButtonIcon extends StatelessWidget {
         color: Colors.transparent,
         shape: CircleBorder(
           side: BorderSide(
-            color: theme.colorScheme.onInverseSurface,
+            color: colorScheme.onInverseSurface,
             width: AppBorderWidth.focusedBorderWidth.w,
           ),
         ),
@@ -49,13 +46,15 @@ class BuildBackButtonIcon extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: theme.colorScheme.onInverseSurface,
+                color: colorScheme.onInverseSurface,
                 width: AppBorderWidth.focusedBorderWidth.w,
               ),
             ),
             child: BuildOptimizedSvg(
-              assetPath: isLTR ? AppIcons.rightArrow : AppIcons.leftArrow,
-              colorFilter: theme.brightness == Brightness.dark
+              assetPath: context.isLTR
+                  ? AppIcons.rightArrow
+                  : AppIcons.leftArrow,
+              colorFilter: context.isDarkMode
                   ? const ColorFilter.mode(AppColors.white, BlendMode.srcIn)
                   : null,
             ),

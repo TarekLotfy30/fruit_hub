@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'app/fruit_hub_app.dart';
 import 'core/constants/app_assets.dart';
-import 'core/helpers/configure_system_ui.dart';
-import 'core/helpers/init_services.dart';
+
+import 'core/di/service_locator.dart';
+import 'core/helpers/functions/configure_system_ui.dart';
+import 'core/helpers/functions/init_services.dart';
+import 'core/services/local/local_helper.dart';
 
 Future<void> main() async {
   // Initialize Flutter binding before calling native code
@@ -15,10 +18,11 @@ Future<void> main() async {
   // Configure system UI & Initialize services
   await configureSystemUI();
   await initializeServices();
-  //await getIt<LocalHelper>().clearAll();
+  await getIt<LocalHelper>().clearAll();
 
   runApp(
     EasyLocalization(
+      ignorePluralRules: false,
       supportedLocales: const [
         Locale('en', 'US'), // English (United States)
         Locale('ar', 'SA'), // Arabic (Saudi Arabia)

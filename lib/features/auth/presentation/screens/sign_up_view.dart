@@ -3,31 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/constants/app_icon_sizes.dart';
+import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_padding.dart';
 import '../../../../core/constants/spacing.dart';
-import '../../../../core/helpers/app_spacing.dart';
+import '../../../../core/helpers/extensions/controller_extension.dart';
+import '../../../../core/helpers/functions/app_model_bottom_sheet.dart';
+import '../../../../core/helpers/functions/app_navigation.dart';
+import '../../../../core/helpers/functions/app_spacing.dart';
 import '../../../../core/translation/locale_keys.g.dart';
-import '../../../../core/widgets/build_back_button.dart';
+import '../../../../core/widgets/build_back_button_icon.dart';
+import '../../../../core/widgets/build_drag_handle_bar.dart';
+import '../../../../core/widgets/build_text_field.dart';
 
-part '../widgets/sign_up/build_sign_up_view_body.dart';
+part '../widgets/sign_up/sign_up_view_body.dart';
 part '../widgets/sign_up/sign_up_form.dart';
+part '../widgets/sign_up/already_have_account_and_sign_in.dart';
+part '../widgets/sign_up/agree_terms_and_conditions_text.dart';
+part '../widgets/sign_up/terms_and_conditions_sheet.dart';
 
+
+/// SignUpView is the main entry screen for user registration.
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Extract locale information once to avoid multiple context reads
-    final Locale currentLocale = context.locale;
-    final bool isLTR = currentLocale.languageCode == 'en';
-    final ThemeData theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(LocaleKeys.sign_up.tr()),
-        leading: BuildBackButtonIcon(isLTR: isLTR, theme: theme),
+        leading: const BuildBackButtonIcon(),
       ),
-      body: const _BuildSignUpViewBody(),
+      body: const _SignUpViewBody(),
     );
   }
 }

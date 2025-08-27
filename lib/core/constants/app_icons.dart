@@ -10,6 +10,7 @@ abstract final class AppIcons {
   static const IconData success = Icons.check_circle_outline;
   static const IconData warning = Icons.warning_amber_outlined;
   static const IconData info = Icons.info_outline;
+  static const IconData user = Icons.person_outline;
 
   // If using custom SVG or PNG icons
   static const String leftArrow = 'assets/svgs/icons/left_arrow.svg';

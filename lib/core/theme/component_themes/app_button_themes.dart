@@ -166,6 +166,7 @@ abstract final class AppButtonThemes {
         textStyle: AppTextThemes.textTheme.labelSmall?.copyWith(
           fontFamily: AppFontFamily.cairo,
         ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
   }

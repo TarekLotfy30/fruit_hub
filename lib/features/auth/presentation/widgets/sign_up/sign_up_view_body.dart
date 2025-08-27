@@ -1,7 +1,9 @@
-part of '../../screens/sign_in_view.dart';
+part of '../../screens/sign_up_view.dart';
 
-class _SignInViewBody extends StatelessWidget {
-  const _SignInViewBody();
+/// Body of the SignUp screen.
+/// Holds the form and manages spacing and AlreadyHaveAccountAndSignIn.
+class _SignUpViewBody extends StatelessWidget {
+  const _SignUpViewBody();
 
   Future<void> _onChangeLanguageTap(BuildContext context) async {
     if (context.locale.toString() == 'ar_SA') {
@@ -9,28 +11,30 @@ class _SignInViewBody extends StatelessWidget {
         context,
         const Locale('en', 'US'),
       );
-      debugPrint("Current locale: ${context.locale}");
+      return;
     } else {
       context.localizationCubit.changeLanguage(
         context,
         const Locale('ar', 'SA'),
       );
-      debugPrint("Current locale: ${context.locale}");
+      return;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppPaddings.padding16.w,
           vertical: AppPaddings.padding24.w,
         ),
         child: Column(
-          spacing: AppPaddings.padding16.h,
+          spacing: Spacing.spacing16.h,
           children: [
+            const _SignUpForm(),
+            const _AlreadyHaveAccountAndSignIn(),
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
@@ -44,20 +48,9 @@ class _SignInViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            _SignInForm(),
-            _NoAccountAndCreateAccount(),
-            _OrDivider(),
-            _SocialMediaSection(),
           ],
         ),
       ),
     );
   }
 }
-
-// TODO(TAREK): Consider implementing a loading indicator when the login button
-//  is pressed to enhance user experience.
-// TODO(TAREK): You might want to add error handling for the login process,
-//  such as displaying a SnackBar for failed login attempts.
-// TODO(TAREK): For better UX, consider using a bottom sheet for the
-//  "Forgot Password" functionality instead of navigating to a new screen.
