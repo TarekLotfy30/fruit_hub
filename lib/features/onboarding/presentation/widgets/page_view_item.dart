@@ -10,22 +10,6 @@ class _PageViewItem extends StatelessWidget {
     AppNavigation.navigateToAndReplace(context, AppRoutesName.signInScreen);
   }
 
-  Future<void> _onChangeLanguageTap(BuildContext context) async {
-    if (context.locale.toString() == 'ar_SA') {
-      context.localizationCubit.changeLanguage(
-        context,
-        const Locale('en', 'US'),
-      );
-      return;
-    } else {
-      context.localizationCubit.changeLanguage(
-        context,
-        const Locale('ar', 'SA'),
-      );
-      return;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final colorSchema = context.colorScheme;
@@ -72,24 +56,10 @@ class _PageViewItem extends StatelessWidget {
                   );
                 },
               ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppPaddings.padding16.w,
-                    vertical: AppPaddings.padding32.h,
-                  ),
-                  child: TextButton(
-                    onPressed: () => _onChangeLanguageTap(context),
-                    child: Text(LocaleKeys.change_lang.tr()),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
         verticalSpacing(Spacing.spacing40),
-
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

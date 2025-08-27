@@ -3,22 +3,6 @@ part of '../../screens/sign_in_view.dart';
 class _SignInViewBody extends StatelessWidget {
   const _SignInViewBody();
 
-  Future<void> _onChangeLanguageTap(BuildContext context) async {
-    if (context.locale.toString() == 'ar_SA') {
-      context.localizationCubit.changeLanguage(
-        context,
-        const Locale('en', 'US'),
-      );
-      debugPrint("Current locale: ${context.locale}");
-    } else {
-      context.localizationCubit.changeLanguage(
-        context,
-        const Locale('ar', 'SA'),
-      );
-      debugPrint("Current locale: ${context.locale}");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -30,20 +14,7 @@ class _SignInViewBody extends StatelessWidget {
         ),
         child: Column(
           spacing: AppPaddings.padding16.h,
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppPaddings.padding16.w,
-                  vertical: AppPaddings.padding32.h,
-                ),
-                child: TextButton(
-                  onPressed: () => _onChangeLanguageTap(context),
-                  child: Text(LocaleKeys.change_lang.tr()),
-                ),
-              ),
-            ),
+          children: const [
             _SignInForm(),
             _NoAccountAndCreateAccount(),
             _OrDivider(),

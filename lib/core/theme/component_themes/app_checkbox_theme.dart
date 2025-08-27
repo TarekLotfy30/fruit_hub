@@ -24,7 +24,7 @@ abstract final class AppCheckBoxTheme {
         return Colors.transparent;
       }),
       splashRadius: 24.r, // Control the splash area size
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.r)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
       side: BorderSide(
         color: colorScheme.outline.withValues(alpha: 0.5),
         width: AppBorderWidth.focusedBorderWidth.w,

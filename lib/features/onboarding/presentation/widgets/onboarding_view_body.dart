@@ -8,7 +8,7 @@ class _OnboardingViewBody extends StatelessWidget {
     return Column(
       children: [
         // Main PageView - handles scrolling between pages & Skip Button
-        const Expanded(child: _BuildPageView()),
+        Expanded(child: _BuildPageView()),
         // Page indicator - shows current page progress
         const _BuildPageIndicator(),
         verticalSpacing(Spacing.spacing32),

@@ -1,10 +1,17 @@
 part of 'theme_cubit.dart';
 
 sealed class ThemeState extends Equatable {
-  const ThemeState();
+  const ThemeState(this.mode);
+  final ThemeMode mode;
+
+  @override
+  List<Object> get props => [mode];
 }
 
 final class ThemeInitial extends ThemeState {
-  @override
-  List<Object> get props => [];
+  const ThemeInitial() : super(ThemeMode.system);
+}
+
+final class ThemeUpdate extends ThemeState {
+  const ThemeUpdate(super.mode);
 }

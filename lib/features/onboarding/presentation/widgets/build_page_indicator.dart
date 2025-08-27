@@ -7,11 +7,13 @@ class _BuildPageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.onboardingCubit;
     final colorSchema = context.colorScheme;
+
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         return SmoothPageIndicator(
           controller: cubit.pageController,
           count: AppConstant.onboardingItems.length,
+          onDotClicked: cubit.changePage,
           axisDirection: Axis.horizontal,
           effect: WormEffect(
             dotWidth: 11,

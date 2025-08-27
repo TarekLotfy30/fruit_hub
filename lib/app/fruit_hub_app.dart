@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/cubits/localization_cubit/localization_cubit.dart';
+import '../core/cubits/theme_cubit/theme_cubit.dart';
 import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
@@ -45,21 +45,26 @@ class FruitHubApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, _) => MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => LocalizationCubit())],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          // Configure localization delegates from EasyLocalization
-          localizationsDelegates: context.localizationDelegates,
-          // Set supported locales from EasyLocalization
-          supportedLocales: context.supportedLocales,
-          // Set current locale from EasyLocalization
-          locale: context.locale,
-          initialRoute: _getInitialRoute(),
-          onGenerateRoute: AppRouter.generateRoute,
-          // Theme configuration
-          theme: AppTheme.lightMode,
-          darkTheme: AppTheme.darkMode,
-          themeMode: ThemeMode.light,
+        providers: [BlocProvider(create: (_) => ThemeCubit())],
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              showPerformanceOverlay: true,
+              // Configure localization delegates from EasyLocalization
+              localizationsDelegates: context.localizationDelegates,
+              // Set supported locales from EasyLocalization
+              supportedLocales: context.supportedLocales,
+              // Set current locale from EasyLocalization
+              locale: context.locale,
+              initialRoute: _getInitialRoute(),
+              onGenerateRoute: AppRouter.generateRoute,
+              // Theme configuration
+              theme: AppTheme.lightMode,
+              darkTheme: AppTheme.darkMode,
+              themeMode: themeState.mode,
+            );
+          },
         ),
       ),
     );

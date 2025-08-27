@@ -7,7 +7,6 @@ import '../../../../core/constants/app_icon_sizes.dart';
 import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_padding.dart';
 import '../../../../core/constants/spacing.dart';
-import '../../../../core/helpers/extensions/controller_extension.dart';
 import '../../../../core/helpers/functions/app_model_bottom_sheet.dart';
 import '../../../../core/helpers/functions/app_navigation.dart';
 import '../../../../core/helpers/functions/app_spacing.dart';
@@ -21,7 +20,6 @@ part '../widgets/sign_up/sign_up_form.dart';
 part '../widgets/sign_up/already_have_account_and_sign_in.dart';
 part '../widgets/sign_up/agree_terms_and_conditions_text.dart';
 part '../widgets/sign_up/terms_and_conditions_sheet.dart';
-
 
 /// SignUpView is the main entry screen for user registration.
 class SignUpView extends StatelessWidget {
