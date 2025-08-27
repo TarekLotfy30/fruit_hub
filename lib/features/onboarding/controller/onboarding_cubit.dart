@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_constant.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/services/local/app_shared_keys.dart';
 import '../../../../core/services/local/local_helper.dart';
+import '../../../core/constants/app_constant.dart';
 
 part 'onboarding.state.dart';
 
@@ -33,9 +33,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     );
   }
 
-  /// Disposes of resources when cubit is closed
-  ///
-  /// **Performance**: O(1) - cleanup operation
   @override
   Future<void> close() {
     // Dispose page controller to prevent memory leaks

@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../constants/app_border_width.dart';
 
 abstract final class AppCheckBoxTheme {
   AppCheckBoxTheme._();
 
   static CheckboxThemeData checkboxTheme(ColorScheme colorScheme) {
     return CheckboxThemeData(
-      fillColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return colorScheme.outline.withValues(alpha: 0.38);
-        }
-        if (states.contains(WidgetState.selected)) {
-          return colorScheme.primary;
-        }
-        return Colors.transparent;
-      }),
       checkColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
           return colorScheme.surface;
@@ -24,15 +18,19 @@ abstract final class AppCheckBoxTheme {
         if (states.contains(WidgetState.pressed)) {
           return colorScheme.primary.withValues(alpha: 0.12);
         }
-        if (states.contains(WidgetState.hovered)) {
-          return colorScheme.primary.withValues(alpha: 0.08);
-        }
         if (states.contains(WidgetState.focused)) {
           return colorScheme.primary.withValues(alpha: 0.12);
         }
         return Colors.transparent;
       }),
-      splashRadius: 20, // Control the splash area size
+      splashRadius: 24.r, // Control the splash area size
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+      side: BorderSide(
+        color: colorScheme.outline.withValues(alpha: 0.5),
+        width: AppBorderWidth.focusedBorderWidth.w,
+      ),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
 }

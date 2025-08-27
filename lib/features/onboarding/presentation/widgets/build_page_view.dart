@@ -1,28 +1,19 @@
 part of '../screens/onboarding_view.dart';
 
 class _BuildPageView extends StatelessWidget {
-  const _BuildPageView({
-    required this.cubit,
-    required this.onboardingItems,
-    required this.theme,
-  });
-
-  final OnboardingCubit cubit;
-  final List<OnboardingModel> onboardingItems;
-  final ThemeData theme;
+  _BuildPageView();
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.onboardingCubit;
+    final onboardingItems = AppConstant.onboardingItems;
     return PageView.builder(
       controller: cubit.pageController,
       itemCount: onboardingItems.length,
-      itemBuilder: (context, index) => _PageViewItem(
-        item: onboardingItems[index],
-        cubit: cubit,
-        theme: theme,
-      ),
+      itemBuilder: (context, index) =>
+          _PageViewItem(item: onboardingItems[index]),
       onPageChanged: cubit.changePage,
-      physics: const BouncingScrollPhysics(),
+      physics: const PageScrollPhysics(),
     );
   }
 }

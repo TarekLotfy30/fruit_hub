@@ -115,7 +115,7 @@ abstract final class AppInputTheme {
       ),
 
       // Icon colors
-      prefixIconColor: colorScheme.primary,
+      prefixIconColor: colorScheme.primary,  
       suffixIconColor: colorScheme.outlineVariant,
       iconColor: isDark
           ? colorScheme.onSurfaceVariant

@@ -1,31 +1,27 @@
 part of '../screens/onboarding_view.dart';
 
 class _BuildPageIndicator extends StatelessWidget {
-  const _BuildPageIndicator({
-    required this.cubit,
-    required this.onboardingItems,
-    required this.theme,
-  });
-
-  final OnboardingCubit cubit;
-  final List<OnboardingModel> onboardingItems;
-  final ThemeData theme;
+  const _BuildPageIndicator();
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.onboardingCubit;
+    final colorSchema = context.colorScheme;
+
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         return SmoothPageIndicator(
           controller: cubit.pageController,
-          count: onboardingItems.length,
+          count: AppConstant.onboardingItems.length,
+          onDotClicked: cubit.changePage,
           axisDirection: Axis.horizontal,
           effect: WormEffect(
             dotWidth: 11,
             dotHeight: 11,
             dotColor: state is OnboardingChanged
-                ? theme.colorScheme.primary
-                : theme.colorScheme.primary.withValues(alpha: 0.4),
-            activeDotColor: theme.colorScheme.primary,
+                ? colorSchema.primary
+                : colorSchema.primary.withValues(alpha: 0.4),
+            activeDotColor: colorSchema.primary,
             spacing: Spacing.spacing11.w,
           ),
         );

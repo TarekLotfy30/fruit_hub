@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/cubits/theme_cubit/theme_cubit.dart';
 import '../core/di/service_locator.dart';
 import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
-import '../core/routing/routes_name.dart';
+import '../core/routing/app_routes_name.dart';
 import '../core/services/local/app_shared_keys.dart';
 import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
@@ -29,9 +31,9 @@ class FruitHubApp extends StatelessWidget {
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
 
     if (skipOnboarding) {
-      return RoutesName.loginScreen;
+      return AppRoutesName.signInScreen;
     } else {
-      return RoutesName.onboardingScreen;
+      return AppRoutesName.onboardingScreen;
     }
   }
 
@@ -42,25 +44,31 @@ class FruitHubApp extends StatelessWidget {
       designSize: AppScreenUtil.designSize,
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, _) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // Configure localization delegates from EasyLocalization
-        localizationsDelegates: context.localizationDelegates,
-        // Set supported locales from EasyLocalization
-        supportedLocales: context.supportedLocales,
-        // Set current locale from EasyLocalization
-        locale: context.locale,
-
-        initialRoute: _getInitialRoute(),
-        onGenerateRoute: AppRouter.generateRoute,
-
-        // Theme configuration
-        theme: AppTheme.lightMode,
-        darkTheme: AppTheme.darkMode,
-        themeMode: ThemeMode.light,
+      builder: (_, _) => MultiBlocProvider(
+        providers: [BlocProvider(create: (_) => ThemeCubit())],
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              showPerformanceOverlay: true,
+              // Configure localization delegates from EasyLocalization
+              localizationsDelegates: context.localizationDelegates,
+              // Set supported locales from EasyLocalization
+              supportedLocales: context.supportedLocales,
+              // Set current locale from EasyLocalization
+              locale: context.locale,
+              initialRoute: _getInitialRoute(),
+              onGenerateRoute: AppRouter.generateRoute,
+              // Theme configuration
+              theme: AppTheme.lightMode,
+              darkTheme: AppTheme.darkMode,
+              themeMode: themeState.mode,
+            );
+          },
+        ),
       ),
     );
   }
 }
 
-//flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys
+// flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys

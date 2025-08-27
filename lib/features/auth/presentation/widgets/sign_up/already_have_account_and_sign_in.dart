@@ -1,7 +1,7 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_up_view.dart';
 
-class _BuildNoAccountAndCreateAccount extends StatelessWidget {
-  const _BuildNoAccountAndCreateAccount();
+class _AlreadyHaveAccountAndSignIn extends StatelessWidget {
+  const _AlreadyHaveAccountAndSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -9,17 +9,19 @@ class _BuildNoAccountAndCreateAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.no_account.tr(),
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+          LocaleKeys.already_have_account.tr(),
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             color: Theme.of(
               context,
             ).colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            AppNavigation.goBack(context);
+          },
           child: Text(
-            LocaleKeys.create_account.tr(),
+            LocaleKeys.sign_in.tr(),
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),

@@ -1,10 +1,11 @@
-part of '../screens/login_view.dart';
+part of '../../screens/sign_in_view.dart';
 
-class _BuildOrDivider extends StatelessWidget {
-  const _BuildOrDivider();
+class _OrDivider extends StatelessWidget {
+  const _OrDivider();
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Row(
       children: [
         // Using Expanded to allow the divider to take up available space
@@ -12,8 +13,8 @@ class _BuildOrDivider extends StatelessWidget {
         const Expanded(child: Divider(endIndent: Spacing.spacing16)),
         Text(
           LocaleKeys.or.tr(),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface,
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: theme.colorScheme.onSurface,
           ),
         ),
         const Expanded(child: Divider(indent: Spacing.spacing16)),

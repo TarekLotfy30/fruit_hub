@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import '../extensions/navigator_extension.dart';
+
 /// A utility class that provides static methods for handling navigation
 ///  tasks using named routes.
-abstract final class Navigation {
+abstract final class AppNavigation {
   // Private constructor to prevent instantiation
-  Navigation._();
+  AppNavigation._();
 
   /// Logging tag for navigation events
   static const String _logTag = 'NAVIGATION';
@@ -28,7 +30,7 @@ abstract final class Navigation {
     log('Pushing route: $routeName', name: _logTag);
 
     try {
-      await Navigator.of(context).pushNamed(routeName, arguments: arguments);
+      await context.navigator.pushNamed(routeName, arguments: arguments);
       log('Route pushed successfully: $routeName', name: _logTag);
     } catch (e, stackTrace) {
       log(
@@ -59,7 +61,7 @@ abstract final class Navigation {
     log('Pushing $routeName and removing previous routes', name: _logTag);
 
     try {
-      await Navigator.of(context).pushNamedAndRemoveUntil(
+      await context.navigator.pushNamedAndRemoveUntil(
         routeName,
         (route) => false,
         arguments: arguments,
@@ -90,9 +92,10 @@ abstract final class Navigation {
     log('Replacing current route with: $routeName', name: _logTag);
 
     try {
-      await Navigator.of(
-        context,
-      ).pushReplacementNamed(routeName, arguments: arguments);
+      await context.navigator.pushReplacementNamed(
+        routeName,
+        arguments: arguments,
+      );
       log('Route replaced successfully: $routeName', name: _logTag);
     } catch (e, stackTrace) {
       log(
@@ -113,9 +116,9 @@ abstract final class Navigation {
   ///   - [context]: The BuildContext used to access the Navigator
   ///   - [result]: Optional result to return to the previous route
   static void goBack(BuildContext context, [dynamic result]) {
-    if (Navigator.of(context).canPop()) {
+    if (context.navigator.canPop()) {
       log('Popping current route', name: _logTag);
-      Navigator.of(context).pop(result);
+      context.navigator.pop(result);
     } else {
       log('Cannot pop - no routes in stack', name: _logTag);
     }

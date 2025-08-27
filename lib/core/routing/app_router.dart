@@ -3,10 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/auth/presentation/screens/login_view.dart';
+import '../../features/auth/presentation/screens/forget_password_view.dart';
+import '../../features/auth/presentation/screens/sign_in_view.dart';
+import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
-import 'routes_name.dart';
+import 'app_routes_name.dart';
 
 /// Centralized router for handling all navigation within the application.
 /// Uses named routes with arguments and provides custom transition animations.
@@ -26,15 +28,19 @@ abstract final class AppRouter {
       error: settings.arguments?.toString(),
     );
     switch (settings.name) {
-      case RoutesName.onboardingScreen:
+      case AppRoutesName.onboardingScreen:
         return _buildRoute(
           BlocProvider(
             create: (context) => OnboardingCubit(),
             child: const OnboardingView(),
           ),
         );
-      case RoutesName.loginScreen:
-        return _buildRoute(const LoginView());
+      case AppRoutesName.signInScreen:
+        return _buildFadeRoute(const SignInView());
+      case AppRoutesName.signUpScreen:
+        return _buildFadeRoute(const SignUpView());
+      case AppRoutesName.forgetPasswordScreen:
+        return _buildFadeRoute(const ForgetPasswordView());
       default:
         return null;
     }
@@ -67,18 +73,25 @@ abstract final class AppRouter {
   }
 
   /// Build fade transition route
-  /*
+
   static PageRoute<T> _buildFadeRoute<T extends Object?>(
     Widget child, {
     RouteSettings? settings,
   }) {
     return PageRouteBuilder<T>(
       settings: settings,
+      opaque: false,
+      barrierDismissible: false,
+      barrierColor: Colors.transparent,
+      barrierLabel: '',
+      maintainState: false,
+      fullscreenDialog: false,
+      transitionDuration: const Duration(milliseconds: 300),
+      reverseTransitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) => child,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
     );
   }
-  */
 }
