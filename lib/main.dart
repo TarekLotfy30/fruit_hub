@@ -18,7 +18,7 @@ Future<void> main() async {
   // Configure system UI & Initialize services
   await configureSystemUI();
   await initializeServices();
-  await getIt<LocalHelper>().clearAll();
+  //await getIt<LocalHelper>().clearAll();
 
   runApp(
     EasyLocalization(

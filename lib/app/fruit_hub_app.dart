@@ -50,7 +50,7 @@ class FruitHubApp extends StatelessWidget {
           builder: (context, themeState) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              showPerformanceOverlay: true,
+              //showPerformanceOverlay: true,
               // Configure localization delegates from EasyLocalization
               localizationsDelegates: context.localizationDelegates,
               // Set supported locales from EasyLocalization

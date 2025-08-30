@@ -12,8 +12,8 @@ abstract final class AppRoutesName {
   static const String signUpScreen = '/sign_up';
   static const String forgetPasswordScreen = '/forget_password';
 
-  // // Home/root routes
-  // static const String homeScreen = '/home';
+  // Home/
+  static const String homeScreen = '/home';
 
   // Nested Routes (if using nested navigation)
   // static const String loginScreen = '/auth/login';

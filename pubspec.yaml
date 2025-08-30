@@ -65,6 +65,8 @@ dependencies:
 
   # Firebase dependencies
   firebase_core: ^4.0.0
+  firebase_auth: ^6.0.1
+  dio: ^5.9.0
 
 dev_dependencies:
   # Flutter testing framework for unit and widget tests
