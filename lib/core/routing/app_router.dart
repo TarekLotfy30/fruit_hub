@@ -3,12 +3,15 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/controller/sign_up/sign_up_cubit.dart';
+import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/presentation/screens/forget_password_view.dart';
 import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/home/presentation/screens/home_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
+import '../di/service_locator.dart';
 import 'app_routes_name.dart';
 
 /// Centralized router for handling all navigation within the application.
@@ -39,7 +42,12 @@ abstract final class AppRouter {
       case AppRoutesName.signInScreen:
         return _buildFadeRoute(const SignInView());
       case AppRoutesName.signUpScreen:
-        return _buildFadeRoute(const SignUpView());
+        return _buildFadeRoute(
+          BlocProvider(
+            create: (context) => SignUpCubit(authRepo: getIt.get<AuthRepo>()),
+            child: const SignUpView(),
+          ),
+        );
       case AppRoutesName.forgetPasswordScreen:
         return _buildFadeRoute(const ForgetPasswordView());
       case AppRoutesName.homeScreen:

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel extends Equatable {
   const UserModel({
@@ -7,12 +8,12 @@ class UserModel extends Equatable {
     required this.email,
     required this.password,
   });
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
-      id: json['id'] as String,
-      fullname: json['name'] as String,
-      email: json['email'] as String,
-      password: json['password'] as String,
+      id: user.uid,
+      fullname: user.displayName ?? '',
+      email: user.email ?? '',
+      password: '',
     );
   }
 
@@ -20,10 +21,6 @@ class UserModel extends Equatable {
   final String fullname;
   final String email;
   final String password;
-
-  Map<String, dynamic> toJson() {
-    return {'id': id, 'name': fullname, 'email': email, 'password': password};
-  }
 
   @override
   List<Object?> get props => [id, fullname, email, password];

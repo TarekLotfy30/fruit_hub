@@ -19,14 +19,15 @@ Future<void> initializeServices() async {
   Bloc.observer = MyBlocObserver();
   log('BLoC observer initialized', name: 'initServices');
 
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  log('Firebase initialized', name: 'initServices');
+
   await Future.wait([
     // Initialize EasyLocalization before running the app
     EasyLocalization.ensureInitialized(),
     setupServiceLocator(),
-    // Initialize Firebase
-    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
   ]);
-  log('Firebase initialized');
+
   log('setupServiceLocator initialized', name: 'initServices');
 
   // Initialize Firebase Messaging

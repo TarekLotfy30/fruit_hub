@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/auth/data/repo/auth_repo.dart';
+import '../../features/auth/data/repo/auth_repo_impl.dart';
+import '../services/firebase/firebase_service.dart';
 import '../services/local/local_helper.dart';
 
 // registerSingleton: This method registers a type as a singleton, meaning that
@@ -31,9 +34,18 @@ final getIt = GetIt.instance;
 Future<void> setupServiceLocator() async {
   try {
     // SharedPreferences
+
     final sharedPrefs = await SharedPreferences.getInstance();
     getIt.registerSingleton<SharedPreferences>(sharedPrefs);
     getIt.registerSingleton<LocalHelper>(LocalHelper(sharedPrefs));
+
+    // Services
+    getIt.registerSingleton<FirebaseService>(FirebaseService());
+
+    // repos
+    getIt.registerSingleton<AuthRepo>(
+      AuthRepoImpl(firebaseService: getIt<FirebaseService>()),
+    );
 
     // Register helpers
     //  di.registerLazySingleton<DioHelper>(() => DioHelper(getIt()));
@@ -52,11 +64,8 @@ Future<void> setupServiceLocator() async {
     //     LoginRepoImpl(dio: getIt<DioHelper>(), local: getIt<LocalHelper>()),
     //  );
 
-    //   // Register repositories
-    //   di.registerLazySingleton<UserRepository>(() => UserRepository(di(), di()));
-
-    //   // Register Cubits
-    //   di.registerFactory<UserCubit>(() => UserCubit(di()));
+    // Register repositories
+    //  di.registerLazySingleton<UserRepository>(() => UserRepository(di(), di()));
 
     //   getIt.registerSingleton<HomeRepoImpl>(
     //     HomeRepoImpl(getIt.get<ApiService>()),

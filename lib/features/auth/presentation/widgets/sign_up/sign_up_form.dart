@@ -107,7 +107,16 @@ class _SignUpFormState extends State<_SignUpForm> {
           verticalSpacing(5),
           // Submit button
           ElevatedButton(
-            onPressed: _handleSignUpButton,
+            onPressed: () async {
+              FocusScope.of(context).unfocus(); // UX: Close keyboard
+              if (_formKey.currentState!.validate() && _isTermsAccepted) {
+                await context.signUpCubit.signUp(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                  fullname: _fullNameController.text,
+                );
+              }
+            },
             child: Text(LocaleKeys.sign_up_button.tr()),
           ),
         ],
@@ -115,9 +124,7 @@ class _SignUpFormState extends State<_SignUpForm> {
     );
   }
 
-  void _handleSignUpButton() {
-    FocusScope.of(context).unfocus(); // UX: Close keyboard
-  }
+  void _handleSignUpButton() {}
 
   void _checkBox(bool? value) {
     setState(() {

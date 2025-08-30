@@ -9,6 +9,7 @@ import 'core/constants/app_assets.dart';
 import 'core/di/service_locator.dart';
 import 'core/helpers/functions/configure_system_ui.dart';
 import 'core/helpers/functions/init_services.dart';
+import 'core/services/firebase/firebase_service.dart';
 import 'core/services/local/local_helper.dart';
 
 Future<void> main() async {
@@ -19,6 +20,12 @@ Future<void> main() async {
   await configureSystemUI();
   await initializeServices();
   //await getIt<LocalHelper>().clearAll();
+
+  //final FirebaseService firebaseAuthService = FirebaseService();
+  //final FirebaseService firebaseAuthService2 = FirebaseService();
+
+  //log(firebaseAuthService.hashCode.toString(), name: 'firebaseAuthService');
+  //log(firebaseAuthService2.hashCode.toString(), name: 'firebaseAuthService');
 
   runApp(
     EasyLocalization(
