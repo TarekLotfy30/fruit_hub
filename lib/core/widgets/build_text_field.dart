@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../helpers/extensions/theme_extension.dart';
+
 class BuildTextField extends StatelessWidget {
   const BuildTextField({
     super.key,
@@ -14,6 +16,7 @@ class BuildTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.textCapitalization,
+    this.obscureText = false,
   });
 
   final TextEditingController controller;
@@ -25,10 +28,12 @@ class BuildTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputAction? textInputAction;
   final TextCapitalization? textCapitalization;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final colorScheme = context.colorScheme;
+    final textSchema = context.textTheme;
     return TextFormField(
       controller: controller,
       validator: validator,
@@ -36,7 +41,7 @@ class BuildTextField extends StatelessWidget {
       onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.next,
-      cursorColor: theme.colorScheme.primary,
+      cursorColor: colorScheme.primary,
       cursorHeight: 24.h,
       decoration: InputDecoration(
         labelText: labelText,
@@ -44,9 +49,11 @@ class BuildTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
       ),
       textCapitalization: textCapitalization ?? TextCapitalization.none,
-      style: theme.textTheme.titleMedium?.copyWith(
-        color: theme.colorScheme.onSurface,
-      ),
+      style: textSchema.titleMedium?.copyWith(color: colorScheme.onSurface),
+
+      cursorErrorColor: colorScheme.error,
+      obscureText: obscureText,
+      obscuringCharacter: '•',
     );
   }
 }

@@ -1,118 +1,171 @@
+import 'package:easy_localization/easy_localization.dart';
+
+import '../translation/locale_keys.g.dart';
+
 abstract class FirebaseErrorMessages {
+  FirebaseErrorMessages._();
+
   // Firebase Auth error messages
-  static const Map<String, String> firebaseAuthMessages = {
-    'user-not-found': 'No user found with this email address.',
-    'wrong-password': 'Wrong password provided for this user.',
-    'email-already-in-use':
-        'An account already exists with this email address.',
-    'weak-password': 'The password is too weak.',
-    'invalid-email': 'The email address is not valid.',
-    'user-disabled': 'This user account has been disabled.',
-    'too-many-requests':
-        'Too many unsuccessful attempts. Please try again later.',
-    'operation-not-allowed': 'This sign-in method is not allowed.',
-    'invalid-credential':
-        'The supplied auth credential is malformed or has expired.',
-    'account-exists-with-different-credential':
-        'An account already exists with the same email but different sign-in credentials.',
-    'requires-recent-login':
-        'This operation requires recent authentication. Please log in again.',
-    'credential-already-in-use':
-        'This credential is already associated with a different user account.',
-    'invalid-verification-code': 'The verification code is invalid.',
-    'invalid-verification-id': 'The verification ID is invalid.',
-    'missing-verification-code': 'The verification code is missing.',
-    'missing-verification-id': 'The verification ID is missing.',
-    'session-expired': 'The SMS code has expired.',
-    'quota-exceeded': 'The SMS quota has been exceeded.',
-    'missing-phone-number': 'The phone number is missing.',
-    'invalid-phone-number': 'The phone number is invalid.',
-    'missing-code': 'The verification code is missing.',
-    'invalid-code': 'The verification code is invalid.',
-    'network-request-failed':
-        'A network error occurred. Please check your connection.',
+  static final Map<String, String> firebaseAuthMessages = {
+    'user-not-found': LocaleKeys.firebase_errors_user_not_found.tr(),
+    'wrong-password': LocaleKeys.firebase_errors_wrong_password.tr(),
+    'email-already-in-use': LocaleKeys.firebase_errors_email_already_in_use
+        .tr(),
+    'weak-password': LocaleKeys.firebase_errors_weak_password.tr(),
+    'invalid-email': LocaleKeys.firebase_errors_invalid_email.tr(),
+    'user-disabled': LocaleKeys.firebase_errors_user_disabled.tr(),
+    'too-many-requests': LocaleKeys.firebase_errors_too_many_requests.tr(),
+    'operation-not-allowed': LocaleKeys.firebase_errors_operation_not_allowed
+        .tr(),
+    'invalid-credential': LocaleKeys.firebase_errors_invalid_credential.tr(),
+    'account-exists-with-different-credential': LocaleKeys
+        .firebase_errors_account_exists_with_different_credential
+        .tr(),
+    'requires-recent-login': LocaleKeys.firebase_errors_requires_recent_login
+        .tr(),
+    'credential-already-in-use': LocaleKeys
+        .firebase_errors_credential_already_in_use
+        .tr(),
+    'invalid-verification-code': LocaleKeys
+        .firebase_errors_invalid_verification_code
+        .tr(),
+    'invalid-verification-id': LocaleKeys
+        .firebase_errors_invalid_verification_id
+        .tr(),
+    'missing-verification-code': LocaleKeys
+        .firebase_errors_missing_verification_code
+        .tr(),
+    'missing-verification-id': LocaleKeys
+        .firebase_errors_missing_verification_id
+        .tr(),
+    'session-expired': LocaleKeys.firebase_errors_session_expired.tr(),
+    'quota-exceeded': LocaleKeys.firebase_errors_quota_exceeded.tr(),
+    'missing-phone-number': LocaleKeys.firebase_errors_missing_phone_number
+        .tr(),
+    'invalid-phone-number': LocaleKeys.firebase_errors_invalid_phone_number
+        .tr(),
+    'network-request-failed': LocaleKeys.firebase_errors_network_request_failed
+        .tr(),
   };
 
   // Firebase Firestore error messages
-  static const Map<String, String> firestoreMessages = {
-    'permission-denied': 'You don\'t have permission to access this resource.',
-    'not-found': 'The requested document was not found.',
-    'already-exists': 'The document already exists.',
-    'resource-exhausted': 'Quota exceeded. Please try again later.',
-    'failed-precondition': 'The operation failed due to a conflict.',
-    'aborted': 'The operation was aborted due to a conflict.',
-    'out-of-range': 'The specified range is invalid.',
-    'unimplemented': 'This operation is not implemented or supported.',
-    'internal': 'An internal error occurred.',
-    'unavailable':
-        'The service is currently unavailable. Please try again later.',
-    'data-loss': 'Unrecoverable data loss or corruption.',
-    'unauthenticated':
-        'The request does not have valid authentication credentials.',
-    'deadline-exceeded': 'The operation timed out.',
-    'cancelled': 'The operation was cancelled.',
-    'invalid-argument': 'Invalid argument provided.',
+  static final Map<String, String> firestoreMessages = {
+    'permission-denied': LocaleKeys.firebase_errors_firestore_permission_denied
+        .tr(),
+    'not-found': LocaleKeys.firebase_errors_firestore_not_found.tr(),
+    'already-exists': LocaleKeys.firebase_errors_firestore_already_exists.tr(),
+    'resource-exhausted': LocaleKeys
+        .firebase_errors_firestore_resource_exhausted
+        .tr(),
+    'failed-precondition': LocaleKeys
+        .firebase_errors_firestore_failed_precondition
+        .tr(),
+    'aborted': LocaleKeys.firebase_errors_firestore_aborted.tr(),
+    'out-of-range': LocaleKeys.firebase_errors_firestore_out_of_range.tr(),
+    'unimplemented': LocaleKeys.firebase_errors_firestore_unimplemented.tr(),
+    'internal': LocaleKeys.firebase_errors_firestore_internal.tr(),
+    'unavailable': LocaleKeys.firebase_errors_firestore_unavailable.tr(),
+    'data-loss': LocaleKeys.firebase_errors_firestore_data_loss.tr(),
+    'unauthenticated': LocaleKeys.firebase_errors_firestore_unauthenticated
+        .tr(),
+    'deadline-exceeded': LocaleKeys.firebase_errors_firestore_deadline_exceeded
+        .tr(),
+    'cancelled': LocaleKeys.firebase_errors_firestore_cancelled.tr(),
+    'invalid-argument': LocaleKeys.firebase_errors_firestore_invalid_argument
+        .tr(),
   };
 
   // Firebase Storage error messages
-  static const Map<String, String> firebaseStorageMessages = {
-    'storage/unknown': 'An unknown error occurred.',
-    'storage/object-not-found': 'No object exists at the desired reference.',
-    'storage/bucket-not-found': 'No bucket is configured for Cloud Storage.',
-    'storage/project-not-found': 'No project is configured for Cloud Storage.',
-    'storage/quota-exceeded':
-        'Quota on your Cloud Storage bucket has been exceeded.',
-    'storage/unauthenticated':
-        'User is unauthenticated. Please authenticate and try again.',
-    'storage/unauthorized':
-        'User is not authorized to perform the desired action.',
-    'storage/retry-limit-exceeded':
-        'The maximum time limit on an operation has been exceeded.',
-    'storage/invalid-checksum':
-        'File on the client does not match the checksum of the file received by the server.',
-    'storage/canceled': 'User canceled the operation.',
-    'storage/invalid-event-name': 'Invalid event name provided.',
-    'storage/invalid-url': 'Invalid URL provided.',
-    'storage/invalid-argument': 'Invalid argument provided.',
-    'storage/no-default-bucket': 'No bucket has been set in your config.',
-    'storage/cannot-slice-blob':
-        'Commonly occurs when the local file has changed.',
-    'storage/server-file-wrong-size':
-        'File on the client does not match the size of the file received by the server.',
+  static final Map<String, String> firebaseStorageMessages = {
+    'storage/unknown': LocaleKeys.firebase_errors_storage_unknown.tr(),
+    'storage/object-not-found': LocaleKeys
+        .firebase_errors_storage_object_not_found
+        .tr(),
+    'storage/bucket-not-found': LocaleKeys
+        .firebase_errors_storage_bucket_not_found
+        .tr(),
+    'storage/project-not-found': LocaleKeys
+        .firebase_errors_storage_project_not_found
+        .tr(),
+    'storage/quota-exceeded': LocaleKeys.firebase_errors_storage_quota_exceeded
+        .tr(),
+    'storage/unauthenticated': LocaleKeys
+        .firebase_errors_storage_unauthenticated
+        .tr(),
+    'storage/unauthorized': LocaleKeys.firebase_errors_storage_unauthorized
+        .tr(),
+    'storage/retry-limit-exceeded': LocaleKeys
+        .firebase_errors_storage_retry_limit_exceeded
+        .tr(),
+    'storage/invalid-checksum': LocaleKeys
+        .firebase_errors_storage_invalid_checksum
+        .tr(),
+    'storage/canceled': LocaleKeys.firebase_errors_storage_canceled.tr(),
+    'storage/invalid-event-name': LocaleKeys
+        .firebase_errors_storage_invalid_event_name
+        .tr(),
+    'storage/invalid-url': LocaleKeys.firebase_errors_storage_invalid_url.tr(),
+    'storage/invalid-argument': LocaleKeys
+        .firebase_errors_storage_invalid_argument
+        .tr(),
+    'storage/no-default-bucket': LocaleKeys
+        .firebase_errors_storage_no_default_bucket
+        .tr(),
+    'storage/cannot-slice-blob': LocaleKeys
+        .firebase_errors_storage_cannot_slice_blob
+        .tr(),
+    'storage/server-file-wrong-size': LocaleKeys
+        .firebase_errors_storage_server_file_wrong_size
+        .tr(),
   };
 
   // Firebase Cloud Functions error messages
-  static const Map<String, String> cloudFunctionsMessages = {
-    'functions/ok': 'The operation completed successfully.',
-    'functions/cancelled': 'The operation was cancelled.',
-    'functions/unknown':
-        'Unknown error or an error from a different error domain.',
-    'functions/invalid-argument': 'Client specified an invalid argument.',
-    'functions/deadline-exceeded':
-        'Deadline expired before operation could complete.',
-    'functions/not-found': 'Some requested entity was not found.',
-    'functions/already-exists':
-        'Some entity that we attempted to create already exists.',
-    'functions/permission-denied':
-        'The caller does not have permission to execute the specified operation.',
-    'functions/resource-exhausted': 'Some resource has been exhausted.',
-    'functions/failed-precondition':
-        'Operation was rejected because the system is not in a state required for the operation.',
-    'functions/aborted': 'The operation was aborted.',
-    'functions/out-of-range': 'Operation was attempted past the valid range.',
-    'functions/unimplemented': 'Operation is not implemented or not supported.',
-    'functions/internal': 'Internal errors.',
-    'functions/unavailable': 'The service is currently unavailable.',
-    'functions/data-loss': 'Unrecoverable data loss or corruption.',
-    'functions/unauthenticated':
-        'The request does not have valid authentication credentials.',
+  static final Map<String, String> cloudFunctionsMessages = {
+    'functions/ok': LocaleKeys.firebase_errors_functions_ok.tr(),
+    'functions/cancelled': LocaleKeys.firebase_errors_functions_cancelled.tr(),
+    'functions/unknown': LocaleKeys.firebase_errors_functions_unknown.tr(),
+    'functions/invalid-argument': LocaleKeys
+        .firebase_errors_functions_invalid_argument
+        .tr(),
+    'functions/deadline-exceeded': LocaleKeys
+        .firebase_errors_functions_deadline_exceeded
+        .tr(),
+    'functions/not-found': LocaleKeys.firebase_errors_functions_not_found.tr(),
+    'functions/already-exists': LocaleKeys
+        .firebase_errors_functions_already_exists
+        .tr(),
+    'functions/permission-denied': LocaleKeys
+        .firebase_errors_functions_permission_denied
+        .tr(),
+    'functions/resource-exhausted': LocaleKeys
+        .firebase_errors_functions_resource_exhausted
+        .tr(),
+    'functions/failed-precondition': LocaleKeys
+        .firebase_errors_functions_failed_precondition
+        .tr(),
+    'functions/aborted': LocaleKeys.firebase_errors_functions_aborted.tr(),
+    'functions/out-of-range': LocaleKeys.firebase_errors_functions_out_of_range
+        .tr(),
+    'functions/unimplemented': LocaleKeys
+        .firebase_errors_functions_unimplemented
+        .tr(),
+    'functions/internal': LocaleKeys.firebase_errors_functions_internal.tr(),
+    'functions/unavailable': LocaleKeys.firebase_errors_functions_unavailable
+        .tr(),
+    'functions/data-loss': LocaleKeys.firebase_errors_functions_data_loss.tr(),
+    'functions/unauthenticated': LocaleKeys
+        .firebase_errors_functions_unauthenticated
+        .tr(),
   };
 
-  // General Firebase error messages
-  static const String firebaseGenericError =
-      'A Firebase error occurred. Please try again.';
-  static const String firebaseNetworkError =
-      'Network error. Please check your internet connection.';
-  static const String firebaseTimeoutError =
-      'The operation timed out. Please try again.';
+  // General Firebase error messages (if you want them localized too)
+  static final String firebaseGenericError = LocaleKeys
+      .firebase_errors_generic_error
+      .tr();
+  static final String firebaseNetworkError = LocaleKeys
+      .firebase_errors_network_error
+      .tr();
+  static final String firebaseTimeoutError = LocaleKeys
+      .firebase_errors_timeout_error
+      .tr();
 }

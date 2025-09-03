@@ -6,6 +6,14 @@ enum AppSharedKey {
 
   /// Key for storing the onboarding status (skipped or not).
   skipOnBoarding,
+
+  /// Key for storing the user's authentication token.
+  userId,
+  userName,
+  userEmail,
+
+  /// Key for storing the user's login status.
+  isLoggedIn,
 }
 
 // Usage:

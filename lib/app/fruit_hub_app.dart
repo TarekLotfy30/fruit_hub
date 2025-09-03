@@ -29,7 +29,7 @@ class FruitHubApp extends StatelessWidget {
 
     final skipOnboarding =
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
-
+// TODO(TAREK): Check if user is logged in
     if (skipOnboarding) {
       return AppRoutesName.signInScreen;
     } else {
@@ -45,7 +45,7 @@ class FruitHubApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, _) => MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => ThemeCubit())],
+        providers: [BlocProvider(lazy: true, create: (_) => ThemeCubit())],
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, themeState) {
             return MaterialApp(

@@ -23,7 +23,7 @@ class _BuildActionButton extends StatelessWidget {
           replacement: const SizedBox.shrink(),
           child: ElevatedButton(
             onPressed: () => _onStartButton(context),
-            child: Text(LocaleKeys.start_now.tr()),
+            child: Text(LocaleKeys.onboarding_start_now.tr()),
           ),
         );
       },

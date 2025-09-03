@@ -49,7 +49,7 @@ class _PageViewItem extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () => _onSkipTap(context),
-                          child: Text(LocaleKeys.skip.tr()),
+                          child: Text(LocaleKeys.onboarding_skip.tr()),
                         ),
                       ),
                     ),

@@ -92,6 +92,7 @@ abstract final class AppInputTheme {
       // Error styling
       errorStyle: AppTextThemes.textTheme.bodyMedium?.copyWith(
         color: colorScheme.error,
+        fontSize: 10.sp,
       ),
 
       // Counter styling
@@ -115,7 +116,7 @@ abstract final class AppInputTheme {
       ),
 
       // Icon colors
-      prefixIconColor: colorScheme.primary,  
+      prefixIconColor: colorScheme.primary,
       suffixIconColor: colorScheme.outlineVariant,
       iconColor: isDark
           ? colorScheme.onSurfaceVariant

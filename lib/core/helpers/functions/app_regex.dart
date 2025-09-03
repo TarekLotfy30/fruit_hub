@@ -1,10 +1,6 @@
 class AppRegex {
   AppRegex._();
 
-  static bool isNameValid(String name) {
-    return RegExp(r'^[a-zA-Z]+$').hasMatch(name);
-  }
-
   static bool isPhoneValid(String phone) {
     return RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$').hasMatch(phone);
   }

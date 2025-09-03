@@ -29,14 +29,14 @@ class _TermsAndConditionsSheet extends StatelessWidget {
                     const BuildDragHandleBar(),
                     // Title
                     Text(
-                      LocaleKeys.terms_and_conditions.tr(),
+                      LocaleKeys.sign_up_terms_and_conditions.tr(),
                       style: theme.textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     // Content
                     Text(
-                      LocaleKeys.terms_content.tr(),
+                      LocaleKeys.sign_up_terms_content.tr(),
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onSurface,
                       ),
@@ -47,7 +47,7 @@ class _TermsAndConditionsSheet extends StatelessWidget {
               // Close button
               ElevatedButton(
                 onPressed: () => AppNavigation.goBack(context),
-                child: Text(LocaleKeys.close.tr()),
+                child: Text(LocaleKeys.sign_up_close.tr()),
               ),
             ],
           ),

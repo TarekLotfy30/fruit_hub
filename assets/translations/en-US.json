@@ -1,49 +1,176 @@
 {
-  "fruit": "Fruit",
-  "hub": "HUB",
-  "welcome": "Welcome to",
-  "explore_fruits": "Discover a unique shopping experience with FruitHUB. Explore our wide range of premium fresh fruits and enjoy the best deals and top quality.",
-  "search_and_shopping": "Search & Shop",
-  "provide_service": "We provide you with the finest carefully selected fruits. Check details, images, and reviews to make sure you pick the perfect fruits.",
-  "skip": "Skip",
-  "change_lang": "Change Language",
-  "start_now": "Start Now",
-  "email": "Email",
-  "password": "Password",
-  "forgot_password": "Forgot Password?",
-  "sign_in": "Sign In",
-  "no_account": "Don't have an account?",
-  "create_account": "Create an Account",
-  "or": "Or",
-  "sign_in_with_google": "Sign in with Google",
-  "sign_in_with_apple": "Sign in with Apple",
-  "sign_in_with_facebook": "Sign in with Facebook",
-  "sign_up": "Sign Up",
-  "full_name": "Full Name",
-  "phone_number": "Phone Number",
-  "sign_up_button": "Create a New Account",
-  "agree_terms": "By creating an account, you agree to",
-  "terms_and_conditions": "our Terms & Conditions",
-  "terms_content": "By using FruitHUB, you agree to the following terms and conditions:\n\n1. All fruits are provided subject to local market availability.\n2. Customers must ensure the accuracy of delivery details before confirming an order.\n3. Payment is upon delivery or via the electronic methods available in the app.\n4. FruitHUB reserves the right to adjust prices or offers at any time without prior notice.\n5. Return and exchange policy is subject to conditions that preserve the freshness and quality of products.\n6. By using the app, you agree to our privacy policy and data protection terms.",
-  "close": "Close",
-  "already_have_account": "Already have an account?",
-  "search": "Search for...",
-  "best_selling": "Best Selling",
-  "add_to_cart": "Add to Cart",
-  "checkout": "Checkout",
-  "confirm_order": "Confirm Order",
-  "order_summary": "Order Summary",
-  "total": "Total",
-  "payment_method": "Payment Method",
-  "delivery_address": "Delivery Address",
-  "notifications": "Notifications",
-  "no_results": "Sorry... this information is not available right now",
-  "favorites": "Favorites",
-  "profile": "Profile",
-  "my_orders": "My Orders",
-  "language": "Language",
-  "logout": "Log Out",
-  "confirm_logout": "Do you want to log out?",
-  "cancel": "Cancel",
-  "confirm": "Confirm"
+  "app": {
+    "fruit": "Fruit",
+    "hub": "HUB"
+  },
+
+  "onboarding": {
+    "fruit": "Fruit",
+    "hub": "HUB",
+    "welcome": "Welcome to",
+    "explore_fruits": "Discover a unique shopping experience with FruitHUB. Explore our wide range of premium fresh fruits and enjoy the best deals and top quality.",
+    "search_and_shopping": "Search & Shop",
+    "provide_service": "We provide you with the finest carefully selected fruits. Check details, images, and reviews to make sure you pick the perfect fruits.",
+    "skip": "Skip",
+    "start_now": "Start Now"
+  },
+
+  "auth_general": {
+    "email": "Email",
+    "password": "Password"
+  },
+
+  "forgot_password":{
+    "forgot_password": "Forgot Password?"
+  },
+
+  "sign_in": {
+    "sign_in": "Sign In",
+    "no_account": "Don't have an account?",
+    "create_account": "Create an Account",
+    "or": "Or",
+    "with_google": "Sign in with Google",
+    "with_apple": "Sign in with Apple",
+    "with_facebook": "Sign in with Facebook"
+  },
+
+  "sign_up": {
+    "sign_up": "Sign Up",
+    "full_name": "Full Name",
+    "button": "Create a New Account",
+    "agree_terms": "By creating an account, you agree to",
+    "terms_and_conditions": "our Terms & Conditions",
+    "terms_content": "By using FruitHUB, you agree to the following terms and conditions:\n\n1. All fruits are provided subject to local market availability.\n2. Customers must ensure the accuracy of delivery details before confirming an order.\n3. Payment is upon delivery or via the electronic methods available in the app.\n4. FruitHUB reserves the right to adjust prices or offers at any time without prior notice.\n5. Return and exchange policy is subject to conditions that preserve the freshness and quality of products.\n6. By using the app, you agree to our privacy policy and data protection terms.",
+    "close": "Close",
+    "already_have_account": "Already have an account?"
+  },
+
+  "validation": {
+      "password_empty": "Password cannot be empty",
+      "password_min_length": "Password must be at least 8 characters long",
+      "password_uppercase": "Password must contain at least one uppercase letter",
+      "password_lowercase": "Password must contain at least one lowercase letter",
+      "password_number": "Password must contain at least one number",
+      "password_special": "Password must contain at least one special character",
+
+      "email_empty": "Email cannot be empty",
+      "email_invalid": "Please enter a valid email address",
+      "email_too_long": "Email cannot exceed 254 characters",
+
+      "fullname_empty": "Full name cannot be empty",
+      "fullname_invalid": "Full name can only contain letters and spaces",
+      "fullname_too_long": "Full name cannot exceed 50 characters"
+    },
+
+  "firebase_errors": {
+  "user_not_found": "No user found with this email address.",
+  "wrong_password": "Wrong password provided for this user.",
+  "email_already_in_use": "An account already exists with this email address.",
+  "weak_password": "The password is too weak.",
+  "invalid_email": "The email address is not valid.",
+  "user_disabled": "This user account has been disabled.",
+  "too_many_requests": "Too many unsuccessful attempts. Please try again later.",
+  "operation_not_allowed": "This sign-in method is not allowed.",
+  "invalid_credential": "The supplied auth credential is malformed or has expired.",
+  "account_exists_with_different_credential": "An account already exists with the same email but different sign-in credentials.",
+  "requires_recent_login": "This operation requires recent authentication. Please log in again.",
+  "credential_already_in_use": "This credential is already associated with a different user account.",
+  "invalid_verification_code": "The verification code is invalid.",
+  "invalid_verification_id": "The verification ID is invalid.",
+  "missing_verification_code": "The verification code is missing.",
+  "missing_verification_id": "The verification ID is missing.",
+  "session_expired": "The SMS code has expired.",
+  "quota_exceeded": "The SMS quota has been exceeded.",
+  "missing_phone_number": "The phone number is missing.",
+  "invalid_phone_number": "The phone number is invalid.",
+  "network_request_failed": "A network error occurred. Please check your connection.",
+
+  "firestore_permission_denied": "You don't have permission to access this resource.",
+  "firestore_not_found": "The requested document was not found.",
+  "firestore_already_exists": "The document already exists.",
+  "firestore_resource_exhausted": "Quota exceeded. Please try again later.",
+  "firestore_failed_precondition": "The operation failed due to a conflict.",
+  "firestore_aborted": "The operation was aborted due to a conflict.",
+  "firestore_out_of_range": "The specified range is invalid.",
+  "firestore_unimplemented": "This operation is not implemented or supported.",
+  "firestore_internal": "An internal error occurred.",
+  "firestore_unavailable": "The service is currently unavailable. Please try again later.",
+  "firestore_data_loss": "Unrecoverable data loss or corruption.",
+  "firestore_unauthenticated": "The request does not have valid authentication credentials.",
+  "firestore_deadline_exceeded": "The operation timed out.",
+  "firestore_cancelled": "The operation was cancelled.",
+  "firestore_invalid_argument": "Invalid argument provided.",
+
+  "storage_unknown": "An unknown error occurred.",
+  "storage_object_not_found": "No object exists at the desired reference.",
+  "storage_bucket_not_found": "No bucket is configured for Cloud Storage.",
+  "storage_project_not_found": "No project is configured for Cloud Storage.",
+  "storage_quota_exceeded": "Quota on your Cloud Storage bucket has been exceeded.",
+  "storage_unauthenticated": "User is unauthenticated. Please authenticate and try again.",
+  "storage_unauthorized": "User is not authorized to perform the desired action.",
+  "storage_retry_limit_exceeded": "The maximum time limit on an operation has been exceeded.",
+  "storage_invalid_checksum": "File on the client does not match the checksum of the file received by the server.",
+  "storage_canceled": "User canceled the operation.",
+  "storage_invalid_event_name": "Invalid event name provided.",
+  "storage_invalid_url": "Invalid URL provided.",
+  "storage_invalid_argument": "Invalid argument provided.",
+  "storage_no_default_bucket": "No bucket has been set in your config.",
+  "storage_cannot_slice_blob": "Commonly occurs when the local file has changed.",
+  "storage_server_file_wrong_size": "File on the client does not match the size of the file received by the server.",
+
+  "functions_ok": "The operation completed successfully.",
+  "functions_cancelled": "The operation was cancelled.",
+  "functions_unknown": "Unknown error or an error from a different error domain.",
+  "functions_invalid_argument": "Client specified an invalid argument.",
+  "functions_deadline_exceeded": "Deadline expired before operation could complete.",
+  "functions_not_found": "Some requested entity was not found.",
+  "functions_already_exists": "Some entity that we attempted to create already exists.",
+  "functions_permission_denied": "The caller does not have permission to execute the specified operation.",
+  "functions_resource_exhausted": "Some resource has been exhausted.",
+  "functions_failed_precondition": "Operation was rejected because the system is not in a state required for the operation.",
+  "functions_aborted": "The operation was aborted.",
+  "functions_out_of_range": "Operation was attempted past the valid range.",
+  "functions_unimplemented": "Operation is not implemented or not supported.",
+  "functions_internal": "Internal errors.",
+  "functions_unavailable": "The service is currently unavailable.",
+  "functions_data_loss": "Unrecoverable data loss or corruption.",
+  "functions_unauthenticated": "The request does not have valid authentication credentials.",
+
+  "generic_error": "A Firebase error occurred. Please try again.",
+  "network_error": "Network error. Please check your internet connection.",
+  "timeout_error": "The operation timed out. Please try again."
+  },
+  
+
+
+  "snack_bar_messages": {
+    "sign_up_success": "Account created successfully!",
+    "invalid_inputs": "Please fix the highlighted errors",
+    "must_accept_terms": "You must accept the Terms and Conditions"
+  },
+
+  "shop": {
+    "search": "Search for...",
+    "best_selling": "Best Selling",
+    "add_to_cart": "Add to Cart",
+    "checkout": "Checkout",
+    "confirm_order": "Confirm Order",
+    "order_summary": "Order Summary",
+    "total": "Total",
+    "payment_method": "Payment Method",
+    "delivery_address": "Delivery Address"
+  },
+
+  "profile": {
+    "notifications": "Notifications",
+    "no_results": "Sorry... this information is not available right now",
+    "favorites": "Favorites",
+    "profile": "Profile",
+    "my_orders": "My Orders",
+    "language": "Language",
+    "logout": "Log Out",
+    "confirm_logout": "Do you want to log out?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  }
 }

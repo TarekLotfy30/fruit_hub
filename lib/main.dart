@@ -1,16 +1,10 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'app/fruit_hub_app.dart';
 import 'core/constants/app_assets.dart';
-
-import 'core/di/service_locator.dart';
 import 'core/helpers/functions/configure_system_ui.dart';
 import 'core/helpers/functions/init_services.dart';
-import 'core/services/firebase/firebase_service.dart';
-import 'core/services/local/local_helper.dart';
 
 Future<void> main() async {
   // Initialize Flutter binding before calling native code
@@ -21,18 +15,13 @@ Future<void> main() async {
   await initializeServices();
   //await getIt<LocalHelper>().clearAll();
 
-  //final FirebaseService firebaseAuthService = FirebaseService();
-  //final FirebaseService firebaseAuthService2 = FirebaseService();
-
-  //log(firebaseAuthService.hashCode.toString(), name: 'firebaseAuthService');
-  //log(firebaseAuthService2.hashCode.toString(), name: 'firebaseAuthService');
 
   runApp(
     EasyLocalization(
       ignorePluralRules: false,
       supportedLocales: const [
         Locale('en', 'US'), // English (United States)
-        Locale('ar', 'SA'), // Arabic (Saudi Arabia)
+        Locale('ar', 'SA'), // Arabic
       ],
       path: AppAssets.translationsPath,
       fallbackLocale: const Locale('ar', 'SA'),

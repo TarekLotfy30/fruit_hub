@@ -9,7 +9,7 @@ class _AgreeTermsAndConditionsText extends StatelessWidget {
       TextSpan(
         children: [
           TextSpan(
-            text: '${LocaleKeys.agree_terms.tr()} ',
+            text: '${LocaleKeys.sign_up_agree_terms.tr()} ',
             style: Theme.of(context).textTheme.labelMedium?.copyWith(
               color: Theme.of(
                 context,
@@ -25,7 +25,7 @@ class _AgreeTermsAndConditionsText extends StatelessWidget {
                 );
               },
               child: Text(
-                LocaleKeys.terms_and_conditions.tr(),
+                LocaleKeys.sign_up_terms_and_conditions.tr(),
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   decoration: TextDecoration.underline,

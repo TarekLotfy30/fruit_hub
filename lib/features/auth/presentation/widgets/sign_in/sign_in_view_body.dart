@@ -15,7 +15,7 @@ class _SignInViewBody extends StatelessWidget {
         child: Column(
           spacing: AppPaddings.padding16.h,
           children: const [
-            _SignInForm(),
+            _SignInFormAndForgetPassword(),
             _NoAccountAndCreateAccount(),
             _OrDivider(),
             _SocialMediaSection(),

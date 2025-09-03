@@ -16,7 +16,7 @@ class _ForgetPasswordButton extends StatelessWidget {
           );
         },
         child: Text(
-          LocaleKeys.forgot_password.tr(),
+          LocaleKeys.forgot_password_forgot_password.tr(),
           style: theme.textTheme.labelMedium?.copyWith(
             color: theme.colorScheme.secondary,
           ),

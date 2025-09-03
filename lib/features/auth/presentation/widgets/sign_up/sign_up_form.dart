@@ -1,6 +1,5 @@
 part of '../../screens/sign_up_view.dart';
 
-// translate-me-ignore-all-file
 /// [_SignUpForm] manages the actual registration inputs and state.
 /// Includes full name, email, password, terms agreement, and submission.
 ///
@@ -13,12 +12,13 @@ class _SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<_SignUpForm> {
+  // Form management
   late final GlobalKey<FormState> _formKey;
+
+  // Input controllers - using late final for immutable references
   late final TextEditingController _fullNameController;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-
-  bool _isTermsAccepted = false;
 
   @override
   void initState() {
@@ -26,6 +26,7 @@ class _SignUpFormState extends State<_SignUpForm> {
     _initializeControllers();
   }
 
+  /// Initializes all text editing controllers with proper lifecycle management
   void _initializeControllers() {
     _formKey = GlobalKey<FormState>();
     _fullNameController = TextEditingController();
@@ -42,122 +43,31 @@ class _SignUpFormState extends State<_SignUpForm> {
         spacing: Spacing.spacing16.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //FullName
-          BuildTextField(
-            controller: _fullNameController,
-            labelText: LocaleKeys.full_name.tr(),
-            keyboardType: TextInputType.name,
-            textInputAction: TextInputAction.next,
-            textCapitalization: TextCapitalization.words,
-            prefixIcon: const Icon(AppIcons.user, size: AppIconSizes.regular),
-            inputFormatters: [
-              // Limit to reasonable name length
-              LengthLimitingTextInputFormatter(50),
-              // Prevent multiple consecutive spaces
-              FilteringTextInputFormatter.deny(RegExp(r'\s{2,}')),
-            ],
-            validator: _fullNameValidation,
-          ),
-
-          //Email
-          BuildTextField(
-            controller: _emailController,
-            labelText: LocaleKeys.email.tr(),
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            prefixIcon: const Icon(AppIcons.email, size: AppIconSizes.regular),
-            inputFormatters: [
-              // RFC 5321 email length limit
-              LengthLimitingTextInputFormatter(254),
-              // No whitespace
-              FilteringTextInputFormatter.deny(RegExp(r'\s')),
-            ],
-            validator: _emailValidation,
-          ),
-
-          //Password
-          BuildTextField(
-            controller: _passwordController,
-            labelText: LocaleKeys.password.tr(),
-            textInputAction: TextInputAction.done,
-            keyboardType: TextInputType.visiblePassword,
-            prefixIcon: const Icon(
-              AppIcons.password,
-              size: AppIconSizes.regular,
-            ),
-            suffixIcon: const Icon(
-              AppIcons.visibility,
-              size: AppIconSizes.regular,
-            ),
-            inputFormatters: [
-              // Reasonable password length limit
-              LengthLimitingTextInputFormatter(128),
-            ],
-            validator: _passwordValidation,
-          ),
-          // Terms and conditions
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Checkbox(value: _isTermsAccepted, onChanged: _checkBox),
-              horizontalSpacing(8),
-              const Expanded(child: _AgreeTermsAndConditionsText()),
-            ],
-          ),
+          _FullNameTextField(fullNameController: _fullNameController),
+          EmailTextField(emailController: _emailController),
+          PasswordTextField(passwordController: _passwordController),
+          const _TermsAndConditionSection(),
           verticalSpacing(5),
-          // Submit button
-          ElevatedButton(
-            onPressed: () async {
-              FocusScope.of(context).unfocus(); // UX: Close keyboard
-              if (_formKey.currentState!.validate() && _isTermsAccepted) {
-                await context.signUpCubit.signUp(
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                  fullname: _fullNameController.text,
-                );
-              }
-            },
-            child: Text(LocaleKeys.sign_up_button.tr()),
+          _SignUpButton(
+            formKey: _formKey,
+            emailController: _emailController,
+            passwordController: _passwordController,
+            fullNameController: _fullNameController,
           ),
         ],
       ),
     );
   }
 
-  void _handleSignUpButton() {}
-
-  void _checkBox(bool? value) {
-    setState(() {
-      _isTermsAccepted = value ?? false;
-    });
-  }
-
-  String? _passwordValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return '';
-    }
-    return null;
-  }
-
-  String? _emailValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return '';
-    }
-    return null;
-  }
-
-  String? _fullNameValidation(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'sdsda';
-    }
-    return null;
-  }
-
   @override
   void dispose() {
-    _fullNameController.dispose();
-    _emailController.dispose();
+    _passwordController.clear();
+    _fullNameController.clear();
+    _emailController.clear();
+    // Dispose controllers in reverse order of creation
     _passwordController.dispose();
+    _emailController.dispose();
+    _fullNameController.dispose();
     super.dispose();
   }
 }

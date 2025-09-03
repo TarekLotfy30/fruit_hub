@@ -11,7 +11,7 @@ class ForgetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleKeys.forgot_password.tr()),
+        title: Text(LocaleKeys.forgot_password_forgot_password.tr()),
         centerTitle: true,
         leading: const BuildBackButtonIcon(),
       ),

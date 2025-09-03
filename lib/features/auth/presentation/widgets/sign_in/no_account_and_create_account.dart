@@ -3,29 +3,29 @@ part of '../../screens/sign_in_view.dart';
 class _NoAccountAndCreateAccount extends StatelessWidget {
   const _NoAccountAndCreateAccount();
 
-
   @override
   Widget build(BuildContext context) {
-    final  textTheme = context.textTheme;
+    final textTheme = context.textTheme;
     final colorSchema = context.colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.no_account.tr(),
+          LocaleKeys.sign_in_no_account.tr(),
           style: textTheme.labelMedium?.copyWith(
             color: colorSchema.onSurfaceVariant.withValues(alpha: 0.6),
           ),
         ),
         TextButton(
           onPressed: () async {
-            await AppNavigation.navigateTo(context, AppRoutesName.signUpScreen);
+            await AppNavigation.navigateToAndClearStack(
+              context,
+              AppRoutesName.signUpScreen,
+            );
           },
           child: Text(
-            LocaleKeys.create_account.tr(),
-            style: textTheme.titleSmall?.copyWith(
-              color: colorSchema.primary,
-            ),
+            LocaleKeys.sign_in_create_account.tr(),
+            style: textTheme.titleSmall?.copyWith(color: colorSchema.primary),
           ),
         ),
       ],

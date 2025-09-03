@@ -1,7 +1,7 @@
 part of '../screens/onboarding_view.dart';
 
 class _BuildPageView extends StatelessWidget {
-  _BuildPageView();
+  const _BuildPageView();
 
   @override
   Widget build(BuildContext context) {

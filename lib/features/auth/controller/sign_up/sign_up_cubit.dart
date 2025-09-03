@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -18,13 +19,39 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String fullname,
   }) async {
     emit(SignUpLoading());
-    authRepo
-        .signUp(email, password, fullname)
-        .then(
-          (value) => value.fold(
-            (failure) => emit(SignUpFailure(failure: failure)),
-            (user) => emit(SignUpSuccess(userModel: user)),
-          ),
-        );
+    await authRepo.signUp(email, password, fullname).then((value) {
+      value.fold(
+        (failure) => emit(SignUpFailure(failure: failure)),
+        (user) => emit(SignUpSuccess(userModel: user)),
+      );
+    });
+  }
+
+  // Future<void> sendEmailVerification() async {
+  //   emit(SendEmailVerificationLoading());
+  //   await authRepo.sendEmailVerification().then((value) {
+  //     value.fold(
+  //       (failure) => emit(SendEmailVerificationFailure(failure: failure)),
+  //       (success) => emit(SendEmailVerificationSuccess()),
+  //     );
+  //   });
+  // }
+
+
+  // Future<void> checkEmailVerified() async {
+  //   await authRepo.isEmailVerified().then((value) {
+  //     value.fold(
+  //       (failure) => emit(SignUpFailure(failure: failure)),
+  //       (isVerified) {
+  //         if (isVerified) {
+  //           emit(EmailVerified());
+  //         }
+  //       },
+  //     );
+  //   });
+  // }
+
+  void toggleTermsAccepted({required bool value}) {
+    emit(ToggleTermsAndConditions(isAccepted: value));
   }
 }

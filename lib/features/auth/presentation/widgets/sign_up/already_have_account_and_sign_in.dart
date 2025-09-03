@@ -9,7 +9,7 @@ class _AlreadyHaveAccountAndSignIn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          LocaleKeys.already_have_account.tr(),
+          LocaleKeys.sign_up_already_have_account.tr(),
           style: Theme.of(context).textTheme.labelMedium?.copyWith(
             color: Theme.of(
               context,
@@ -21,7 +21,7 @@ class _AlreadyHaveAccountAndSignIn extends StatelessWidget {
             AppNavigation.goBack(context);
           },
           child: Text(
-            LocaleKeys.sign_in.tr(),
+            LocaleKeys.sign_in_sign_in.tr(),
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),

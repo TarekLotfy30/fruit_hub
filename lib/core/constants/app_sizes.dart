@@ -13,4 +13,7 @@ abstract final class AppSizes {
 
   /// Bottom navigation height
   static const double bottomNavigationHeight = 80;
+
+  // Loading animation size
+  static const double loadingAnimationSize = 50;
 }

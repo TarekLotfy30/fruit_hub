@@ -5,13 +5,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/firebase/firebase_service.dart';
+import '../../../../core/services/local/app_shared_keys.dart';
+import '../../../../core/services/local/local_helper.dart';
 import '../model/user.dart';
 import 'auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  const AuthRepoImpl({required this.firebaseService});
+  const AuthRepoImpl({
+    required this.firebaseService,
+    required this.localHelper,
+  });
   final FirebaseService firebaseService;
+  final LocalHelper localHelper;
 
+  // ignore: avoid_field_initializers_in_const_classes
   final String _tag = '🔑 [AuthRepoImpl]';
 
   @override
@@ -31,7 +38,6 @@ class AuthRepoImpl implements AuthRepo {
     String fullname,
   ) async {
     try {
-      //TODO(TAREK) : HANDLE THE INTERNET CONNECTION
       log('📡 Sending request to Firebase...', name: _tag);
       final value = await firebaseService.signUp(
         email: email,
@@ -39,8 +45,13 @@ class AuthRepoImpl implements AuthRepo {
         fullname: fullname,
       );
       log('✅ Firebase returned user: ${value.user?.uid}', name: _tag);
+
       final UserModel userModel = UserModel.fromFirebaseUser(value.user!);
       log('🎉 UserModel created: $userModel', name: _tag);
+
+      log('💾 Saving user to local storage...', name: _tag);
+      await saveUserToLocal(userModel);
+      log('✅ User saved to local storage', name: _tag);
 
       return Right(userModel);
     } on FirebaseAuthException catch (e) {
@@ -50,5 +61,18 @@ class AuthRepoImpl implements AuthRepo {
       log('⚠️ Unexpected error: $e', name: _tag);
       return Left(Failure(errorMessage: e.toString()));
     }
+  }
+
+  Future<void> saveUserToLocal(UserModel userModel) async {
+    await localHelper.setValue(key: AppSharedKey.isLoggedIn, value: true);
+    await localHelper.setValue(
+      key: AppSharedKey.userName,
+      value: userModel.fullname.trim().split(' ').first,
+    );
+    await localHelper.setValue(key: AppSharedKey.userId, value: userModel.id);
+    await localHelper.setValue(
+      key: AppSharedKey.userEmail,
+      value: userModel.email,
+    );
   }
 }

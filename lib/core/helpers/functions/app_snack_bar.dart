@@ -33,19 +33,21 @@ abstract class AppSnackBar {
         SnackBar(
           content: Row(
             children: [
-              Text(
-                message,
-                style:
-                    style ??
-                    theme.textTheme.titleMedium?.copyWith(
-                      color: theme.colorScheme.onInverseSurface,
-                    ),
+              Expanded(
+                child: Text(
+                  message,
+                  softWrap: true,
+                  style:
+                      style ??
+                      theme.textTheme.labelMedium?.copyWith(
+                        color: theme.colorScheme.onInverseSurface,
+                      ),
+                ),
               ),
-              const Spacer(),
               Icon(
                 icon,
                 color: theme.colorScheme.onInverseSurface,
-                size: AppIconSizes.regular.r,
+                size: AppIconSizes.small.r,
               ),
             ],
           ),
@@ -54,13 +56,12 @@ abstract class AppSnackBar {
             borderRadius: BorderRadius.circular(AppCorners.inputBorderRadius.r),
           ),
           behavior: SnackBarBehavior.floating,
-          elevation: AppElevation.snackBarElevation,
+          elevation: AppElevation.appBarElevation,
           duration: AppDurations.snackbarStandard,
 
-          //3
           margin: EdgeInsets.symmetric(
-            horizontal: AppPaddings.padding16.w,
-            vertical: AppPaddings.padding16.h,
+            horizontal: AppPaddings.padding12.w,
+            vertical: AppPaddings.padding12.h,
           ),
           padding: EdgeInsets.symmetric(
             horizontal: AppPaddings.padding12.w,

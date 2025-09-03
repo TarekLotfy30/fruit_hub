@@ -12,7 +12,7 @@ class _OrDivider extends StatelessWidget {
         // because you are inside a row widget
         const Expanded(child: Divider(endIndent: Spacing.spacing16)),
         Text(
-          LocaleKeys.or.tr(),
+          LocaleKeys.sign_in_or.tr(),
           style: theme.textTheme.titleMedium?.copyWith(
             color: theme.colorScheme.onSurface,
           ),

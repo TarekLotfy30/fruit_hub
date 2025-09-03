@@ -26,3 +26,25 @@ final class SignUpFailure extends SignUpState {
   @override
   List<Object> get props => [failure];
 }
+
+final class ToggleTermsAndConditions extends SignUpState {
+  const ToggleTermsAndConditions({this.isAccepted = false});
+  final bool isAccepted;
+
+  @override
+  List<Object> get props => [isAccepted];
+}
+
+// final class SendEmailVerificationLoading extends SignUpState {}
+
+// final class SendEmailVerificationSuccess extends SignUpState {}
+
+// final class SendEmailVerificationFailure extends SignUpState {
+//   const SendEmailVerificationFailure({required this.failure});
+//   final Failure failure;
+
+//   @override
+//   List<Object> get props => [failure];
+// }
+
+// final class EmailVerified extends SignUpState {}

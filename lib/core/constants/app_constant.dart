@@ -9,17 +9,17 @@ class AppConstant {
 
   static final List<OnboardingModel> onboardingItems = [
     OnboardingModel(
-      titleTextSpan1: '${LocaleKeys.welcome.tr()} ',
-      titleTextSpan2: LocaleKeys.fruit.tr(),
-      titleTextSpan3: LocaleKeys.hub.tr(),
-      subTitle: LocaleKeys.explore_fruits.tr(),
+      titleTextSpan1: '${LocaleKeys.onboarding_welcome.tr()} ',
+      titleTextSpan2: LocaleKeys.app_fruit.tr(),
+      titleTextSpan3: LocaleKeys.app_hub.tr(),
+      subTitle: LocaleKeys.onboarding_explore_fruits.tr(),
       image: AppAssets.fruitBasket,
       backgroundImage: AppAssets.orangeBackground,
       isLast: false,
     ),
     OnboardingModel(
-      title: LocaleKeys.search_and_shopping.tr(),
-      subTitle: LocaleKeys.provide_service.tr(),
+      title: LocaleKeys.onboarding_search_and_shopping.tr(),
+      subTitle: LocaleKeys.onboarding_provide_service.tr(),
       image: AppAssets.pineapple,
       backgroundImage: AppAssets.greenBackground,
       isLast: true,

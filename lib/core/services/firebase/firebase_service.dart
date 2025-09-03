@@ -21,4 +21,33 @@ class FirebaseService {
       password: password,
     );
   }
+
+  // Future<void> sendEmailVerification() async {
+  //   final user = _auth.currentUser;
+  //   if (user == null) {
+  //     log('No user is signed in', name: 'FirebaseService');
+  //     return;
+  //   }
+
+  //   if (user.emailVerified) {
+  //     log(
+  //       '✅ Email already verified for ${user.email}',
+  //       name: 'FirebaseService',
+  //     );
+  //     return;
+  //   }
+
+  //   await user.sendEmailVerification();
+  // }
+
+
+  // Future<bool> isEmailVerified() async {
+  //   final user = _auth.currentUser;
+  //   if (user == null) {
+  //     return false;
+  //   }
+
+  //   await user.reload(); // refresh
+  //   return user.emailVerified;
+  // }
 }
