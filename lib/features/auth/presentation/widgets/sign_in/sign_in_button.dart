@@ -26,11 +26,10 @@ class _SignInButton extends StatelessWidget {
           );
           return;
         }
-        // ✅ If valid & terms accepted → call sign up
-        // await context.signInCubit.signIn(
-        //   email: _emailController.text.trim(),
-        //   password: _passwordController.text.trim(),
-        // );
+        await context.signInCubit.signIn(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
       },
       child: Text(LocaleKeys.sign_in_sign_in.tr()),
     );

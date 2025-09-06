@@ -11,9 +11,6 @@ enum AppSharedKey {
   userId,
   userName,
   userEmail,
-
-  /// Key for storing the user's login status.
-  isLoggedIn,
 }
 
 // Usage:

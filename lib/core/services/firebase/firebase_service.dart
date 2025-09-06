@@ -22,6 +22,14 @@ class FirebaseService {
     );
   }
 
+  Future<UserCredential> signIn({
+    required String email,
+    required String password,
+  }) async {
+    // Implementation for signing in with email and password
+    return _auth.signInWithEmailAndPassword(email: email, password: password);
+  }
+
   // Future<void> sendEmailVerification() async {
   //   final user = _auth.currentUser;
   //   if (user == null) {
@@ -39,7 +47,6 @@ class FirebaseService {
 
   //   await user.sendEmailVerification();
   // }
-
 
   // Future<bool> isEmailVerified() async {
   //   final user = _auth.currentUser;

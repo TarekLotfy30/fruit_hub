@@ -18,3 +18,7 @@ extension NavigatorExtension on BuildContext {
 // context.navigator.push(
 //   MaterialPageRoute(builder: (context) => ProductDetail(product)),
 // );
+
+
+
+// Navigator.of(context) finds the nearest NavigatorState in the widget tree.

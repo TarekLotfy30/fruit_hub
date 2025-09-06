@@ -11,10 +11,19 @@ final class SignInInitial extends SignInState {}
 
 final class SignInLoading extends SignInState {}
 
-final class SignInSuccess extends SignInState {}
+final class SignInSuccess extends SignInState {
+  const SignInSuccess({required this.userModel});
+  final UserModel? userModel;
 
-final class SignInError extends SignInState {
-  const SignInError({required this.message});
+  @override
+  List<Object?> get props => [userModel];
+}
 
-  final String message;
+final class SignInFailure extends SignInState {
+  const SignInFailure({required this.failure});
+
+  final Failure failure;
+
+  @override
+  List<Object?> get props => [failure];
 }

@@ -27,30 +27,6 @@ class SignUpCubit extends Cubit<SignUpState> {
     });
   }
 
-  // Future<void> sendEmailVerification() async {
-  //   emit(SendEmailVerificationLoading());
-  //   await authRepo.sendEmailVerification().then((value) {
-  //     value.fold(
-  //       (failure) => emit(SendEmailVerificationFailure(failure: failure)),
-  //       (success) => emit(SendEmailVerificationSuccess()),
-  //     );
-  //   });
-  // }
-
-
-  // Future<void> checkEmailVerified() async {
-  //   await authRepo.isEmailVerified().then((value) {
-  //     value.fold(
-  //       (failure) => emit(SignUpFailure(failure: failure)),
-  //       (isVerified) {
-  //         if (isVerified) {
-  //           emit(EmailVerified());
-  //         }
-  //       },
-  //     );
-  //   });
-  // }
-
   void toggleTermsAccepted({required bool value}) {
     emit(ToggleTermsAndConditions(isAccepted: value));
   }

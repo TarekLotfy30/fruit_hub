@@ -18,10 +18,7 @@ class _NoAccountAndCreateAccount extends StatelessWidget {
         ),
         TextButton(
           onPressed: () async {
-            await AppNavigation.navigateToAndClearStack(
-              context,
-              AppRoutesName.signUpScreen,
-            );
+            await AppNavigation.navigateTo(context, AppRoutesName.signUpScreen);
           },
           child: Text(
             LocaleKeys.sign_in_create_account.tr(),

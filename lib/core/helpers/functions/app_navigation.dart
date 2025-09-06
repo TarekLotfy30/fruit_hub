@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../extensions/navigator_extension.dart';
 
+
+
 /// A utility class that provides static methods for handling navigation
 ///  tasks using named routes.
 abstract final class AppNavigation {

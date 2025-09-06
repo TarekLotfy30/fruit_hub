@@ -33,7 +33,7 @@ final getIt = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
   try {
-    
+
     // SharedPreferences
     final sharedPrefs = await SharedPreferences.getInstance();
     getIt.registerSingleton<SharedPreferences>(sharedPrefs);
@@ -46,7 +46,6 @@ Future<void> setupServiceLocator() async {
     getIt.registerSingleton<AuthRepo>(
       AuthRepoImpl(
         firebaseService: getIt<FirebaseService>(),
-        localHelper: getIt<LocalHelper>(),
       ),
     );
 
