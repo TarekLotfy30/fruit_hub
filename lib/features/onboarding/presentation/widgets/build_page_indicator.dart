@@ -1,7 +1,9 @@
 part of '../screens/onboarding_view.dart';
 
 class _BuildPageIndicator extends StatelessWidget {
-  const _BuildPageIndicator();
+  const _BuildPageIndicator(this._pageController);
+
+  final PageController _pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class _BuildPageIndicator extends StatelessWidget {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         return SmoothPageIndicator(
-          controller: cubit.pageController,
+          controller: _pageController,
           count: AppConstant.onboardingItems.length,
           onDotClicked: cubit.changePage,
           axisDirection: Axis.horizontal,

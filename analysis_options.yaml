@@ -203,3 +203,7 @@ linter:
     - sort_constructors_first
     - sort_unnamed_constructors_first
     - throw_in_finally
+bloc:
+  rules:
+    - avoid_flutter_imports
+    
