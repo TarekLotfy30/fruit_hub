@@ -54,7 +54,6 @@ class Failure implements Exception {
   //   final message = FirebaseErrorMessages.cloudFunctionsMessages[functionsError.code] ??
   //                  functionsError.message ??
   //                  FirebaseErrorMessages.firebaseGenericError;
-
   //   return Failure(
   //     errorMessage: message,
   //   );

@@ -1,21 +1,27 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../../features/auth/data/model/user_model.dart';
+import 'firebase_collection.dart';
 
 class FirebaseService {
   FirebaseService() {
     log('FirebaseService initialized', name: 'FirebaseService');
   }
 
-  //final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String _getKeyString(FirebaseCollection key) {
+    final keyString = key.toString().split('.').last;
+    return keyString;
+  }
 
   Future<UserCredential> signUp({
     required String email,
     required String password,
-    required String fullname,
-  }) async {
-    // Implementation for signing in with email and password
+  }) {
     return _auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
@@ -28,6 +34,21 @@ class FirebaseService {
   }) async {
     // Implementation for signing in with email and password
     return _auth.signInWithEmailAndPassword(email: email, password: password);
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
+  }
+
+  bool checkIfUserIsSignedIn() {
+    final firebaseUser = _auth.currentUser;
+    if (firebaseUser != null) {
+      log(firebaseUser.toString(), name: 'firebaseUser');
+      return true;
+    } else {
+      log('No user is signed in', name: 'FirebaseService');
+      return false;
+    }
   }
 
   // Future<void> sendEmailVerification() async {
@@ -57,4 +78,13 @@ class FirebaseService {
   //   await user.reload(); // refresh
   //   return user.emailVerified;
   // }
+
+  //----------------------------- Firestore ------------------------------------
+  Future<void> addUserToFirestore(UserModel user) async {
+    final collectionName = _getKeyString(FirebaseCollection.users);
+    await _firestore
+        .collection(collectionName)
+        .doc(user.uid)
+        .set(user.toMap(), SetOptions(merge: true));
+  }
 }

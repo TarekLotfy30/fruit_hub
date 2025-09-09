@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
-
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../../data/model/user.dart';
+import '../../data/model/user_model.dart';
 import '../../data/repo/auth_repo.dart';
 
 part 'sign_up_state.dart';

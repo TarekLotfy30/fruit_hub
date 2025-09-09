@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/constants/app_icons.dart';
@@ -13,8 +13,10 @@ import '../../../../core/helpers/functions/app_snack_bar.dart';
 import '../../../../core/helpers/functions/app_spacing.dart';
 import '../../../../core/routing/app_routes_name.dart';
 import '../../../../core/translation/locale_keys.g.dart';
+import '../../../../core/widgets/build_loading_animation.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
 
+import '../../controller/sign_in/sign_in_cubit.dart';
 import '../widgets/email_text_field.dart';
 import '../widgets/password_text_field.dart';
 part '../widgets/sign_in/or_divider.dart';

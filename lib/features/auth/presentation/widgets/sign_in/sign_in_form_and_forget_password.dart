@@ -13,7 +13,6 @@ class _SignInFormAndForgetPasswordState
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
-
   @override
   void initState() {
     super.initState();

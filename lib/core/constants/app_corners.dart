@@ -15,6 +15,9 @@ abstract final class AppCorners {
   /// Used for: ElevatedButton, OutlinedButton, TextButton containers
   static const double buttonBorderRadius = 16;
 
+
+  static const double snackBorderRadius = 20;
+
   /// Border radius for dialog components
   /// Used for: AlertDialog, BottomSheet, Modal dialogs
   static const double dialogBorderRadius = 24;

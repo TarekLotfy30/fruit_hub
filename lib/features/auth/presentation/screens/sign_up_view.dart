@@ -24,14 +24,14 @@ import '../../controller/sign_up/sign_up_cubit.dart';
 import '../widgets/email_text_field.dart';
 import '../widgets/password_text_field.dart';
 
-part '../widgets/sign_up/sign_up_view_body.dart';
-part '../widgets/sign_up/sign_up_form.dart';
-part '../widgets/sign_up/already_have_account_and_sign_in.dart';
 part '../widgets/sign_up/agree_terms_and_conditions_text.dart';
-part '../widgets/sign_up/terms_and_conditions_sheet.dart';
+part '../widgets/sign_up/already_have_account_and_sign_in.dart';
 part '../widgets/sign_up/full_name_text_field.dart';
-part '../widgets/sign_up/terms_and_condition_section.dart';
 part '../widgets/sign_up/sign_up_button.dart';
+part '../widgets/sign_up/sign_up_form.dart';
+part '../widgets/sign_up/sign_up_view_body.dart';
+part '../widgets/sign_up/terms_and_condition_section.dart';
+part '../widgets/sign_up/terms_and_conditions_sheet.dart';
 
 /// SignUpView is the main entry screen for user registration.
 class SignUpView extends StatelessWidget {

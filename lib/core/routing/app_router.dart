@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/controller/sign_in/sign_in_cubit.dart';
+import '../../features/auth/controller/sign_out/sign_out_cubit.dart';
 import '../../features/auth/controller/sign_up/sign_up_cubit.dart';
 import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/presentation/screens/forget_password_view.dart';
@@ -49,7 +51,7 @@ abstract final class AppRouter {
       // Onboarding flow
       case AppRoutesName.onboardingScreen:
         return _buildPlatformAwareRoute(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => OnboardingCubit(),
             child: const OnboardingView(),
           ),
@@ -57,15 +59,15 @@ abstract final class AppRouter {
       // Authentication flow
       case AppRoutesName.signInScreen:
         return _buildPlatformAwareRoute(
-          BlocProvider(
-            create: (context) => SignUpCubit(authRepo: getIt.get<AuthRepo>()),
+          child: BlocProvider(
+            create: (context) => SignInCubit(authRepo: getIt.get<AuthRepo>()),
             child: const SignInView(),
           ),
           forceRouteType: RouteType.slide,
         );
       case AppRoutesName.signUpScreen:
         return _buildPlatformAwareRoute(
-          BlocProvider(
+          child: BlocProvider(
             create: (context) => SignUpCubit(authRepo: getIt.get<AuthRepo>()),
             child: const SignUpView(),
           ),
@@ -73,12 +75,17 @@ abstract final class AppRouter {
         );
       case AppRoutesName.forgetPasswordScreen:
         return _buildPlatformAwareRoute(
-          const ForgetPasswordView(),
+          child: const ForgetPasswordView(),
           forceRouteType: RouteType.fade,
         );
       // Home flow
       case AppRoutesName.homeScreen:
-        return _buildPlatformAwareRoute(const HomeView());
+        return _buildPlatformAwareRoute(
+          child: BlocProvider(
+            create: (context) => SignOutCubit(authRepo: getIt.get<AuthRepo>()),
+            child: const HomeView(),
+          ),
+        );
       default:
         return null;
     }
@@ -90,8 +97,8 @@ abstract final class AppRouter {
   /// - Authentication screens
   /// - Overlay-style transitions
   /// - Gentle screen changes
-  static PageRoute<T> _buildFadeRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildFadeRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     bool opaque = true,
     bool barrierDismissible = false,
@@ -124,8 +131,8 @@ abstract final class AppRouter {
   /// - Main screen transitions
   /// - Forward navigation flow
   /// - Material Design compliance
-  static PageRoute<T> _buildSlideRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildSlideRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     bool maintainState = true,
     bool fullscreenDialog = false,
@@ -178,8 +185,8 @@ abstract final class AppRouter {
   /// - Dismissible with drag gesture
   /// - Proper barrier handling
   /// - Accessibility support
-  static PageRoute<T> _buildCupertinoSheetRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildCupertinoSheetRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     bool barrierDismissible = true,
     Color? barrierColor,
@@ -205,8 +212,8 @@ abstract final class AppRouter {
   /// - Alert-style modals
   ///
   /// Time complexity: O(1), Space complexity: O(1)
-  static PageRoute<T> _buildScaleRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildScaleRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     bool barrierDismissible = false,
     Color? barrierColor,
@@ -244,8 +251,8 @@ abstract final class AppRouter {
   /// - Attention-grabbing presentations
   ///
   /// Time complexity: O(1), Space complexity: O(1)
-  static PageRoute<T> _buildRotationRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildRotationRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     double rotationAngle = 0.1,
   }) {
@@ -279,21 +286,24 @@ abstract final class AppRouter {
   /// route type for the platform
   ///
   /// Time complexity: O(1), Space complexity: O(1)
-  static PageRoute<T> _buildPlatformAwareRoute<T extends Object?>(
-    Widget child, {
+  static PageRoute<T> _buildPlatformAwareRoute<T extends Object?>({
+    required Widget child,
     RouteSettings? settings,
     RouteType? forceRouteType,
   }) {
     final routeType = forceRouteType ?? _getDefaultRouteTypeForPlatform();
     return switch (routeType) {
-      RouteType.slide => _buildSlideRoute(child, settings: settings),
-      RouteType.fade => _buildFadeRoute(child, settings: settings),
+      RouteType.slide => _buildSlideRoute(child: child, settings: settings),
+      RouteType.fade => _buildFadeRoute(child: child, settings: settings),
       RouteType.cupertinoSheet => _buildCupertinoSheetRoute(
-        child,
+        child: child,
         settings: settings,
       ),
-      RouteType.scale => _buildScaleRoute(child, settings: settings),
-      RouteType.rotation => _buildRotationRoute(child, settings: settings),
+      RouteType.scale => _buildScaleRoute(child: child, settings: settings),
+      RouteType.rotation => _buildRotationRoute(
+        child: child,
+        settings: settings,
+      ),
     };
   }
 

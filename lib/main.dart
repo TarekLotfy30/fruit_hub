@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
 import 'app/fruit_hub_app.dart';
 import 'core/constants/app_assets.dart';
@@ -14,8 +16,6 @@ Future<void> main() async {
   await configureSystemUI();
   await initializeServices();
   //await getIt<LocalHelper>().clearAll();
-
-
   runApp(
     EasyLocalization(
       ignorePluralRules: false,
@@ -26,7 +26,12 @@ Future<void> main() async {
       path: AppAssets.translationsPath,
       fallbackLocale: const Locale('ar', 'SA'),
       startLocale: const Locale('ar', 'SA'),
-      child: const FruitHubApp(),
+      child: DevicePreview(
+        enabled: false, //kReleaseMode,
+        builder: (context) {
+          return const FruitHubApp();
+        },
+      ),
     ),
   );
 

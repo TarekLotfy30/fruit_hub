@@ -3,25 +3,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel extends Equatable {
   const UserModel({
-    required this.id,
+    required this.uid,
     required this.fullname,
     required this.email,
-    required this.password,
   });
-  factory UserModel.fromFirebaseUser(User user) {
+
+  factory UserModel.fromFirebase(User user) {
     return UserModel(
-      id: user.uid,
+      uid: user.uid,
       fullname: user.displayName ?? '',
       email: user.email ?? '',
-      password: '',
     );
   }
 
-  final String id;
+  Map<String, dynamic> toMap() {
+    return {'uid': uid, 'fullname': fullname, 'email': email};
+  }
+
+  final String uid;
   final String fullname;
   final String email;
-  final String password;
 
   @override
-  List<Object?> get props => [id, fullname, email, password];
+  List<Object?> get props => [uid, fullname, email];
 }

@@ -19,6 +19,10 @@ class _SignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
+      listenWhen: (_, current) {
+        // Only listen when the current state is a success or failure
+        return current is SignUpSuccess || current is SignUpFailure;
+      },
       listener: (context, state) async {
         if (state is SignUpFailure) {
           await AppSnackBar.showError(context, state.failure.errorMessage);
@@ -33,47 +37,52 @@ class _SignUpButton extends StatelessWidget {
           );
         }
       },
-      builder: (context, state) => Visibility(
-        visible: state is! SignUpLoading,
-        replacement: const Center(child: BuildLoadingAnimation()),
-        child: ElevatedButton(
+      buildWhen: (previous, current) {
+        // Only rebuild when showing/hiding loading indicator
+        return current is SignUpLoading || previous is SignUpLoading;
+      },
+      builder: (context, state) {
+        if (state is SignUpLoading) {
+          return const Center(child: BuildLoadingAnimation());
+        }
+        return ElevatedButton(
           onPressed: () async {
-            {
-              FocusScope.of(context).unfocus(); // UX: Close keyboard
-              final state = context.signUpCubit.state;
-              final isTermsAccepted =
-                  state is ToggleTermsAndConditions && state.isAccepted;
+            FocusScope.of(context).unfocus(); // UX: Close keyboard
 
-              if (!_formKey.currentState!.validate()) {
-                // Invalid form inputs
-                await AppSnackBar.showWarning(
-                  context,
-                  LocaleKeys.snack_bar_messages_invalid_inputs.tr(),
-                );
+            final state = context.signUpCubit.state;
+            final isTermsAccepted =
+                state is ToggleTermsAndConditions && state.isAccepted;
 
-                return;
-              }
-
-              if (!isTermsAccepted) {
-                // Terms not accepted
-                await AppSnackBar.showWarning(
-                  context,
-                  LocaleKeys.snack_bar_messages_must_accept_terms.tr(),
-                );
-                return;
-              }
-
-              // ✅ If valid & terms accepted → call sign up
-              await context.signUpCubit.signUp(
-                email: _emailController.text.trim(),
-                password: _passwordController.text.trim(),
-                fullname: _fullNameController.text,
+            if (!isTermsAccepted) {
+              // Terms not accepted
+              await AppSnackBar.showWarning(
+                context,
+                LocaleKeys.snack_bar_messages_must_accept_terms.tr(),
               );
+              return;
             }
+
+            if (!_formKey.currentState!.validate()) {
+              // Invalid form inputs
+              await AppSnackBar.showWarning(
+                context,
+                LocaleKeys.snack_bar_messages_invalid_inputs.tr(),
+              );
+              return;
+            }
+            // All inputs are valid, proceed to sign up
+            final email = _emailController.text.trim();
+            final password = _passwordController.text.trim();
+            final fullName = _fullNameController.text.trim();
+            await context.read<SignUpCubit>().signUp(
+              email: email,
+              password: password,
+              fullname: fullName,
+            );
           },
-          child: Text(LocaleKeys.sign_up_button.tr()),
-        ),
-      ),
+          child: Text(LocaleKeys.sign_up_sign_up.tr()),
+        );
+      },
     );
   }
 }

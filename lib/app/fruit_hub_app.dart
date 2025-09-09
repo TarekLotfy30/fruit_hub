@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,28 +13,30 @@ import '../core/services/local/app_shared_keys.dart';
 import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
 
-/// The main application widget that configures the app environment.
-///
-/// This widget sets up:
-/// - Screen size adaptation with ScreenUtilInit
-/// - State management with BlocProvider
-/// - Localization with EasyLocalization
-/// - Theme configuration
-/// - Navigation to the initial screen (SplashScreen)
-
 class FruitHubApp extends StatelessWidget {
   const FruitHubApp({super.key});
 
   String _getInitialRoute() {
     final localHelper = getIt<LocalHelper>();
+    //final firebaseService = getIt.get<FirebaseService>();
 
     final skipOnboarding =
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
-// TODO(TAREK): Check if user is logged in
-    if (skipOnboarding) {
-      return AppRoutesName.signInScreen;
-    } else {
+    //final isLoggedIn = firebaseService.checkIfUserIsSignedIn();
+    final isLoggedIn =
+        localHelper.getValue(key: AppSharedKey.isLoggedIn) ?? false;
+
+    if (skipOnboarding == false) {
+      // First-time user → onboarding
       return AppRoutesName.onboardingScreen;
+    }
+
+    if (isLoggedIn) {
+      // User is logged in → go to home
+      return AppRoutesName.homeScreen;
+    } else {
+      // User skipped onboarding but is not logged in
+      return AppRoutesName.signInScreen;
     }
   }
 
@@ -57,6 +60,11 @@ class FruitHubApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               // Set current locale from EasyLocalization
               locale: context.locale,
+              // DevicePreview configuration
+              //locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
+
+              // Routing configuration`
               initialRoute: _getInitialRoute(),
               onGenerateRoute: AppRouter.generateRoute,
               // Theme configuration
