@@ -11,13 +11,27 @@ import '../../data/repo/auth_repo.dart';
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
-  SignInCubit({required this.authRepo}) : super(SignInInitial());
+  SignInCubit({required AuthRepo authRepo})
+    : _authRepo = authRepo,
+      super(SignInInitial());
 
-  final AuthRepo authRepo;
+  final AuthRepo _authRepo;
 
   Future<void> signIn({required String email, required String password}) async {
     emit(SignInLoading());
-    await authRepo.signIn(email, password).then((value) {
+    await _authRepo.signIn(email, password).then((value) {
+      value.fold((failure) => emit(SignInFailure(failure: failure)), (
+        user,
+      ) async {
+        await saveDataLocally(user);
+        emit(SignInSuccess(userModel: user));
+      });
+    });
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(SignInLoading());
+    await _authRepo.signInWithGoogle().then((value) {
       value.fold((failure) => emit(SignInFailure(failure: failure)), (
         user,
       ) async {

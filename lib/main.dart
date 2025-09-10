@@ -5,10 +5,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'app/fruit_hub_app.dart';
 import 'core/constants/app_assets.dart';
-import 'core/di/service_locator.dart';
+//import 'core/di/service_locator.dart';
 import 'core/helpers/functions/configure_system_ui.dart';
 import 'core/helpers/functions/init_services.dart';
-import 'core/services/local/local_helper.dart';
+//import 'core/services/local/local_helper.dart';
 
 Future<void> main() async {
   // Initialize Flutter binding before calling native code
@@ -17,7 +17,7 @@ Future<void> main() async {
   // Configure system UI & Initialize services
   await configureSystemUI();
   await initializeServices();
-  await getIt<LocalHelper>().clearAll();
+  //await getIt<LocalHelper>().clearAll();
   runApp(
     EasyLocalization(
       ignorePluralRules: false,

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../features/auth/data/model/user_model.dart';
 import 'firebase_collection.dart';
@@ -13,6 +14,9 @@ class FirebaseService {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  final User? _user = FirebaseAuth.instance.currentUser;
+
   String _getKeyString(FirebaseCollection key) {
     final keyString = key.toString().split('.').last;
     return keyString;
@@ -36,8 +40,54 @@ class FirebaseService {
     return _auth.signInWithEmailAndPassword(email: email, password: password);
   }
 
+  Future<UserCredential> signInWithGoogle() async {
+    _googleSignIn.initialize(
+      serverClientId:
+          '604693325993-v4r83k57cuo2fpbj2t8qak2bc428u6f1.apps.googleusercontent.com',
+    );
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
+      scopeHint: ['email', 'https://www.googleapis.com/auth/contacts.readonly'],
+    );
+    log(
+      'googleUser: Email: ${googleUser.email}, ID: ${googleUser.id}, DisplayName: ${googleUser.displayName}',
+      name: 'FirebaseService',
+    );
+    log(googleUser.authentication.toString());
+
+    // Obtain the auth details from the request
+    // Create a new credential
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      idToken: googleUser.authentication.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return _auth.signInWithCredential(credential);
+  }
+
   Future<void> signOut() async {
-    await _auth.signOut();
+    if (_user != null) {
+      final isGoogleUser = _user.providerData.any(
+        (provider) => provider.providerId == 'google.com',
+      );
+      if (isGoogleUser) {
+        log(
+          '📡 Sending sign-out request to Google...',
+          name: 'FirebaseService',
+        );
+        await _googleSignIn.signOut();
+        log('✅ Google sign-out completed', name: 'FirebaseService');
+      }
+
+      if (!isGoogleUser) {
+        log(
+          '📡 Sending sign-out request to Firebase...',
+          name: 'FirebaseService',
+        );
+        await _auth.signOut();
+        log('✅ Firebase sign-out completed', name: 'FirebaseService');
+      }
+    }
   }
 
   bool checkIfUserIsSignedIn() {

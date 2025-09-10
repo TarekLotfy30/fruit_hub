@@ -10,13 +10,15 @@ import '../../data/repo/auth_repo.dart';
 part 'sign_out_state.dart';
 
 class SignOutCubit extends Cubit<SignOutState> {
-  SignOutCubit({required this.authRepo}) : super(SignOutInitial());
+  SignOutCubit({required AuthRepo authRepo})
+    : _authRepo = authRepo,
+      super(SignOutInitial());
 
-  final AuthRepo authRepo;
+  final AuthRepo _authRepo;
 
-  Future<void> signOut() async {
+  Future<void> signOutFromFirebase() async {
     emit(SignOutLoading());
-    await authRepo.signOut().then((value) {
+    await _authRepo.signOut().then((value) {
       value.fold((failure) => emit(SignOutFailure(failure: failure)), (
         _,
       ) async {
@@ -29,6 +31,7 @@ class SignOutCubit extends Cubit<SignOutState> {
   Future<void> clearSharedPrefs() async {
     final localHelper = getIt.get<LocalHelper>();
     Future.wait([
+      localHelper.removeValue(key: AppSharedKey.isLoggedIn),
       localHelper.removeValue(key: AppSharedKey.userId),
       localHelper.removeValue(key: AppSharedKey.userEmail),
       localHelper.removeValue(key: AppSharedKey.userName),

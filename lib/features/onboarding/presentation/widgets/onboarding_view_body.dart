@@ -8,8 +8,7 @@ class _OnboardingViewBody extends StatefulWidget {
 }
 
 class _OnboardingViewBodyState extends State<_OnboardingViewBody> {
-  late PageController _pageController;
-  int _rebuildCount = 0;
+  late final PageController _pageController;
 
   @override
   void initState() {
@@ -24,9 +23,6 @@ class _OnboardingViewBodyState extends State<_OnboardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    log('Build _OnboardingViewBody', name: '_OnboardingViewBody');
-    log('Rebuild count: $_rebuildCount', name: '_OnboardingViewBody');
-    _rebuildCount++;
     return Column(
       children: [
         // Main PageView - handles scrolling between pages & Skip Button

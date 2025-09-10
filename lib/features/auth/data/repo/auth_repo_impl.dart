@@ -10,6 +10,7 @@ import 'auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   const AuthRepoImpl({required this.firebaseService});
+
   final FirebaseService firebaseService;
 
   // ignore: avoid_field_initializers_in_const_classes
@@ -42,10 +43,37 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
+  Future<Either<Failure, UserModel>> signInWithGoogle() async {
+    try {
+      final credential = await firebaseService.signInWithGoogle();
+      log(
+        '''✅ Firebase returned user: ${credential.user?.displayName} ${credential.user?.email} ${credential.user?.uid}''',
+        name: _tag,
+      );
+      final UserModel userModel = UserModel.fromFirebase(credential.user!);
+      log('🎉 UserModel created: $userModel', name: _tag);
+
+      if (credential.additionalUserInfo!.isNewUser) {
+        log('📡 Sending user to Firestore...', name: _tag);
+        await firebaseService.addUserToFirestore(userModel);
+        log('✅ User added to Firestore', name: _tag);
+      }
+
+      return Right(userModel);
+    } on FirebaseAuthException catch (e) {
+      log('❌ FirebaseAuthException: ${e.code} - ${e.message}', name: _tag);
+      return Left(Failure.fromFirebase(e));
+    } catch (e) {
+      log('⚠️ Unexpected error: $e', name: _tag);
+      return Left(Failure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, UserModel>> signUp(
     String email,
     String password,
-    String fullname,
+    String fullName,
   ) async {
     try {
       log('📡 Sending request to Firebase...', name: _tag);
@@ -53,7 +81,8 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      await credential.user?.updateProfile(displayName: fullname);
+
+      await credential.user?.updateProfile(displayName: fullName);
       final currentUser = FirebaseAuth.instance.currentUser;
 
       log(
@@ -84,9 +113,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, void>> signOut() async {
     try {
-      log('📡 Sending sign-out request to Firebase...', name: _tag);
       await firebaseService.signOut();
-      log('✅ Firebase sign-out completed', name: _tag);
       return const Right(null);
     } on FirebaseAuthException catch (e) {
       log(

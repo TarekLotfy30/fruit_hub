@@ -21,17 +21,21 @@ class _SignInButton extends StatelessWidget {
         return current is SignInSuccess || current is SignInFailure;
       },
       listener: (context, state) async {
-        if (state is SignInFailure) {
-          await AppSnackBar.showError(context, state.failure.errorMessage);
-        }
-        if (state is SignInSuccess) {
-          // Navigate to home screen and remove all previous routes
-          if (context.mounted) {
-            await AppNavigation.navigateToAndClearStack(
-              context,
-              AppRoutesName.homeScreen,
-            );
-          }
+        switch (state) {
+          case SignInLoading():
+          case SignInInitial():
+            break;
+          case SignInFailure():
+            if (context.mounted) {
+              await AppSnackBar.showError(context, state.failure.errorMessage);
+            }
+          case SignInSuccess():
+            if (context.mounted) {
+              await AppNavigation.navigateToAndClearStack(
+                context,
+                AppRoutesName.homeScreen,
+              );
+            }
         }
       },
       buildWhen: (previous, current) {

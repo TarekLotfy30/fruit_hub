@@ -10,7 +10,9 @@
 analyzer:
   errors:
     avoid_catches_without_on_clauses: ignore
-include: package:flutter_lints/flutter.yaml
+include: 
+  - package:flutter_lints/flutter.yaml
+  - package:bloc_lint/recommended.yaml
 
 linter:
   rules:
@@ -205,5 +207,15 @@ linter:
     - throw_in_finally
 bloc:
   rules:
+    - avoid_build_context_extensions
     - avoid_flutter_imports
+    - avoid_public_bloc_methods
+    - avoid_public_cubit_methods
+    #  Prefer to keep all external state in the [state] object. # int count = 0;
+    - avoid_public_fields
+    # - prefer_bloc
+    - prefer_cubit
+    - prefer_file_naming_conventions
+    - prefer_void_public_cubit_methods
+    - prefer_void_public_bloc_methods
     

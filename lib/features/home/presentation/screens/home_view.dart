@@ -18,7 +18,8 @@ class HomeView extends StatelessWidget {
             onPressed: () async {
               // Handle logout logic here
               // For example, clear user session and navigate to sign-in screen
-              await context.signOutCubit.signOut();
+              await context.signOutCubit.signOutFromFirebase();
+              //await context.signOutCubit.signOutFromGoogle();
               if (context.mounted) {
                 AppNavigation.navigateToAndClearStack(
                   context,

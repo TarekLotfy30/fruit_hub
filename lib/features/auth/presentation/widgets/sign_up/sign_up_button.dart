@@ -24,17 +24,26 @@ class _SignUpButton extends StatelessWidget {
         return current is SignUpSuccess || current is SignUpFailure;
       },
       listener: (context, state) async {
-        if (state is SignUpFailure) {
-          await AppSnackBar.showError(context, state.failure.errorMessage);
-        } else if (state is SignUpSuccess) {
-          AppNavigation.navigateToAndClearStack(
-            context,
-            AppRoutesName.signInScreen,
-          );
-          await AppSnackBar.showSuccess(
-            context,
-            LocaleKeys.snack_bar_messages_sign_up_success.tr(),
-          );
+        switch (state) {
+          case SignUpLoading():
+          case SignUpInitial():
+          case ToggleTermsAndConditions():
+            break;
+          case SignUpFailure():
+            if (context.mounted) {
+              await AppSnackBar.showError(context, state.failure.errorMessage);
+            }
+          case SignUpSuccess():
+            await AppNavigation.navigateToAndClearStack(
+              context,
+              AppRoutesName.signInScreen,
+            );
+            if (context.mounted) {
+              await AppSnackBar.showSuccess(
+                context,
+                LocaleKeys.snack_bar_messages_sign_up_success.tr(),
+              );
+            }
         }
       },
       buildWhen: (previous, current) {
@@ -74,7 +83,7 @@ class _SignUpButton extends StatelessWidget {
             final email = _emailController.text.trim();
             final password = _passwordController.text.trim();
             final fullName = _fullNameController.text.trim();
-            await context.read<SignUpCubit>().signUp(
+            await context.signUpCubit.signUp(
               email: email,
               password: password,
               fullname: fullName,
