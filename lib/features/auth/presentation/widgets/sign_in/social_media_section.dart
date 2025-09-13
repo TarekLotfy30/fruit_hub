@@ -39,16 +39,17 @@ class _SocialMediaSection extends StatelessWidget {
               await cubit.signInWithGoogle();
             },
           ),
-          _BuildSocialMediaButton(
-            assetPath: AppIcons.apple,
-            colorFilter: context.isDarkMode
-                ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
-                : null,
-            label: LocaleKeys.sign_in_with_apple.tr(),
-            onPressed: () {
-              //cubit.signInWithApple();
-            },
-          ),
+          if (Platform.isIOS)
+            _BuildSocialMediaButton(
+              assetPath: AppIcons.apple,
+              colorFilter: context.isDarkMode
+                  ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
+                  : null,
+              label: LocaleKeys.sign_in_with_apple.tr(),
+              onPressed: () {
+                //cubit.signInWithApple();
+              },
+            ),
 
           _BuildSocialMediaButton(
             assetPath: AppIcons.facebook,

@@ -123,9 +123,6 @@ class Failure implements Exception {
 }
 
 
-
-
-
 // "This Failure class represents an error condition"
 // "It can be thrown and caught like other exceptions"
 // "It follows the Exception contract"
