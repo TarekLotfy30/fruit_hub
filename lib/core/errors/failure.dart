@@ -1,12 +1,15 @@
 // ignore_for_file: sort_constructors_first
 
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'firebase_error_messages.dart';
 
 // Exception is an abstract class that represents errors that can be caught
-// and handled during program execution. It's part of Dart's error handling system
-// This is what Exception looks like (simplified)
+// and handled during program execution. It's part of Dart's error handling
+// system This is what Exception looks like (simplified)
 /*
  abstract class Exception {
  It's mostly empty - just a marker interface
@@ -27,6 +30,34 @@ class Failure implements Exception {
         FirebaseErrorMessages.firebaseAuthMessages[authError.code] ??
         authError.message ??
         FirebaseErrorMessages.firebaseGenericError;
+    return Failure(errorMessage: message);
+  }
+
+  // Create Failure from GoogleSignInException
+  factory Failure.fromGoogleAuth(GoogleSignInException googleError) {
+    // Convert GoogleSignInExceptionCode enum to string key
+    final String errorKey;
+    switch (googleError.code) {
+      case GoogleSignInExceptionCode.canceled:
+        errorKey = 'sign_in_canceled';
+      case GoogleSignInExceptionCode.clientConfigurationError:
+        errorKey = 'developer_error';
+      case GoogleSignInExceptionCode.interrupted:
+        errorKey = 'interrupted';
+      case GoogleSignInExceptionCode.providerConfigurationError:
+      case GoogleSignInExceptionCode.uiUnavailable:
+        errorKey = 'developer_error';
+      case GoogleSignInExceptionCode.unknownError:
+        errorKey = 'unknown_error';
+      default:
+        errorKey = 'sign_in_failed';
+    }
+    log('❌ Mapped error key: $errorKey');
+    final message =
+        FirebaseErrorMessages.googleAuthMessages[errorKey] ??
+        googleError.description ??
+        FirebaseErrorMessages.firebaseGenericError;
+
     return Failure(errorMessage: message);
   }
 
@@ -62,13 +93,25 @@ class Failure implements Exception {
   factory Failure.fromFirebase(dynamic error) {
     if (error is FirebaseAuthException) {
       return Failure.fromFirebaseAuth(error);
+    } else if (error is GoogleSignInException) {
+      return Failure.fromGoogleAuth(error);
+      // } else if (error is FirebaseFunctionsException) {
+      //   return Failure.fromCloudFunctions(error);
     } else if (error is FirebaseException) {
-      if (error.plugin == 'cloud_firestore') {
-        return Failure.fromFirestore(error);
-      } else if (error.plugin == 'firebase_storage') {
-        return Failure.fromFirebaseStorage(error);
-      } else {
-        return Failure.fromFirestore(error); // Default to Firestore handling
+      switch (error.plugin) {
+        case 'cloud_firestore':
+          return Failure.fromFirestore(error);
+        case 'firebase_storage':
+          return Failure.fromFirebaseStorage(error);
+        case 'cloud_functions':
+          // Handle as generic FirebaseException if FirebaseFunctionsException not caught
+          final message =
+              FirebaseErrorMessages.cloudFunctionsMessages[error.code] ??
+              error.message ??
+              FirebaseErrorMessages.firebaseGenericError;
+          return Failure(errorMessage: message);
+        default:
+          return Failure.fromFirestore(error);
       }
     } else {
       return Failure(errorMessage: error.toString());
@@ -127,3 +170,63 @@ class Failure implements Exception {
 // } catch (e) {
 //   return Left(Failure.fromFirebase(e)); // Handles any other Firebase error
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Enhanced fromFirebase factory with better error handling
+  // factory Failure.fromFirebase(dynamic error) {
+  //   try {
+  //     if (error is FirebaseAuthException) {
+  //       return Failure.fromFirebaseAuth(error);
+  //     } else if (error is GoogleSignInException) {
+  //       return Failure.fromGoogleAuth(error);
+  //     } else if (error is PlatformException) {
+  //       // Handle Google Sign-In PlatformExceptions
+  //       if (error.code.contains('google') || 
+  //           error.code == 'sign_in_canceled' || 
+  //           error.code == 'sign_in_failed') {
+  //         return Failure.fromGoogleSignInPlatformException(error);
+  //       }
+  //       // Handle other PlatformExceptions
+  //       return Failure(errorMessage: error.message ?? error.toString());
+  //     } else if (error is FirebaseFunctionsException) {
+  //       return Failure.fromCloudFunctions(error);
+  //     } else if (error is FirebaseException) {
+  //       switch (error.plugin) {
+  //         case 'cloud_firestore':
+  //           return Failure.fromFirestore(error);
+  //         case 'firebase_storage':
+  //           return Failure.fromFirebaseStorage(error);
+  //         case 'cloud_functions':
+  //           // Handle as generic FirebaseException if FirebaseFunctionsException wasn't caught
+  //           final message = FirebaseErrorMessages.cloudFunctionsMessages[error.code] ??
+  //                          error.message ??
+  //                          FirebaseErrorMessages.firebaseGenericError;
+  //           return Failure(errorMessage: message);
+  //         default:
+  //           return Failure.fromFirestore(error); // Default fallback
+  //       }
+  //     } else {
+  //       return Failure(errorMessage: error.toString());
+  //     }
+  //   } catch (e) {
+  //     // Fallback in case of any unexpected errors during error handling
+  //     return Failure(errorMessage: FirebaseErrorMessages.firebaseGenericError);
+  //   }
+  // }

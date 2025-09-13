@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/firebase/firebase_service.dart';
@@ -60,8 +61,8 @@ class AuthRepoImpl implements AuthRepo {
       }
 
       return Right(userModel);
-    } on FirebaseAuthException catch (e) {
-      log('❌ FirebaseAuthException: ${e.code} - ${e.message}', name: _tag);
+    } on GoogleSignInException catch (e) {
+      log('❌ GoogleSignInException: ${e.code} - ${e.description}', name: _tag);
       return Left(Failure.fromFirebase(e));
     } catch (e) {
       log('⚠️ Unexpected error: $e', name: _tag);

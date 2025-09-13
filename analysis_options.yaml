@@ -14,6 +14,9 @@ include:
   - package:flutter_lints/flutter.yaml
   - package:bloc_lint/recommended.yaml
 
+formatter: 
+  trailing_commas: preserve
+
 linter:
   rules:
     # When you pick a style, you should stick to it in the whole project.

@@ -62,6 +62,7 @@ class _SignInButton extends StatelessWidget {
               );
               return;
             }
+            
             await context.signInCubit.signIn(
               email: _emailController.text.trim(),
               password: _passwordController.text.trim(),

@@ -48,6 +48,33 @@ abstract class FirebaseErrorMessages {
         .tr(),
   };
 
+  // Google Sign-In error messages
+  static final Map<String, String> googleAuthMessages = {
+    'sign_in_canceled': LocaleKeys.firebase_errors_google_sign_in_canceled.tr(),
+    'sign_in_failed': LocaleKeys.firebase_errors_google_sign_in_failed.tr(),
+    'network_error': LocaleKeys.firebase_errors_google_network_error.tr(),
+    'sign_in_required': LocaleKeys.firebase_errors_google_sign_in_required.tr(),
+    'invalid_account': LocaleKeys.firebase_errors_google_invalid_account.tr(),
+    'account_restricted': LocaleKeys.firebase_errors_google_account_restricted
+        .tr(),
+    'account_disabled': LocaleKeys.firebase_errors_google_account_disabled.tr(),
+    'play_services_unavailable': LocaleKeys
+        .firebase_errors_google_play_services_unavailable
+        .tr(),
+    'play_services_update_required': LocaleKeys
+        .firebase_errors_google_play_services_update_required
+        .tr(),
+    'play_services_missing': LocaleKeys
+        .firebase_errors_google_play_services_missing
+        .tr(),
+    'timeout': LocaleKeys.firebase_errors_google_timeout.tr(),
+    'developer_error': LocaleKeys.firebase_errors_google_developer_error.tr(),
+    'internal_error': LocaleKeys.firebase_errors_google_internal_error.tr(),
+    'api_not_available': LocaleKeys.firebase_errors_google_api_not_available
+        .tr(),
+    'interrupted': LocaleKeys.firebase_errors_google_interrupted.tr(),
+  };
+
   // Firebase Firestore error messages
   static final Map<String, String> firestoreMessages = {
     'permission-denied': LocaleKeys.firebase_errors_firestore_permission_denied

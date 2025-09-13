@@ -45,6 +45,7 @@ class FirebaseService {
       serverClientId:
           '604693325993-v4r83k57cuo2fpbj2t8qak2bc428u6f1.apps.googleusercontent.com',
     );
+
     // Trigger the authentication flow
     final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
       scopeHint: ['email', 'https://www.googleapis.com/auth/contacts.readonly'],
@@ -53,6 +54,7 @@ class FirebaseService {
       'googleUser: Email: ${googleUser.email}, ID: ${googleUser.id}, DisplayName: ${googleUser.displayName}',
       name: 'FirebaseService',
     );
+
     log(googleUser.authentication.toString());
 
     // Obtain the auth details from the request
