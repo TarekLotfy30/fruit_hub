@@ -4,13 +4,9 @@ import '../../../../core/errors/failure.dart';
 import '../model/user_model.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, UserModel>> signUp(
-    String email,
-    String password,
-    String fullName,
-  );
+  Future<Either<Failure, UserModel>> signUp(UserModel user);
 
-  Future<Either<Failure, UserModel>> signIn(String email, String password);
+  Future<Either<Failure, UserModel>> signIn(UserModel user);
 
   Future<Either<Failure, UserModel>> signInWithGoogle();
 

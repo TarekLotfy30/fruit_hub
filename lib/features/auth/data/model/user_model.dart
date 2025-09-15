@@ -6,6 +6,7 @@ class UserModel extends Equatable {
     required this.uid,
     required this.fullname,
     required this.email,
+    required this.password,
   });
 
   factory UserModel.fromFirebase(User user) {
@@ -13,6 +14,7 @@ class UserModel extends Equatable {
       uid: user.uid,
       fullname: user.displayName ?? '',
       email: user.email ?? '',
+      password: '',
     );
   }
 
@@ -23,7 +25,8 @@ class UserModel extends Equatable {
   final String uid;
   final String fullname;
   final String email;
+  final String password;
 
   @override
-  List<Object?> get props => [uid, fullname, email];
+  List<Object?> get props => [uid, fullname, email, password];
 }

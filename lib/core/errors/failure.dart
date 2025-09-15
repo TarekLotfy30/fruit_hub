@@ -89,7 +89,6 @@ class Failure implements Exception {
   //     errorMessage: message,
   //   );
   // }
-
   factory Failure.fromFirebase(dynamic error) {
     if (error is FirebaseAuthException) {
       return Failure.fromFirebaseAuth(error);

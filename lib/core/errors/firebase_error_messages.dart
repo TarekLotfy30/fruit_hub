@@ -51,9 +51,6 @@ abstract class FirebaseErrorMessages {
   // Google Sign-In error messages
   static final Map<String, String> googleAuthMessages = {
     'sign_in_canceled': LocaleKeys.firebase_errors_google_sign_in_canceled.tr(),
-    'sign_in_failed': LocaleKeys.firebase_errors_google_sign_in_failed.tr(),
-    'network_error': LocaleKeys.firebase_errors_google_network_error.tr(),
-    'sign_in_required': LocaleKeys.firebase_errors_google_sign_in_required.tr(),
     'invalid_account': LocaleKeys.firebase_errors_google_invalid_account.tr(),
     'account_restricted': LocaleKeys.firebase_errors_google_account_restricted
         .tr(),

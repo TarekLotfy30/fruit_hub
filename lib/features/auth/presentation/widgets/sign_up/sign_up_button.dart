@@ -84,9 +84,12 @@ class _SignUpButton extends StatelessWidget {
             final password = _passwordController.text.trim();
             final fullName = _fullNameController.text.trim();
             await context.signUpCubit.signUp(
-              email: email,
-              password: password,
-              fullname: fullName,
+              user: UserModel(
+                email: email,
+                password: password,
+                fullname: fullName,
+                uid: '',
+              ),
             );
           },
           child: Text(LocaleKeys.sign_up_sign_up.tr()),

@@ -1,43 +1,36 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../features/auth/data/model/user_model.dart';
-import 'firebase_collection.dart';
 
-class FirebaseService {
-  FirebaseService() {
-    log('FirebaseService initialized', name: 'FirebaseService');
+class AuthService {
+  AuthService() {
+    log('FirebaseAuthService initialized', name: 'FirebaseAuthService');
   }
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
   final User? _user = FirebaseAuth.instance.currentUser;
 
-  String _getKeyString(FirebaseCollection key) {
-    final keyString = key.toString().split('.').last;
-    return keyString;
-  }
-
   Future<UserCredential> signUp({
-    required String email,
-    required String password,
+    required UserModel user,
   }) {
     return _auth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: user.email,
+      password: user.password,
     );
   }
 
   Future<UserCredential> signIn({
-    required String email,
-    required String password,
+    required UserModel user,
   }) async {
     // Implementation for signing in with email and password
-    return _auth.signInWithEmailAndPassword(email: email, password: password);
+    return _auth.signInWithEmailAndPassword(
+      email: user.email,
+      password: user.password,
+    );
   }
 
   Future<UserCredential> signInWithGoogle() async {
@@ -132,11 +125,4 @@ class FirebaseService {
   // }
 
   //----------------------------- Firestore ------------------------------------
-  Future<void> addUserToFirestore(UserModel user) async {
-    final collectionName = _getKeyString(FirebaseCollection.users);
-    await _firestore
-        .collection(collectionName)
-        .doc(user.uid)
-        .set(user.toMap(), SetOptions(merge: true));
-  }
 }

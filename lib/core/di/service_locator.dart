@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/data/repo/auth_repo_impl.dart';
-import '../services/firebase/firebase_service.dart';
+import '../services/firebase/auth_service.dart';
+import '../services/firebase/fire_store_service.dart';
 import '../services/local/local_helper.dart';
 
 // registerSingleton: This method registers a type as a singleton, meaning that
@@ -33,19 +34,24 @@ final getIt = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
   try {
-
     // SharedPreferences
     final sharedPrefs = await SharedPreferences.getInstance();
     getIt.registerSingleton<SharedPreferences>(sharedPrefs);
     getIt.registerSingleton<LocalHelper>(LocalHelper(sharedPrefs));
 
     // Services
-    getIt.registerSingleton<FirebaseService>(FirebaseService());
+    getIt.registerSingleton<AuthService>(
+      AuthService(),
+    );
+    getIt.registerSingleton<FireStoreService>(
+      FireStoreService(),
+    );
 
     // repos
     getIt.registerSingleton<AuthRepo>(
       AuthRepoImpl(
-        firebaseService: getIt<FirebaseService>(),
+        authService: getIt<AuthService>(),
+        firestoreService: getIt<FireStoreService>(),
       ),
     );
 

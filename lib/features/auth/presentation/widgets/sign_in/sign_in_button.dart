@@ -62,10 +62,17 @@ class _SignInButton extends StatelessWidget {
               );
               return;
             }
-            
+            // All inputs are valid, proceed to sign up
+            final email = _emailController.text.trim();
+            final password = _passwordController.text.trim();
+
             await context.signInCubit.signIn(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim(),
+              user: UserModel(
+                email: email,
+                password: password,
+                uid: '',
+                fullname: '',
+              ),
             );
           },
           child: Text(LocaleKeys.sign_in_sign_in.tr()),

@@ -19,6 +19,7 @@ import '../../../../core/widgets/build_loading_animation.dart';
 import '../../../../core/widgets/build_optimized_svg.dart';
 
 import '../../controller/sign_in/sign_in_cubit.dart';
+import '../../data/model/user_model.dart';
 import '../widgets/email_text_field.dart';
 import '../widgets/password_text_field.dart';
 part '../widgets/sign_in/or_divider.dart';

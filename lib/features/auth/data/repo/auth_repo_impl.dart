@@ -5,29 +5,28 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../../../../core/services/firebase/firebase_service.dart';
+import '../../../../core/services/firebase/auth_service.dart';
+import '../../../../core/services/firebase/fire_store_service.dart';
 import '../model/user_model.dart';
 import 'auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  const AuthRepoImpl({required this.firebaseService});
+  const AuthRepoImpl({
+    required this.firestoreService,
+    required this.authService,
+  });
 
-  final FirebaseService firebaseService;
+  final AuthService authService;
+  final FireStoreService firestoreService;
 
   // ignore: avoid_field_initializers_in_const_classes
   final String _tag = '🔑 [AuthRepoImpl]';
 
   @override
-  Future<Either<Failure, UserModel>> signIn(
-    String email,
-    String password,
-  ) async {
+  Future<Either<Failure, UserModel>> signIn(UserModel user) async {
     try {
       log('📡 Sending request to Firebase...', name: _tag);
-      final value = await firebaseService.signIn(
-        email: email,
-        password: password,
-      );
+      final value = await authService.signIn(user: user);
       log('✅ Firebase returned user: ${value.user?.uid}', name: _tag);
 
       final UserModel userModel = UserModel.fromFirebase(value.user!);
@@ -46,7 +45,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, UserModel>> signInWithGoogle() async {
     try {
-      final credential = await firebaseService.signInWithGoogle();
+      final credential = await authService.signInWithGoogle();
       log(
         '''✅ Firebase returned user: ${credential.user?.displayName} ${credential.user?.email} ${credential.user?.uid}''',
         name: _tag,
@@ -56,7 +55,7 @@ class AuthRepoImpl implements AuthRepo {
 
       if (credential.additionalUserInfo!.isNewUser) {
         log('📡 Sending user to Firestore...', name: _tag);
-        await firebaseService.addUserToFirestore(userModel);
+        await firestoreService.addData(userModel);
         log('✅ User added to Firestore', name: _tag);
       }
 
@@ -71,19 +70,12 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserModel>> signUp(
-    String email,
-    String password,
-    String fullName,
-  ) async {
+  Future<Either<Failure, UserModel>> signUp(UserModel user) async {
     try {
       log('📡 Sending request to Firebase...', name: _tag);
-      final credential = await firebaseService.signUp(
-        email: email,
-        password: password,
-      );
+      final credential = await authService.signUp(user: user);
 
-      await credential.user?.updateProfile(displayName: fullName);
+      await credential.user?.updateProfile(displayName: user.fullname);
       final currentUser = FirebaseAuth.instance.currentUser;
 
       log(
@@ -95,7 +87,7 @@ class AuthRepoImpl implements AuthRepo {
       log('🎉 UserModel created: $userModel', name: _tag);
 
       log('📡 Sending user to Firestore...', name: _tag);
-      await firebaseService.addUserToFirestore(userModel);
+      await firestoreService.addData(userModel);
       log('✅ User added to Firestore', name: _tag);
 
       return Right(userModel);
@@ -114,7 +106,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, void>> signOut() async {
     try {
-      await firebaseService.signOut();
+      await authService.signOut();
       return const Right(null);
     } on FirebaseAuthException catch (e) {
       log(
