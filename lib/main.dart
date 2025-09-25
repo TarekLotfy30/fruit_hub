@@ -46,3 +46,4 @@ Future<void> main() async {
 // now i will push it to github
 // i will add something to test on it and push it to github
 //  add splash screen UI
+// adjust splash screen logo size
