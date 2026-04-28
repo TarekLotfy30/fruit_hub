@@ -18,7 +18,7 @@ dependencies:
   easy_localization: ^3.0.7+1
   
   # Dependency injection container for managing app dependencies
-  get_it: ^8.0.3
+  get_it: ^9.2.1
   
   # Functional programming utilities (Either, Option, etc.)
   dartz: ^0.10.1
@@ -33,10 +33,10 @@ dependencies:
   flutter_animate: ^4.5.2
   
   # Page indicator dots for onboarding/carousel screens
-  smooth_page_indicator: ^1.2.1
+  smooth_page_indicator: ^2.0.1
   
   # Local storage for user preferences and app data
-  shared_preferences: ^2.5.3
+  shared_preferences: ^2.5.4
   
   # Network image loading with caching capabilities
   cached_network_image: ^3.4.1
@@ -49,26 +49,29 @@ dependencies:
   flutter_screenutil: ^5.9.3
   
   # Native splash screen configuration
-  flutter_native_splash: ^2.4.6
+  flutter_native_splash: ^2.4.7
   
   # SVG image rendering support
-  flutter_svg: ^2.2.0
+  flutter_svg: ^2.2.3
 
   # Check internet connection status
-  connectivity_plus: ^6.1.4
+  connectivity_plus: ^7.0.0
   
   # Animation and transition effects
-  animate_do: ^4.2.0
+  animate_do: ^5.1.0
   animate_to: ^0.1.0
-  animations: ^2.0.11
+  animations: ^2.1.1
   loading_animation_widget: ^1.3.0
 
   # Firebase dependencies
   firebase_core: ^4.0.0
   firebase_auth: ^6.0.1
-  device_preview: ^1.3.1
   cloud_firestore: ^6.0.1
-  google_sign_in: ^7.1.1
+  google_sign_in: ^7.2.0
+
+  # Device preview for UI design
+  device_preview: ^1.3.1
+
 
 
 dev_dependencies:
@@ -78,10 +81,9 @@ dev_dependencies:
 
   # Dart code analysis rules and linting for code quality
   flutter_lints: ^6.0.0
-  bloc_lint: ^0.3.1
+  bloc_lint: ^0.4.1
 
 flutter_native_splash:
-  color: "#ffffff"
   image: assets/images/fruit_hub_logo.png
   #branding: assets/branding.png
   color_dark: "#121212"

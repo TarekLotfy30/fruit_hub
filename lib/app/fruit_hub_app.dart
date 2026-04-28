@@ -23,7 +23,7 @@ class FruitHubApp extends StatelessWidget {
     final skipOnboarding =
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
     //final isLoggedIn = firebaseService.checkIfUserIsSignedIn();
-    final isLoggedIn =
+    final boolisLoggedIn =
         localHelper.getValue(key: AppSharedKey.isLoggedIn) ?? false;
 
     if (skipOnboarding == false) {
