@@ -111,7 +111,6 @@ abstract final class AppRouter {
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor ?? (opaque ? null : Colors.black26),
       barrierLabel: barrierDismissible ? 'Dismiss' : '',
-      maintainState: true,
       transitionDuration:
           transitionDuration ?? const Duration(milliseconds: 300),
       reverseTransitionDuration: const Duration(milliseconds: 250),
@@ -143,11 +142,10 @@ abstract final class AppRouter {
       pageBuilder: (context, animation, secondaryAnimation) => child,
       maintainState: maintainState,
       fullscreenDialog: fullscreenDialog,
-      transitionDuration: const Duration(milliseconds: 300),
       reverseTransitionDuration: const Duration(milliseconds: 250),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         // Define slide offset based on direction
-        final Offset beginOffset = switch (direction) {
+        final beginOffset = switch (direction) {
           SlideDirection.rightToLeft => const Offset(1, 0),
           SlideDirection.leftToRight => const Offset(-1, 0),
           SlideDirection.topToBottom => const Offset(0, -1),
@@ -225,7 +223,6 @@ abstract final class AppRouter {
       barrierDismissible: barrierDismissible,
       barrierColor: barrierColor ?? Colors.black54,
       barrierLabel: 'Dismiss',
-      maintainState: true,
       transitionDuration:
           transitionDuration ?? const Duration(milliseconds: 250),
       reverseTransitionDuration: const Duration(milliseconds: 200),

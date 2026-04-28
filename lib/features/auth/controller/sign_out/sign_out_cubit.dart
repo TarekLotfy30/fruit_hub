@@ -30,7 +30,7 @@ class SignOutCubit extends Cubit<SignOutState> {
 
   Future<void> clearSharedPrefs() async {
     final localHelper = getIt.get<LocalHelper>();
-    Future.wait([
+    await Future.wait([
       localHelper.removeValue(key: AppSharedKey.isLoggedIn),
       localHelper.removeValue(key: AppSharedKey.userId),
       localHelper.removeValue(key: AppSharedKey.userEmail),

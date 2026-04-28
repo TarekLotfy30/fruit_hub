@@ -117,7 +117,7 @@ abstract final class AppNavigation {
   /// Parameters:
   ///   - [context]: The BuildContext used to access the Navigator
   ///   - [result]: Optional result to return to the previous route
-  static void goBack(BuildContext context, [dynamic result]) {
+  static void goBack(BuildContext context, [Object? result]) {
     if (context.navigator.canPop()) {
       log('Popping current route', name: _logTag);
       context.navigator.pop(result);

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,18 +16,14 @@ class AuthService {
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
   final User? _user = FirebaseAuth.instance.currentUser;
 
-  Future<UserCredential> signUp({
-    required UserModel user,
-  }) {
+  Future<UserCredential> signUp({required UserModel user}) {
     return _auth.createUserWithEmailAndPassword(
       email: user.email,
       password: user.password,
     );
   }
 
-  Future<UserCredential> signIn({
-    required UserModel user,
-  }) async {
+  Future<UserCredential> signIn({required UserModel user}) async {
     // Implementation for signing in with email and password
     return _auth.signInWithEmailAndPassword(
       email: user.email,
@@ -34,13 +32,13 @@ class AuthService {
   }
 
   Future<UserCredential> signInWithGoogle() async {
-    _googleSignIn.initialize(
+    await _googleSignIn.initialize(
       serverClientId:
           '604693325993-v4r83k57cuo2fpbj2t8qak2bc428u6f1.apps.googleusercontent.com',
     );
 
     // Trigger the authentication flow
-    final GoogleSignInAccount googleUser = await _googleSignIn.authenticate(
+    final googleUser = await _googleSignIn.authenticate(
       scopeHint: ['email', 'https://www.googleapis.com/auth/contacts.readonly'],
     );
     log(
@@ -52,7 +50,7 @@ class AuthService {
 
     // Obtain the auth details from the request
     // Create a new credential
-    final OAuthCredential credential = GoogleAuthProvider.credential(
+    final credential = GoogleAuthProvider.credential(
       idToken: googleUser.authentication.idToken,
     );
 

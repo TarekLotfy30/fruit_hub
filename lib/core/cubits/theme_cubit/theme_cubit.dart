@@ -25,4 +25,3 @@ class ThemeCubit extends Cubit<ThemeState> {
   // Future<void> _onToggleModeTap(BuildContext context) async {
   //   context.themeCubit.toggleTheme();
   // }
-  

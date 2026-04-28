@@ -37,7 +37,7 @@ class LocalHelper {
   ///   - A [Future<bool>] indicating success (true) or failure (false).
   Future<bool> setValue({
     required AppSharedKey key,
-    required dynamic value,
+    required Object value,
   }) async {
     log('Setting value for key: $key, value: $value', name: 'LocalHelper');
     try {

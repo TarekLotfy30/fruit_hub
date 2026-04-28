@@ -27,55 +27,57 @@ abstract class AppSnackBar {
       final theme = context.appTheme;
 
       // Hide any existing snack Bars first
-      messenger.hideCurrentSnackBar();
-
-      messenger.showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  message,
-                  softWrap: true,
-                  style:
-                      style ??
-                      theme.textTheme.labelMedium?.copyWith(
-                        color: theme.colorScheme.onInverseSurface,
-                      ),
+      messenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    message,
+                    softWrap: true,
+                    style:
+                        style ??
+                        theme.textTheme.labelMedium?.copyWith(
+                          color: theme.colorScheme.onInverseSurface,
+                        ),
+                  ),
                 ),
+                Icon(
+                  icon,
+                  color: theme.colorScheme.onInverseSurface,
+                  size: AppIconSizes.small.r,
+                ),
+              ],
+            ),
+            backgroundColor: backgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                AppCorners.inputBorderRadius.r,
               ),
-              Icon(
-                icon,
-                color: theme.colorScheme.onInverseSurface,
-                size: AppIconSizes.small.r,
-              ),
-            ],
-          ),
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppCorners.inputBorderRadius.r),
-          ),
-          behavior: SnackBarBehavior.floating,
-          elevation: AppElevation.appBarElevation,
-          duration: AppDurations.snackbarStandard,
+            ),
+            behavior: SnackBarBehavior.floating,
+            elevation: AppElevation.appBarElevation,
+            duration: AppDurations.snackbarStandard,
 
-          margin: EdgeInsets.symmetric(
-            horizontal: AppPaddings.padding12.w,
-            vertical: AppPaddings.padding12.h,
+            margin: EdgeInsets.symmetric(
+              horizontal: AppPaddings.padding12.w,
+              vertical: AppPaddings.padding12.h,
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPaddings.padding12.w,
+              vertical: AppPaddings.padding12.h,
+            ),
+            dismissDirection: DismissDirection.endToStart,
+            action: action != null
+                ? SnackBarAction(
+                    label: action,
+                    onPressed: messenger.hideCurrentSnackBar,
+                  )
+                : null,
           ),
-          padding: EdgeInsets.symmetric(
-            horizontal: AppPaddings.padding12.w,
-            vertical: AppPaddings.padding12.h,
-          ),
-          dismissDirection: DismissDirection.endToStart,
-          action: action != null
-              ? SnackBarAction(
-                  label: action,
-                  onPressed: messenger.hideCurrentSnackBar,
-                )
-              : null,
-        ),
-      );
+        );
     }
   }
 

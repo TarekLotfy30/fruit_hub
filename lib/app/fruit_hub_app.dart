@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/cubits/theme_cubit/theme_cubit.dart';
 import '../core/di/service_locator.dart';
-import '../core/responsive/app_screen_util.dart';
 import '../core/routing/app_router.dart';
 import '../core/routing/app_routes_name.dart';
 import '../core/services/local/app_shared_keys.dart';
@@ -23,8 +22,8 @@ class FruitHubApp extends StatelessWidget {
     final skipOnboarding =
         localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
     //final isLoggedIn = firebaseService.checkIfUserIsSignedIn();
-    final boolisLoggedIn =
-        localHelper.getValue(key: AppSharedKey.isLoggedIn) ?? false;
+    final isLoggedIn =
+        localHelper.getValue(key: AppSharedKey.isLoggedIn) as bool? ?? false;
 
     if (skipOnboarding == false) {
       // First-time user → onboarding
@@ -44,11 +43,10 @@ class FruitHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: AppScreenUtil.designSize,
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, _) => MultiBlocProvider(
-        providers: [BlocProvider(lazy: true, create: (_) => ThemeCubit())],
+        providers: [BlocProvider(create: (_) => ThemeCubit())],
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, themeState) {
             return MaterialApp(

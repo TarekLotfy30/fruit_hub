@@ -6,8 +6,13 @@ class _PageViewItem extends StatelessWidget {
   final OnboardingModel item;
 
   Future<void> _onSkipTap(BuildContext context) async {
-    context.onboardingCubit.skipAndSave();
-    AppNavigation.navigateToAndReplace(context, AppRoutesName.signInScreen);
+    await context.onboardingCubit.skipAndSave();
+    if (context.mounted) {
+      await AppNavigation.navigateToAndReplace(
+        context,
+        AppRoutesName.signInScreen,
+      );
+    }
   }
 
   @override
@@ -39,7 +44,6 @@ class _PageViewItem extends StatelessWidget {
                 builder: (context, state) {
                   return Visibility(
                     visible: state is! OnboardingChanged,
-                    replacement: const SizedBox.shrink(),
                     child: Align(
                       alignment: Alignment.topRight,
                       child: Padding(

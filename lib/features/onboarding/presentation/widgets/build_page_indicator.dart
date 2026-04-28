@@ -16,7 +16,6 @@ class _BuildPageIndicator extends StatelessWidget {
           controller: _pageController,
           count: AppConstant.onboardingItems.length,
           onDotClicked: cubit.changePage,
-          axisDirection: Axis.horizontal,
           effect: WormEffect(
             dotWidth: 11,
             dotHeight: 11,

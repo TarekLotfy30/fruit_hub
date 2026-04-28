@@ -36,19 +36,16 @@ Future<void> setupServiceLocator() async {
   try {
     // SharedPreferences
     final sharedPrefs = await SharedPreferences.getInstance();
-    getIt.registerSingleton<SharedPreferences>(sharedPrefs);
-    getIt.registerSingleton<LocalHelper>(LocalHelper(sharedPrefs));
+    getIt
+      ..registerSingleton<SharedPreferences>(sharedPrefs)
+      ..registerSingleton<LocalHelper>(LocalHelper(sharedPrefs))
 
     // Services
-    getIt.registerSingleton<AuthService>(
-      AuthService(),
-    );
-    getIt.registerSingleton<FireStoreService>(
-      FireStoreService(),
-    );
+    ..registerSingleton<AuthService>(AuthService())
+    ..registerSingleton<FireStoreService>(FireStoreService())
 
     // repos
-    getIt.registerSingleton<AuthRepo>(
+    ..registerSingleton<AuthRepo>(
       AuthRepoImpl(
         authService: getIt<AuthService>(),
         firestoreService: getIt<FireStoreService>(),

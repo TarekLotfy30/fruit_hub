@@ -9,7 +9,6 @@ class BuildDragHandleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.center,
       child: Container(
         width: 60.w,
         height: 4.h,

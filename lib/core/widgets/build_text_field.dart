@@ -53,7 +53,6 @@ class BuildTextField extends StatelessWidget {
 
       cursorErrorColor: colorScheme.error,
       obscureText: obscureText,
-      obscuringCharacter: '•',
     );
   }
 }

@@ -49,8 +49,8 @@ class Failure implements Exception {
         errorKey = 'developer_error';
       case GoogleSignInExceptionCode.unknownError:
         errorKey = 'unknown_error';
-      default:
-        errorKey = 'sign_in_failed';
+      case GoogleSignInExceptionCode.userMismatch:
+        errorKey = 'user_mismatch';  
     }
     log('❌ Mapped error key: $errorKey');
     final message =
@@ -89,7 +89,7 @@ class Failure implements Exception {
   //     errorMessage: message,
   //   );
   // }
-  factory Failure.fromFirebase(dynamic error) {
+  factory Failure.fromFirebase(Exception error) {
     if (error is FirebaseAuthException) {
       return Failure.fromFirebaseAuth(error);
     } else if (error is GoogleSignInException) {

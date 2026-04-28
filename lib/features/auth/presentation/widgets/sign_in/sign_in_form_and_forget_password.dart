@@ -51,10 +51,12 @@ class _SignInFormAndForgetPasswordState
 
   @override
   void dispose() {
-    _passwordController.clear();
-    _emailController.clear();
-    _emailController.dispose();
-    _passwordController.dispose();
+    _emailController
+      ..clear()
+      ..dispose();
+    _passwordController
+      ..clear()
+      ..dispose();
     super.dispose();
   }
 }

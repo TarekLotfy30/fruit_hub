@@ -6,10 +6,9 @@ class _TermsAndConditionsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final  theme = Theme.of(context);
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
-      maxChildSize: 1,
       expand: false,
       builder: (context, scrollController) {
         return Container(
@@ -19,7 +18,6 @@ class _TermsAndConditionsSheet extends StatelessWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             spacing: AppPaddings.padding16.h,
             children: [
               Expanded(

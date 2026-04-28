@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
               await context.signOutCubit.signOutFromFirebase();
               //await context.signOutCubit.signOutFromGoogle();
               if (context.mounted) {
-                AppNavigation.navigateToAndClearStack(
+                await AppNavigation.navigateToAndClearStack(
                   context,
                   AppRoutesName.signInScreen,
                 );

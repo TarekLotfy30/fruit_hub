@@ -12,11 +12,7 @@ class _OnboardingViewBodyState extends State<_OnboardingViewBody> {
 
   @override
   void initState() {
-    _pageController = PageController(
-      initialPage: 0,
-      keepPage: true, // Maintain page state during rebuilds
-      viewportFraction: 1,
-    );
+    _pageController = PageController();
 
     super.initState();
   }
