@@ -5,8 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/data/repo/auth_repo_impl.dart';
-import '../services/firebase/auth_service.dart';
-import '../services/firebase/fire_store_service.dart';
+import '../../features/splash/data/repo/get_initial_repo.dart';
+import '../../features/splash/data/repo/get_initial_repo_impl.dart';
+import '../services/firebase/firebase_auth_service.dart';
+import '../services/firebase/firestore_service.dart';
 import '../services/local/local_helper.dart';
 
 // registerSingleton: This method registers a type as a singleton, meaning that
@@ -39,18 +41,19 @@ Future<void> setupServiceLocator() async {
     getIt
       ..registerSingleton<SharedPreferences>(sharedPrefs)
       ..registerSingleton<LocalHelper>(LocalHelper(sharedPrefs))
-
-    // Services
-    ..registerSingleton<AuthService>(AuthService())
-    ..registerSingleton<FireStoreService>(FireStoreService())
-
-    // repos
-    ..registerSingleton<AuthRepo>(
-      AuthRepoImpl(
-        authService: getIt<AuthService>(),
-        firestoreService: getIt<FireStoreService>(),
-      ),
-    );
+      // Services
+      ..registerSingleton<FirebaseAuthService>(FirebaseAuthService())
+      ..registerSingleton<FirestoreService>(FirestoreService())
+      // repos
+      ..registerLazySingleton<AuthRepo>(
+        () => AuthRepoImpl(
+          authService: getIt<FirebaseAuthService>(),
+          firestoreService: getIt<FirestoreService>(),
+        ),
+      )
+      ..registerLazySingleton<GetInitialRouteRepo>(
+        () => GetInitialRouteRepoImpl(getIt<LocalHelper>()),
+      );
 
     // Register helpers
     //  di.registerLazySingleton<DioHelper>(() => DioHelper(getIt()));

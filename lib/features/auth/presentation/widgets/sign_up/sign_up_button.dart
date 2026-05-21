@@ -34,14 +34,14 @@ class _SignUpButton extends StatelessWidget {
               await AppSnackBar.showError(context, state.failure.errorMessage);
             }
           case SignUpSuccess():
-            await AppNavigation.navigateToAndClearStack(
+            await AppSnackBar.showSuccess(
               context,
-              AppRoutesName.signInScreen,
+              LocaleKeys.snack_bar_messages_sign_up_success.tr(),
             );
             if (context.mounted) {
-              await AppSnackBar.showSuccess(
+              await AppNavigation.navigateToAndClearStack(
                 context,
-                LocaleKeys.snack_bar_messages_sign_up_success.tr(),
+                AppRoutesName.homeScreen,
               );
             }
         }

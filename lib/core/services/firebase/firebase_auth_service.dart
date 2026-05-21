@@ -7,8 +7,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../features/auth/data/model/user_model.dart';
 
-class AuthService {
-  AuthService() {
+class FirebaseAuthService {
+  FirebaseAuthService() {
     log('FirebaseAuthService initialized', name: 'FirebaseAuthService');
   }
 
@@ -121,6 +121,4 @@ class AuthService {
   //   await user.reload(); // refresh
   //   return user.emailVerified;
   // }
-
-  //----------------------------- Firestore ------------------------------------
 }

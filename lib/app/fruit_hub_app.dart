@@ -5,41 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/cubits/theme_cubit/theme_cubit.dart';
-import '../core/di/service_locator.dart';
 import '../core/routing/app_router.dart';
 import '../core/routing/app_routes_name.dart';
-import '../core/services/local/app_shared_keys.dart';
-import '../core/services/local/local_helper.dart';
 import '../core/theme/app_theme.dart';
 
 class FruitHubApp extends StatelessWidget {
   const FruitHubApp({super.key});
 
-  String _getInitialRoute() {
-    final localHelper = getIt<LocalHelper>();
-    //final firebaseService = getIt.get<FirebaseService>();
-
-    final skipOnboarding =
-        localHelper.getValue(key: AppSharedKey.skipOnBoarding) ?? false;
-    //final isLoggedIn = firebaseService.checkIfUserIsSignedIn();
-    final isLoggedIn =
-        localHelper.getValue(key: AppSharedKey.isLoggedIn) as bool? ?? false;
-
-    if (skipOnboarding == false) {
-      // First-time user → onboarding
-      return AppRoutesName.onboardingScreen;
-    }
-
-    if (isLoggedIn) {
-      // User is logged in → go to home
-      return AppRoutesName.homeScreen;
-    } else {
-      // User skipped onboarding but is not logged in
-      return AppRoutesName.signInScreen;
-    }
-  }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -59,16 +31,15 @@ class FruitHubApp extends StatelessWidget {
               // Set current locale from EasyLocalization
               locale: context.locale,
               // DevicePreview configuration
-              //locale: DevicePreview.locale(context),
+              // locale: DevicePreview.locale(context),
               builder: DevicePreview.appBuilder,
-
-              // Routing configuration`
-              initialRoute: _getInitialRoute(),
+              // Routing configuration
+              initialRoute: AppRoutesName.splashScreen,
               onGenerateRoute: AppRouter.generateRoute,
               // Theme configuration
               theme: AppTheme.lightMode,
-              darkTheme: AppTheme.darkMode,
-              themeMode: themeState.mode,
+              // darkTheme: AppTheme.darkMode,
+              // themeMode: themeState.mode,
             );
           },
         ),
@@ -78,3 +49,6 @@ class FruitHubApp extends StatelessWidget {
 }
 
 // flutter pub run easy_localization:generate -S assets/translations -O lib/core/translation -o locale_keys.g.dart -f keys
+
+// tarektest123@gmail.com
+// Qweasd@123456

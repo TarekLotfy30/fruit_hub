@@ -43,6 +43,7 @@ analyzer:
     unused_local_variable: warning
     # Treat dead code as warnings
     dead_code: warning
+    one_member_abstracts: ignore
 
   # تفعيل strict mode للأمان
   language:

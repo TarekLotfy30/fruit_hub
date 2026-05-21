@@ -15,6 +15,7 @@ import '../../features/auth/presentation/screens/sign_up_view.dart';
 import '../../features/home/presentation/screens/home_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
+import '../../features/splash/presentation/screens/splash_view.dart';
 import '../di/service_locator.dart';
 import 'app_routes_name.dart';
 
@@ -48,6 +49,12 @@ abstract final class AppRouter {
       error: settings.arguments?.toString(),
     );
     switch (settings.name) {
+      case AppRoutesName.splashScreen:
+        return _buildPlatformAwareRoute(
+          child: const SplashView(),
+          settings: settings,
+          forceRouteType: RouteType.fade,
+        );
       // Onboarding flow
       case AppRoutesName.onboardingScreen:
         return _buildPlatformAwareRoute(

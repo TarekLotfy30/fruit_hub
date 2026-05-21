@@ -4,6 +4,8 @@
 /// preventing typos and making route management easier.
 /// All routes should be defined as static constants here.
 abstract final class AppRoutesName {
+  // Splash route
+  static const String splashScreen = '/';
   // onboarding route
   static const String onboardingScreen = '/onboarding';
 

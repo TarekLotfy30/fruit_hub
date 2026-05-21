@@ -15,6 +15,7 @@ class HomeView extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
+            tooltip: 'Logout',
             onPressed: () async {
               // Handle logout logic here
               // For example, clear user session and navigate to sign-in screen

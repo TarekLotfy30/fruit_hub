@@ -5,8 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../features/auth/data/model/user_model.dart';
 import 'firebase_collection.dart';
 
-class FireStoreService {
-  FireStoreService() {
+class FirestoreService {
+  FirestoreService() {
     log(
       'FirebaseFireStoreService initialized',
       name: 'FirebaseFireStoreService',
