@@ -8,8 +8,7 @@ import '../../../../core/helpers/extensions/theme_extension.dart';
 import '../../../../core/helpers/functions/app_navigation.dart';
 import '../../../../core/routing/app_routes_name.dart';
 
-import '../../data/repo/get_initial_repo.dart';
-
+import '../../data/use_case/splash_use_case.dart';
 import '../widgets/splash_view_body.dart';
 
 class SplashView extends StatefulWidget {
@@ -30,12 +29,12 @@ class _SplashViewState extends State<SplashView>
   late final Animation<double> _logoScale;
 
   // ── Routing use-case (injected, not hard-coupled to getIt) ───────────────
-  late final GetInitialRouteRepo _getInitialRoute;
+  late final GetInitialRouteUseCase _getInitialRoute;
 
   @override
   void initState() {
     super.initState();
-    _getInitialRoute = getIt<GetInitialRouteRepo>();
+    _getInitialRoute = getIt<GetInitialRouteUseCase>();
 
     _controller = AnimationController(
       vsync: this,
@@ -98,7 +97,7 @@ class _SplashViewState extends State<SplashView>
 
     late final String route;
     try {
-      route = _getInitialRoute();
+      route = _getInitialRoute.call();
     } on Exception catch (e, stackTrace) {
       log(
         'Failed to determine initial route — falling back to onboarding.',

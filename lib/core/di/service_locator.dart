@@ -5,8 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/data/repo/auth_repo_impl.dart';
-import '../../features/splash/data/repo/get_initial_repo.dart';
-import '../../features/splash/data/repo/get_initial_repo_impl.dart';
+import '../../features/splash/data/repo/splash_repo.dart';
+import '../../features/splash/data/repo/splash_repo_impl.dart';
+import '../../features/splash/data/use_case/splash_use_case.dart';
 import '../services/firebase/firebase_auth_service.dart';
 import '../services/firebase/firestore_service.dart';
 import '../services/local/local_helper.dart';
@@ -51,8 +52,12 @@ Future<void> setupServiceLocator() async {
           firestoreService: getIt<FirestoreService>(),
         ),
       )
-      ..registerLazySingleton<GetInitialRouteRepo>(
-        () => GetInitialRouteRepoImpl(getIt<LocalHelper>()),
+      ..registerLazySingleton<SplashRepo>(
+        () => SplashRepoImpl(getIt<LocalHelper>()),
+      )
+      // Use cases
+      ..registerLazySingleton<GetInitialRouteUseCase>(
+        () => GetInitialRouteUseCase(getIt<SplashRepo>()),
       );
 
     // Register helpers
