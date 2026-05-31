@@ -29,12 +29,12 @@ class _SplashViewState extends State<SplashView>
   late final Animation<double> _logoScale;
 
   // ── Routing use-case (injected, not hard-coupled to getIt) ───────────────
-  late final GetInitialRouteUseCase _getInitialRoute;
+  late final SplashUseCase _getInitialRoute;
 
   @override
   void initState() {
     super.initState();
-    _getInitialRoute = getIt<GetInitialRouteUseCase>();
+    _getInitialRoute = getIt<SplashUseCase>();
 
     _controller = AnimationController(
       vsync: this,

@@ -37,6 +37,8 @@ abstract class  LocaleKeys {
   static const sign_up_close = 'sign_up.close';
   static const sign_up_already_have_account = 'sign_up.already_have_account';
   static const sign_up = 'sign_up';
+  static const home_good_morning = 'home.good_morning';
+  static const home = 'home';
   static const validation_password_empty = 'validation.password_empty';
   static const validation_password_min_length = 'validation.password_min_length';
   static const validation_password_uppercase = 'validation.password_uppercase';

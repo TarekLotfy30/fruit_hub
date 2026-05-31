@@ -108,10 +108,13 @@ flutter:
     - assets/translations/
     - assets/fonts/
     - assets/images/
+    - assets/images/home/
     - assets/svgs/
+    - assets/svgs/home/
+    - assets/svgs/auth/
     - assets/svgs/onboarding/
+    - assets/svgs/shared_icons/
     - assets/svgs/splash/
-    - assets/svgs/icons/
 
 
   fonts:

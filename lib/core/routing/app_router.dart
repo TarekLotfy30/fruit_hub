@@ -12,6 +12,8 @@ import '../../features/auth/data/repo/auth_repo.dart';
 import '../../features/auth/presentation/screens/forget_password_view.dart';
 import '../../features/auth/presentation/screens/sign_in_view.dart';
 import '../../features/auth/presentation/screens/sign_up_view.dart';
+import '../../features/home/controller/header_cubit/home_header_cubit.dart';
+import '../../features/home/data/repo/home_repo.dart';
 import '../../features/home/presentation/screens/home_view.dart';
 import '../../features/onboarding/controller/onboarding_cubit.dart';
 import '../../features/onboarding/presentation/screens/onboarding_view.dart';
@@ -88,8 +90,17 @@ abstract final class AppRouter {
       // Home flow
       case AppRoutesName.homeScreen:
         return _buildPlatformAwareRoute(
-          child: BlocProvider(
-            create: (context) => SignOutCubit(authRepo: getIt.get<AuthRepo>()),
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    SignOutCubit(authRepo: getIt.get<AuthRepo>()),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    HomeHeaderCubit(homeRepo: getIt.get<HomeRepo>()),
+              ),
+            ],
             child: const HomeView(),
           ),
         );

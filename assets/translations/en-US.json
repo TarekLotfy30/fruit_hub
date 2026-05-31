@@ -45,6 +45,10 @@
     "already_have_account": "Already have an account?"
   },
 
+  "home":{
+    "good_morning": "Good morning!.."
+  },
+
   "validation": {
       "password_empty": "Password cannot be empty",
       "password_min_length": "Password must be at least 8 characters long",

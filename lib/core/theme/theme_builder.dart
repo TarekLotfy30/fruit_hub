@@ -9,6 +9,7 @@ import 'component_themes/app_chip_theme.dart';
 import 'component_themes/app_dialog_theme.dart';
 import 'component_themes/app_divider_theme.dart';
 import 'component_themes/app_input_theme.dart';
+import 'component_themes/app_list_tile.dart';
 import 'component_themes/app_switch_theme.dart';
 import 'theme_constant/theme_constants.dart';
 
@@ -57,6 +58,7 @@ abstract final class ThemeBuilder {
         isDark: isDark,
       ),
       switchTheme: AppSwitchTheme.switchTheme(colorScheme),
+      listTileTheme: AppListTileTheme.listTileTheme(colorScheme),
     );
   }
 }

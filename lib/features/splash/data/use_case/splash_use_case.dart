@@ -1,10 +1,10 @@
 import '../../../../core/routing/app_routes_name.dart';
 import '../repo/splash_repo.dart';
 
-class GetInitialRouteUseCase {
+class SplashUseCase {
   final SplashRepo _repo;
 
-  GetInitialRouteUseCase(this._repo);
+  SplashUseCase(this._repo);
 
   // ✅ Use Case's job — combine them into a routing DECISION
   // Business decision

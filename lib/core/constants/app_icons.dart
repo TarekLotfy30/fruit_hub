@@ -13,10 +13,13 @@ abstract final class AppIcons {
   static const IconData user = Icons.person_outline;
 
   // If using custom SVG or PNG icons
-  static const String leftArrow = 'assets/svgs/icons/left_arrow.svg';
-  static const String rightArrow = 'assets/svgs/icons/right_arrow.svg';
-  static const String google = 'assets/svgs/icons/google.svg';
-  static const String apple = 'assets/svgs/icons/apple.svg';
-  static const String twitter = 'assets/svgs/icons/apple_dark.svg';
-  static const String facebook = 'assets/svgs/icons/facebook.svg';
+  static const String leftArrow = 'assets/svgs/shared_icons/left_arrow.svg';
+  static const String rightArrow = 'assets/svgs/shared_icons/right_arrow.svg';
+  static const String google = 'assets/svgs/auth/google.svg';
+  static const String apple = 'assets/svgs/auth/apple.svg';
+  static const String twitter = 'assets/svgs/auth/apple_dark.svg';
+  static const String facebook = 'assets/svgs/auth/facebook.svg';
+
+  /// Home icons
+  static const String notification = 'assets/svgs/home/notification.svg';
 }

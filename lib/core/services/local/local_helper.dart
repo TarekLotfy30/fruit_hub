@@ -76,11 +76,11 @@ class LocalHelper {
   /// Parameters:
   ///   - key: The [AppSharedKey] to retrieve.
   ///   - defaultValue: The value to return if the key is not found.
-  dynamic getValue({required AppSharedKey key}) {
+  Object? getValue({required AppSharedKey key}) {
     final keyString = _getKeyString(key);
     final value = _pref.get(keyString);
     log('Retrieved value for $keyString: $value', name: 'LocalHelper');
-    return value;
+    return value ?? '';
   }
 
   /// Removes a value from shared preferences.

@@ -45,6 +45,10 @@
     "already_have_account": "تمتلك حسابًا بالفعل؟"
   },
 
+  "home":{
+    "good_morning": "صباح الخير!.."
+  },
+
   "validation": {
       "password_empty": "لا يمكن أن تكون كلمة المرور فارغة",
       "password_min_length": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
