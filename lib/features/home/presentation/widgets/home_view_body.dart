@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'home_header/header_tile.dart';
+import 'header_tile/header_tile.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
