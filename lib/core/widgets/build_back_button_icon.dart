@@ -5,7 +5,7 @@ import '../constants/app_border_width.dart';
 import '../constants/app_icons.dart';
 import '../constants/app_padding.dart';
 import '../helpers/extensions/localization_extension.dart';
-import '../helpers/extensions/theme_extension.dart';
+import '../helpers/extensions/responsive_and_theme_extension.dart';
 import '../helpers/functions/app_navigation.dart';
 import '../utils/colors/app_colors.dart';
 import 'build_optimized_svg.dart';

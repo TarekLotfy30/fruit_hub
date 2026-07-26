@@ -24,7 +24,7 @@ dependencies:
   dartz: ^0.10.1
   
   # Value equality for objects without boilerplate
-  equatable: ^2.0.7
+  equatable: ^2.1.0
   
   # Shimmer loading effect for skeleton screens
   shimmer: ^3.0.0
@@ -42,17 +42,17 @@ dependencies:
   cached_network_image: ^3.4.1
   
   # Business Logic Component pattern for state management
-  bloc: ^9.0.0
+  bloc: ^9.2.1
   flutter_bloc: ^9.1.1
   
   # Responsive UI utilities for different screen sizes
   flutter_screenutil: ^5.9.3
   
   # Native splash screen configuration
-  flutter_native_splash: ^2.4.7
+  flutter_native_splash: ^2.4.8
   
   # SVG image rendering support
-  flutter_svg: ^2.2.3
+  flutter_svg: ^2.3.0
 
   # Check internet connection status
   connectivity_plus: ^7.0.0
@@ -81,7 +81,7 @@ dev_dependencies:
 
   # Dart code analysis rules and linting for code quality
   flutter_lints: ^6.0.0
-  bloc_lint: ^0.4.1
+  bloc_lint: ^0.4.2
 
 flutter_native_splash:
   image: assets/images/fruit_hub_logo.png

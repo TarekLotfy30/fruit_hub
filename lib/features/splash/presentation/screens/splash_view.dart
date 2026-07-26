@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_durations.dart';
 import '../../../../core/di/service_locator.dart';
-import '../../../../core/helpers/extensions/theme_extension.dart';
+import '../../../../core/helpers/extensions/responsive_and_theme_extension.dart';
 import '../../../../core/helpers/functions/app_navigation.dart';
 import '../../../../core/routing/app_routes_name.dart';
 

@@ -80,7 +80,7 @@ class LocalHelper {
     final keyString = _getKeyString(key);
     final value = _pref.get(keyString);
     log('Retrieved value for $keyString: $value', name: 'LocalHelper');
-    return value ?? '';
+    return value;
   }
 
   /// Removes a value from shared preferences.

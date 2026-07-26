@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/extensions/theme_extension.dart';
+import '../helpers/extensions/responsive_and_theme_extension.dart';
+
 
 class BuildDragHandleBar extends StatelessWidget {
   const BuildDragHandleBar({super.key});

@@ -8,8 +8,8 @@ import '../../constants/app_icon_sizes.dart';
 import '../../constants/app_icons.dart';
 import '../../constants/app_padding.dart';
 import '../../utils/colors/app_colors.dart';
+import '../extensions/responsive_and_theme_extension.dart';
 import '../extensions/scaffold_extension.dart';
-import '../extensions/theme_extension.dart';
 
 abstract class AppSnackBar {
   const AppSnackBar._();
@@ -23,10 +23,9 @@ abstract class AppSnackBar {
     IconData? icon,
   }) async {
     if (context.mounted) {
+      // Hide any existing snack Bars first
       final messenger = context.scaffoldMessenger;
       final theme = context.appTheme;
-
-      // Hide any existing snack Bars first
       messenger
         ..hideCurrentSnackBar()
         ..showSnackBar(

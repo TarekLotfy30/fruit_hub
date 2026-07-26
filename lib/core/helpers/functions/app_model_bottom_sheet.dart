@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants/app_corners.dart';
 import '../../constants/app_elevation.dart';
-import '../extensions/theme_extension.dart';
+import '../extensions/responsive_and_theme_extension.dart';
 
 Future<T?> openModalBottomSheet<T extends Object?>({
   required BuildContext context,
